@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,8 @@
 
 body {
   padding-bottom: 200px;
+  font-size: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .Header {
@@ -24,6 +28,29 @@ body {
 .Player {
   width: 854px;
   margin: 0 auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.control-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 46px;
+  right: -100%;
+  padding: 4px 8px;
+  background-color: #1e1e1e;
+  color: #ebeeee;
+  border-radius: 3px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+.control:hover .control-tooltip {
+  display: inline-block;
 }
 
 .Player__container {
@@ -37,4 +64,312 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.Player__top-gradient,
+.Player__bottom-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background-image: url('../src/resources/player-gradient.png');
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}
+
+.Player__container.show-controls .Player__bottom-gradient {
+  opacity: 1;
+}
+
+.Player__top-gradient {
+  top: 0;
+  background-position: top;
+}
+
+.Player__bottom-gradient {
+  bottom: 0;
+  background-position: bottom;
+}
+
+.Player__controls {
+  width: 100%;
+  height: 36px;
+  padding: 0 24px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+}
+
+.Player__container.show-controls .Player__controls,
+.Player__container.show-controls .Player__progress-bar-outer-container {
+  opacity: 1;
+}
+
+.Player__progress-bar-outer-container {
+  cursor: pointer;
+  padding: 10px 0 5px 0;
+  opacity: 0;
+}
+
+.Player__progress-bar-container,
+.Player__progress--watched,
+.Player__progress--buffered,
+.Player__progress--mouse-pos {
+  height: 3px;
+  display: block;
+  transition: all .05s ease-in-out;
+}
+
+.Player__progress-bar-outer-container:hover .Player__scrubber {
+  opacity: 1;
+}
+
+.Player__progress-bar-outer-container:hover .Player__progress-bar-container,
+.Player__progress-bar-outer-container:hover .Player__progress--watched,
+.Player__progress-bar-outer-container:hover .Player__progress--buffered,
+.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+  height: 5px;
+}
+
+.Player__progress-bar-outer-container:hover .Player__progress--buffered,
+.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+  bottom: 5px;
+}
+
+.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+  bottom: 10px;
+}
+
+.Player__progress-bar-outer-container {
+  width: 97%;
+  z-index: 1;
+  position: absolute;
+  bottom: 33px;
+  left: 12px;
+  transition: opacity .25s ease-in-out;
+}
+
+.Player__scrubber {
+  display: block;
+  opacity: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  left: 198px;
+  transition: opacity .10s ease-out;
+}
+
+.Player__progress-bar-container {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.Player__progress--watched {
+  width: 25%;
+  background: red;
+}
+
+.Player__progress--buffered,
+.Player__progress--mouse-pos {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  bottom: 3px;
+  z-index: -1;
+}
+
+.Player__progress--mouse-pos {
+  background: rgba(255, 255, 255, 0.5);
+  width: 75%;
+  bottom: 6px;
+}
+
+.Player__controls div {
+  position: relative;
+  top: 6px;
+}
+
+.Player__controls .control {
+  width: 22px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-right: 13px;
+  position: relative;
+}
+
+.Player__controls .control:last-child {
+  margin-right: 0;
+}
+
+.control.control-volume {
+  margin-right: 0;
+}
+
+.Player__controls .control-play {
+  margin-right: 20px;
+}
+
+.Player__controls .control img {
+  width: 100%;
+  opacity: 0.8;
+  transition: opacity .1s linear;
+}
+
+.Player__controls .control:hover img {
+  opacity: 1;
+}
+
+.Player__controls--left {
+  float: left;
+}
+
+.Player__controls--right {
+  float: right;
+}
+
+.volume-area input[type=range] {
+  -webkit-appearance: none;
+  width: 0;
+  overflow: hidden;
+  margin-left: 13px;
+  position: relative;
+  bottom: 2px;
+  transition: width .3s ease-in-out;
+}
+
+.volume-area--control:hover input[type=range] {
+  width: 54px;
+}
+
+#volume-area-spacer {
+  display: inline-block;
+  width: 0;
+  transition: width .3s ease-in-out;
+}
+
+.volume-area--control:hover #volume-area-spacer {
+  width: 12px;
+}
+
+.volume-area input[type=range]:focus {
+  outline: none;
+}
+
+.volume-area input[type=range]::-webkit-slider-runnable-track {
+  width: 54px;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 0px 0px 1.3px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 1.3px;
+  border: 0px solid rgba(1, 1, 1, 0);
+}
+
+.volume-area input[type=range]::-webkit-slider-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.3px;
+}
+
+.volume-area input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+
+.volume-area input[type=range]::-moz-range-track {
+  width: 54px;
+  height: 3px;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.volume-area input[type=range]::-moz-range-thumb {
+  height: 13px;
+  width: 13px;
+  border: none;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.volume-area input[type=range]::-ms-track {
+  width: 54px;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.volume-area input[type=range]::-ms-fill-lower {
+  background: rgba(242, 242, 242, 0.78);
+}
+
+.volume-area input[type=range]::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.volume-area input[type=range]::-ms-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.volume-area input[type=range]:focus::-ms-fill-lower {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.volume-area input[type=range]:focus::-ms-fill-upper {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.progress-time {
+  position: relative;
+  bottom: 6px;
+  color: #eeeeee;
+  font-size: 84.5%;
+  margin-left: 6px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+  cursor: text;
+}
+
+.Player__action-flash {
+  width: 30%;
+  position: absolute;
+  top: 130px;
+  left: 330px;
+}
+
+.Player__action-flash img {
+  animation: actionFlash .45s linear forwards;
+}
+
+@keyframes actionFlash {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.05;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
 }
