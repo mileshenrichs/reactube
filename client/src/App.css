@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+.clearfix {
+  clear: both;
+}
+
 body {
   padding-bottom: 200px;
   font-size: 100%;
@@ -36,6 +40,10 @@ body {
   user-select: none;
 }
 
+.Player__container.hide-cursor {
+  cursor: none;
+}
+
 .control-tooltip {
   display: none;
   position: absolute;
@@ -47,10 +55,23 @@ body {
   border-radius: 3px;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .control:hover .control-tooltip {
   display: inline-block;
+}
+
+.Player__container.settings-menu .control-tooltip {
+  display: none;
+}
+
+.Player__title-controls .control-tooltip {
+  bottom: -34px;
+}
+
+.Player__title-controls .control-share .control-tooltip {
+  right: -34%;
 }
 
 .Player__container {
@@ -73,7 +94,10 @@ body {
   height: 100px;
   background-image: url('../src/resources/player-gradient.png');
   opacity: 0;
-  transition: opacity .25s ease-in-out;
+}
+
+.Player__container.show-title .Player__top-gradient {
+  opacity: 1;
 }
 
 .Player__container.show-controls .Player__bottom-gradient {
@@ -83,11 +107,45 @@ body {
 .Player__top-gradient {
   top: 0;
   background-position: top;
+  transition: opacity .1s ease-in-out;
 }
 
 .Player__bottom-gradient {
   bottom: 0;
   background-position: bottom;
+  transition: opacity .25s ease-in-out;
+}
+
+.Player__title {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  color: #ffffff;
+  font-size: 170%;
+  z-index: 0;
+  padding-top: 19px;
+  opacity: 0;
+  transition: opacity .1s ease-in-out;
+}
+
+.Player__container.show-title .Player__title {
+  opacity: 1;
+  z-index: 2;
+}
+
+.Player__title span.title-contents {
+  cursor: pointer;
+  padding-left: 1%;
+  opacity: 0.8;
+  transition: opacity .25s ease-in-out;
+}
+
+.Player__title span.title-contents:hover {
+  opacity: 1;
+}
+
+.Player__title-controls {
+  float: right;
 }
 
 .Player__controls {
@@ -102,15 +160,14 @@ body {
   transition: opacity .25s ease-in-out;
 }
 
+.Player__container.fullscreen .Player__controls {
+  bottom: 11px;
+  padding: 0 2.3%;
+}
+
 .Player__container.show-controls .Player__controls,
 .Player__container.show-controls .Player__progress-bar-outer-container {
   opacity: 1;
-}
-
-.Player__progress-bar-outer-container {
-  cursor: pointer;
-  padding: 10px 0 5px 0;
-  opacity: 0;
 }
 
 .Player__progress-bar-container,
@@ -147,8 +204,15 @@ body {
   z-index: 1;
   position: absolute;
   bottom: 33px;
-  left: 12px;
+  left: 1.3%;
   transition: opacity .25s ease-in-out;
+  cursor: pointer;
+  padding: 10px 0 5px 0;
+  opacity: 0;
+}
+
+.Player__container.fullscreen .Player__progress-bar-outer-container {
+  bottom: 46px;
 }
 
 .Player__scrubber {
@@ -193,7 +257,8 @@ body {
   top: 6px;
 }
 
-.Player__controls .control {
+.Player__controls .control,
+.Player__title-controls .control {
   width: 22px;
   border: none;
   background: transparent;
@@ -202,11 +267,25 @@ body {
   position: relative;
 }
 
+.Player__container.fullscreen .control {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.Player__container.fullscreen .control-fullscreen {
+  margin-right: 0;
+}
+
+.Player__container.fullscreen .Player__title-controls .control {
+  margin-right: 24px;
+}
+
 .Player__controls .control:last-child {
   margin-right: 0;
 }
 
-.control.control-volume {
+.control.control-volume,
+.Player__container.fullscreen .control.control-volume {
   margin-right: 0;
 }
 
@@ -214,13 +293,19 @@ body {
   margin-right: 20px;
 }
 
-.Player__controls .control img {
+.Player__container.fullscreen .control-play {
+  margin-right: 28px;
+}
+
+.Player__controls .control img,
+.Player__title-controls .control img {
   width: 100%;
   opacity: 0.8;
   transition: opacity .1s linear;
 }
 
-.Player__controls .control:hover img {
+.Player__controls .control:hover img,
+.Player__title-controls .control:hover img {
   opacity: 1;
 }
 
@@ -242,8 +327,16 @@ body {
   transition: width .3s ease-in-out;
 }
 
+.Player__container.fullscreen .volume-area input[type=range] {
+  bottom: 5px;
+}
+
 .volume-area--control:hover input[type=range] {
   width: 54px;
+}
+
+.Player__container.fullscreen .volume-area--control:hover input[type=range] {
+  width: 78px;
 }
 
 #volume-area-spacer {
@@ -253,7 +346,7 @@ body {
 }
 
 .volume-area--control:hover #volume-area-spacer {
-  width: 12px;
+  width: 10px;
 }
 
 .volume-area input[type=range]:focus {
@@ -300,6 +393,16 @@ body {
   cursor: pointer;
 }
 
+.Player__container.fullscreen .volume-area input[type=range]::-moz-range-track {
+  height: 4px;
+  width: 78px;
+}
+
+.Player__container.fullscreen .volume-area input[type=range]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+}
+
 .volume-area input[type=range]::-ms-track {
   width: 54px;
   height: 3px;
@@ -343,6 +446,11 @@ body {
   cursor: text;
 }
 
+.Player__container.fullscreen .progress-time {
+  font-size: 110%;
+  bottom: 8px;
+}
+
 .Player__action-flash {
   width: 30%;
   position: absolute;
@@ -372,4 +480,208 @@ body {
     transform: scale(0.9);
     opacity: 0;
   }
+}
+
+.Player__container.fullscreen .Player__action-flash {
+  left: 47%;
+  top: 36vh;
+}
+
+.Player__container.fullscreen .Player__action-flash img {
+  animation: actionFlash-fullscreen .5s linear forwards;
+}
+
+@keyframes actionFlash-fullscreen {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.05;
+  }
+  98% {
+    opacity: 0.01;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.Player__controls .PlayerSettingsMenu {
+  background: #2e2e2e;
+  position: absolute;
+  top: -333px;
+  left: 700px;
+  border-radius: 3px;
+  opacity: 0.95;
+  color: #eeeeee;
+  width: 100px;
+  font-size: 78%;
+  font-weight: 500;
+}
+
+.PlayerSettingsMenu__title {
+  width: 100%;
+  display: block;
+  text-align: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.25);
+}
+
+.PlayerSettingsMenu__options {
+  list-style-type: none;
+}
+
+.PlayerSettingsMenu__options li {
+  width: 100%;
+  padding: 9px 0 9px 35px;
+  cursor: pointer;
+  background: #2e2e2e;
+  position: relative;
+}
+
+.PlayerSettingsMenu__options li:hover {
+  background: #646464;
+}
+
+.PlayerSettingsMenu__options li:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.PlayerSettingsMenu__options li.selected {
+  background: url('../src/resources/player-buttons/settings-check.png') no-repeat;
+  background-position-x: 14%;
+  background-position-y: 10px;
+  background-size: 13px;
+}
+
+.PlayerSettingsMenu__options li.selected:hover::after {
+  display: block;
+  width: 100px;
+  height: 34px;
+  content: "";
+  background: #646464;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.Player__container.fullscreen .Player__controls .PlayerSettingsMenu {
+  width: 155px;
+  font-size: 110%;
+  top: -480px;
+  left: 87%;
+}
+
+.Player__container.fullscreen .PlayerSettingsMenu__options li {
+  padding: 14px 0 14px 50px;
+}
+
+.Player__container.fullscreen .PlayerSettingsMenu__options li.selected:hover::after {
+  width: 155px;
+  height: 50px;
+}
+
+.Player__container.fullscreen .PlayerSettingsMenu__options li.selected {
+  background-position-x: 14%;
+  background-position-y: 16px;
+  background-size: 18px;
+}
+
+.PlayerSharePanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .15s ease-in-out;
+}
+
+.Player__container.share-view .PlayerSharePanel {
+  opacity: 1;
+}
+
+.PlayerSharePanel:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  background-color: #2e2e2e;
+  opacity: 0.95;
+}
+
+.PlayerSharePanel__share {
+  display: block;
+  position: relative;
+  width: 630px;
+  height: 240px;
+  margin: 36vh auto 0 auto;
+  text-align: center;
+  z-index: 1;
+  color: #eeeeee;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.PlayerSharePanel__share span:not(.control-tooltip) {
+  display: block;
+}
+
+.PlayerSharePanel__share--share-text {
+  font-size: 160%;
+}
+
+.PlayerSharePanel__share--link {
+  font-size: 226%;
+  font-weight: 500;
+  margin-top: 26px;
+  cursor: pointer;
+  transition: color .15s linear;
+}
+
+.PlayerSharePanel__share--link:hover {
+  color: #ffffff;
+}
+
+.PlayerSharePanel__share--buttons {
+  margin-top: 26px;
+}
+
+.PlayerSharePanel__share--buttons .share-button {
+  border: none;
+  background: transparent;
+  width: 57px;
+  cursor: pointer;
+  margin-right: 8px;
+  position: relative;
+}
+
+.PlayerSharePanel__share--buttons .share-button img {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.share-button .control-tooltip {
+  right: -10%;
+  bottom: 70px;
+}
+
+.share-button:hover .control-tooltip {
+  display: inline-block;
+}
+
+.control-close .control-tooltip {
+  right: -28%;
 }
