@@ -239,7 +239,6 @@ body {
 
 .Player__progress--buffered,
 .Player__progress--mouse-pos {
-  width: 50%;
   background: rgba(255, 255, 255, 0.3);
   position: relative;
   bottom: 3px;
@@ -248,8 +247,25 @@ body {
 
 .Player__progress--mouse-pos {
   background: rgba(255, 255, 255, 0.5);
-  width: 75%;
-  bottom: 6px;
+  animation: adjustMousePosBarLocationOnAppearance .25s linear forwards;
+}
+
+/* The mouse position bar does some weird positioning stuff when its display goes from 
+   none to block.  This animation smoothes it out quite a bit. */
+@keyframes adjustMousePosBarLocationOnAppearance {
+  0% {
+    bottom: 9px;
+    height: 3px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    bottom: 10px;
+    height: 5px;
+    opacity: 1;
+  }
 }
 
 .Player__controls div {
@@ -451,6 +467,17 @@ body {
   bottom: 8px;
 }
 
+.Player__loading-spinner {
+  width: 7%;
+  position: absolute;
+  top: 210px;
+  left: 47%;
+}
+
+.Player__loading-spinner img {
+  width: 100%;
+}
+
 .Player__action-flash {
   width: 30%;
   position: absolute;
@@ -629,9 +656,13 @@ body {
   height: 240px;
   margin: 36vh auto 0 auto;
   text-align: center;
-  z-index: 1;
+  z-index: 0;
   color: #eeeeee;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+.Player__container.share-view .PlayerSharePanel__share {
+  z-index: 1;
 }
 
 .PlayerSharePanel__share span:not(.control-tooltip) {

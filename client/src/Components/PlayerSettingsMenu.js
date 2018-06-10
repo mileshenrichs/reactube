@@ -10,11 +10,11 @@ const PlayerSettingsMenu = (props) => {
 
     if(props.speed === playbackValues[currentIndex]) {
       return (
-        <li key={optionStr} className="selected">{optionStr}</li>
+        <li key={optionStr} onClick={props.setPlaybackRate} value={currentIndex} className="selected">{optionStr}</li>
       )
     } else {
       return (
-        <li key={optionStr}>{optionStr}</li>
+        <li key={optionStr} onClick={props.setPlaybackRate} value={currentIndex}>{optionStr}</li>
       )
     }
   });
