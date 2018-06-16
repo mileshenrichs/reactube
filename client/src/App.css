@@ -66,11 +66,11 @@ body {
   display: none;
 }
 
-.Player__title-controls .control-tooltip {
+.PlayerTitleBar-controls .control-tooltip {
   bottom: -34px;
 }
 
-.Player__title-controls .control-share .control-tooltip {
+.PlayerTitleBar-controls .control-share .control-tooltip {
   right: -34%;
 }
 
@@ -116,7 +116,7 @@ body {
   transition: opacity .25s ease-in-out;
 }
 
-.Player__title {
+.PlayerTitleBar {
   width: 100%;
   position: absolute;
   top: 0;
@@ -128,27 +128,27 @@ body {
   transition: opacity .1s ease-in-out;
 }
 
-.Player__container.show-title .Player__title {
+.Player__container.show-title .PlayerTitleBar {
   opacity: 1;
   z-index: 2;
 }
 
-.Player__title span.title-contents {
+.PlayerTitleBar span.title-contents {
   cursor: pointer;
   padding-left: 1%;
   opacity: 0.8;
   transition: opacity .25s ease-in-out;
 }
 
-.Player__title span.title-contents:hover {
+.PlayerTitleBar span.title-contents:hover {
   opacity: 1;
 }
 
-.Player__title-controls {
+.PlayerTitleBar-controls {
   float: right;
 }
 
-.Player__controls {
+.PlayerControlsBar {
   width: 100%;
   height: 36px;
   padding: 0 24px;
@@ -160,13 +160,13 @@ body {
   transition: opacity .25s ease-in-out;
 }
 
-.Player__container.fullscreen .Player__controls {
+.Player__container.fullscreen .PlayerControlsBar {
   bottom: 11px;
   padding: 0 2.3%;
 }
 
-.Player__container.show-controls .Player__controls,
-.Player__container.show-controls .Player__progress-bar-outer-container {
+.Player__container.show-controls .PlayerControlsBar,
+.Player__container.show-controls .PlayerProgressBar {
   opacity: 1;
 }
 
@@ -179,27 +179,27 @@ body {
   transition: all .05s ease-in-out;
 }
 
-.Player__progress-bar-outer-container:hover .Player__scrubber {
+.PlayerProgressBar:hover .Player__scrubber {
   opacity: 1;
 }
 
-.Player__progress-bar-outer-container:hover .Player__progress-bar-container,
-.Player__progress-bar-outer-container:hover .Player__progress--watched,
-.Player__progress-bar-outer-container:hover .Player__progress--buffered,
-.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+.PlayerProgressBar:hover .Player__progress-bar-container,
+.PlayerProgressBar:hover .Player__progress--watched,
+.PlayerProgressBar:hover .Player__progress--buffered,
+.PlayerProgressBar:hover .Player__progress--mouse-pos {
   height: 5px;
 }
 
-.Player__progress-bar-outer-container:hover .Player__progress--buffered,
-.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+.PlayerProgressBar:hover .Player__progress--buffered,
+.PlayerProgressBar:hover .Player__progress--mouse-pos {
   bottom: 5px;
 }
 
-.Player__progress-bar-outer-container:hover .Player__progress--mouse-pos {
+.PlayerProgressBar:hover .Player__progress--mouse-pos {
   bottom: 10px;
 }
 
-.Player__progress-bar-outer-container {
+.PlayerProgressBar {
   width: 97%;
   z-index: 1;
   position: absolute;
@@ -211,7 +211,7 @@ body {
   opacity: 0;
 }
 
-.Player__container.fullscreen .Player__progress-bar-outer-container {
+.Player__container.fullscreen .PlayerProgressBar {
   bottom: 46px;
 }
 
@@ -268,13 +268,13 @@ body {
   }
 }
 
-.Player__controls div {
+.PlayerControlsBar div {
   position: relative;
   top: 6px;
 }
 
-.Player__controls .control,
-.Player__title-controls .control {
+.PlayerControlsBar .control,
+.PlayerTitleBar-controls .control {
   width: 22px;
   border: none;
   background: transparent;
@@ -292,11 +292,11 @@ body {
   margin-right: 0;
 }
 
-.Player__container.fullscreen .Player__title-controls .control {
+.Player__container.fullscreen .PlayerTitleBar-controls .control {
   margin-right: 24px;
 }
 
-.Player__controls .control:last-child {
+.PlayerControlsBar .control:last-child {
   margin-right: 0;
 }
 
@@ -305,7 +305,7 @@ body {
   margin-right: 0;
 }
 
-.Player__controls .control-play {
+.PlayerControlsBar .control-play {
   margin-right: 20px;
 }
 
@@ -313,23 +313,23 @@ body {
   margin-right: 28px;
 }
 
-.Player__controls .control img,
-.Player__title-controls .control img {
+.PlayerControlsBar .control img,
+.PlayerTitleBar-controls .control img {
   width: 100%;
   opacity: 0.8;
   transition: opacity .1s linear;
 }
 
-.Player__controls .control:hover img,
-.Player__title-controls .control:hover img {
+.PlayerControlsBar .control:hover img,
+.PlayerTitleBar-controls .control:hover img {
   opacity: 1;
 }
 
-.Player__controls--left {
+.PlayerControlsBar--left {
   float: left;
 }
 
-.Player__controls--right {
+.PlayerControlsBar--right {
   float: right;
 }
 
@@ -541,7 +541,7 @@ body {
   }
 }
 
-.Player__controls .PlayerSettingsMenu {
+.PlayerControlsBar .PlayerSettingsMenu {
   background: #2e2e2e;
   position: absolute;
   top: -333px;
@@ -602,7 +602,7 @@ body {
   z-index: -1;
 }
 
-.Player__container.fullscreen .Player__controls .PlayerSettingsMenu {
+.Player__container.fullscreen .PlayerControlsBar .PlayerSettingsMenu {
   width: 155px;
   font-size: 110%;
   top: -480px;
