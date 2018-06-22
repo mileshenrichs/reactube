@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import FilePlayer from 'react-player/lib/players/FilePlayer';
 import screenfull from 'screenfull';
-import PlayerTitleBar from '../Components/PlayerTitleBar';
-import PlayerProgressBar from '../Components/PlayerProgressBar';
-import PlayerControlsBar from '../Components/PlayerControlsBar';
-import PlayerSharePanel from '../Components/PlayerSharePanel';
-import playFlash from '../resources/player-buttons/play-flash.png';
-import pauseFlash from '../resources/player-buttons/pause-flash.png';
-import loadingSpinner from '../resources/load-spinner.gif';
+import PlayerTitleBar from './PlayerTitleBar/PlayerTitleBar';
+import PlayerProgressBar from './PlayerProgressBar/PlayerProgressBar';
+import PlayerControlsBar from './PlayerControlsBar/PlayerControlsBar';
+import PlayerSharePanel from './PlayerSharePanel/PlayerSharePanel';
+import playFlash from '../../resources/player-buttons/play-flash.png';
+import pauseFlash from '../../resources/player-buttons/pause-flash.png';
+import loadingSpinner from '../../resources/load-spinner.gif';
 
 class Player extends Component {
 
@@ -17,6 +17,7 @@ class Player extends Component {
     this.state = {
       playing: true,
       loading: true, // initial buffering of video
+      videoTitle: 'Big Buck Bunny',
       showTitle: false,
       showControls: false,
       showActionFlash: false, // action flash = large play/pause icon when playing state changes
@@ -30,7 +31,7 @@ class Player extends Component {
       muted: false,
       videoLength: 0, // length in seconds of full video
       videoPosition: 0, // current position in seconds
-      percentPlayed: 0, // percentage of video that's been played
+      percentPlayed: 0, // percentage of video that's been played (decimal)
       percentBuffered: 0 // video buffer progress as a decimal percentage
     };
   }
@@ -88,7 +89,7 @@ class Player extends Component {
 
   /**
    * Called by PlayerProgressBar, uses ReactPlayer's seekTo() method
-   * @param {Number} progressPercentage percentage through the video to seek to
+   * @param {Number} progressPercentage decimal percentage through the video to seek to
    */
   seekTo(progressPercentage) {
     this.reactPlayer.seekTo(progressPercentage);
@@ -208,8 +209,6 @@ class Player extends Component {
   }
 
   render() {
-    let actionFlashSrc = this.state.playing ? playFlash : pauseFlash;
-
     return (
       <div className="Player" 
         ref={node => this.player = node}
@@ -248,7 +247,7 @@ class Player extends Component {
           />
 
           <div className="Player__action-flash">
-            {this.state.showActionFlash && <img src={actionFlashSrc} alt="" />}
+            {this.state.showActionFlash && <img src={this.state.playing ? playFlash : pauseFlash} alt="" />}
           </div>
 
           {this.state.loading && 
@@ -257,6 +256,7 @@ class Player extends Component {
             </div>}
 
           <PlayerTitleBar 
+            videoTitle={this.state.videoTitle}
             showShareView={this.state.showShareView} 
             toggleShareView={this.toggleShareView.bind(this)} 
           />

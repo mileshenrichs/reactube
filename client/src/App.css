@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+*::-moz-focus-inner {
+  border: 0;
+}
+
 .clearfix {
   clear: both;
 }
@@ -281,6 +285,7 @@ body {
   cursor: pointer;
   margin-right: 13px;
   position: relative;
+  outline: 0;
 }
 
 .Player__container.fullscreen .control {

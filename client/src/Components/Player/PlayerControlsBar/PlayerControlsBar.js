@@ -1,14 +1,15 @@
 import React from 'react';
-import PlayerSettingsMenu from '../Components/PlayerSettingsMenu';
-import { formatSecondsToTime } from '../util/dateTimeUtil';
-import play from '../resources/player-buttons/play.png';
-import pause from'../resources/player-buttons/pause.png';
-import volume from '../resources/player-buttons/volume.png';
-import volMuted from '../resources/player-buttons/muted.png';
-import settings from '../resources/player-buttons/settings.png';
-import theaterMode from '../resources/player-buttons/theater-mode.png';
-import fullscreen from '../resources/player-buttons/fullscreen.png';
-import fullscreenExit from '../resources/player-buttons/fullscreen-exit.png';
+import PropTypes from 'prop-types';
+import PlayerSettingsMenu from '../PlayerSettingsMenu/PlayerSettingsMenu';
+import { formatSecondsToTime } from '../../../util/dateTimeUtil';
+import play from '../../../resources/player-buttons/play.png';
+import pause from'../../../resources/player-buttons/pause.png';
+import volume from '../../../resources/player-buttons/volume.png';
+import volMuted from '../../../resources/player-buttons/muted.png';
+import settings from '../../../resources/player-buttons/settings.png';
+import theaterMode from '../../../resources/player-buttons/theater-mode.png';
+import fullscreen from '../../../resources/player-buttons/fullscreen.png';
+import fullscreenExit from '../../../resources/player-buttons/fullscreen-exit.png';
 
 const PlayerControlsBar = (props) => {
   return (
@@ -63,5 +64,22 @@ const PlayerControlsBar = (props) => {
     </div>
   );
 }
+
+PlayerControlsBar.propTypes = {
+  playing: PropTypes.bool.isRequired,
+  muted: PropTypes.bool.isRequired,
+  volume: PropTypes.number.isRequired,
+  videoPosition: PropTypes.number.isRequired,
+  videoLength: PropTypes.number.isRequired,
+  playerMode: PropTypes.string.isRequired,
+  showSettingsMenu: PropTypes.bool.isRequired,
+  playbackSpeed: PropTypes.number.isRequired,
+  togglePlay: PropTypes.func.isRequired,
+  toggleMute: PropTypes.func.isRequired,
+  changeVolume: PropTypes.func.isRequired,
+  toggleSettings: PropTypes.func.isRequired,
+  toggleFullscreen: PropTypes.func.isRequired,
+  setPlaybackRate: PropTypes.func.isRequired
+};
 
 export default PlayerControlsBar;

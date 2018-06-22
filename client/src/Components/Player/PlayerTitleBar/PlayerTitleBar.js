@@ -1,9 +1,10 @@
 import React from 'react';
-import watchLater from '../resources/watch-later.png';
-import share from '../resources/player-buttons/share.png';
-import close from '../resources/player-buttons/share-buttons/close.png';
+import PropTypes from 'prop-types';
+import watchLater from '../../../resources/watch-later.png';
+import share from '../../../resources/player-buttons/share.png';
+import close from '../../../resources/player-buttons/share-buttons/close.png';
 
-const PlayerTitleBar = ({ showShareView, toggleShareView }) => {
+const PlayerTitleBar = ({ videoTitle, showShareView, toggleShareView }) => {
 
   // title controls should have an "x" to close if in share view
   let playerTitleControls;
@@ -33,10 +34,16 @@ const PlayerTitleBar = ({ showShareView, toggleShareView }) => {
 
   return (
     <div className="PlayerTitleBar">
-      <span className="title-contents">Big Buck Bunny</span>
+      <span className="title-contents">{videoTitle}</span>
       {playerTitleControls}
     </div>
   );
 }
+
+PlayerTitleBar.propTypes = {
+  videoTitle: PropTypes.string.isRequired,
+  showShareView: PropTypes.bool.isRequired,
+  toggleShareView: PropTypes.func.isRequired
+};
 
 export default PlayerTitleBar;

@@ -1,9 +1,9 @@
 import React from 'react';
-import facebook from '../resources/player-buttons/share-buttons/facebook.png';
-import googlePlus from '../resources/player-buttons/share-buttons/google-plus.png';
-import twitter from '../resources/player-buttons/share-buttons/twitter.png';
+import facebook from '../../../resources/player-buttons/share-buttons/facebook.png';
+import googlePlus from '../../../resources/player-buttons/share-buttons/google-plus.png';
+import twitter from '../../../resources/player-buttons/share-buttons/twitter.png';
 
-const PlayerSharePanel = (props) => {
+const PlayerSharePanel = () => {
   return (
     <div className="PlayerSharePanel">
       <div className="PlayerSharePanel__share">

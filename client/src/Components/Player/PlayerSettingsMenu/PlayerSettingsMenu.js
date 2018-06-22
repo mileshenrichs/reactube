@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PlayerSettingsMenu = (props) => {
   const playbackValues = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
@@ -28,5 +29,10 @@ const PlayerSettingsMenu = (props) => {
     </div>
   );
 }
+
+PlayerSettingsMenu.propTypes = {
+  speed: PropTypes.number.isRequired,
+  setPlaybackRate: PropTypes.func.isRequired
+};
 
 export default PlayerSettingsMenu;

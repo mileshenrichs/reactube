@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class PlayerProgressBar extends Component {
 
@@ -93,6 +94,12 @@ class PlayerProgressBar extends Component {
       </div>
     );
   }
+}
+
+PlayerProgressBar.propTypes = {
+  percentPlayed: PropTypes.number.isRequired,
+  percentBuffered: PropTypes.number.isRequired,
+  seekTo: PropTypes.func.isRequired
 }
 
 export default PlayerProgressBar;
