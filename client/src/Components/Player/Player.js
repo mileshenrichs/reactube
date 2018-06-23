@@ -15,7 +15,7 @@ class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: true,
+      playing: false,
       loading: true, // initial buffering of video
       videoTitle: 'Big Buck Bunny',
       showTitle: false,
@@ -250,10 +250,10 @@ class Player extends Component {
             {this.state.showActionFlash && <img src={this.state.playing ? playFlash : pauseFlash} alt="" />}
           </div>
 
-          {this.state.loading && 
+          {/* {this.state.loading && 
             <div className="Player__loading-spinner">
               <img src={loadingSpinner} alt="" />
-            </div>}
+            </div>} */}
 
           <PlayerTitleBar 
             videoTitle={this.state.videoTitle}
