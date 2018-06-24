@@ -25,7 +25,7 @@ class Header extends Component {
       <div className="Header">
         <div className="Header__container">
           <div className="Header__left-dock">
-            <button className="Header__menu-icon">
+            <button className="icon-button Header__menu-icon" onClick={this.props.handleMenuClick}>
               <img src={menuIcon} alt="" />
             </button>
 
@@ -43,7 +43,7 @@ class Header extends Component {
             <button className="Header__create-video">
               <img src={cameraIcon} alt="" />
             </button>
-            <ProfileIcon />
+            <ProfileIcon width={32} />
           </div>
         </div>
       </div>
