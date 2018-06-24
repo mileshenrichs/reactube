@@ -17,6 +17,9 @@ import settingsIcon from '../../resources/left-drawer/settings.png';
 const LeftDrawer = (props) => {
   return (
     <div className="LeftDrawer">
+    
+      <div className="LeftDrawer__cover"></div>
+
       <div className="LeftDrawer__drawer">
         <section className="LeftDrawer__header">
           <button className="icon-button LeftDrawer__menu-icon" onClick={props.closeDrawer}>

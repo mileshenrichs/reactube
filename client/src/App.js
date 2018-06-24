@@ -7,14 +7,33 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLeftDrawer: false
+      showLeftDrawer: false,
+      slideDrawerOut: false
     }
   }
 
+  /**
+   * Show/hide left drawer. If hiding, set slideDrawerOut state .25s in advance
+   * to trigger drawer slide animation before hiding overlay
+   */
   toggleLeftDrawer() {
-    this.setState((prevState) => ({
-      showLeftDrawer: !prevState.showLeftDrawer
-    }));
+    const newShowDrawerState = !this.state.showLeftDrawer;
+    if(newShowDrawerState === false) {
+      this.setState({
+        slideDrawerOut: true
+      });
+
+      setTimeout(() => {
+        this.setState({
+          showLeftDrawer: false,
+          slideDrawerOut: false
+        })
+      }, 250);
+    } else {
+      this.setState((prevState) => ({
+        showLeftDrawer: !prevState.showLeftDrawer
+      }));
+    }
 
     // prevent body scrolling when drawer open
     document.body.classList.toggle('drawer-open');
@@ -27,7 +46,11 @@ class App extends Component {
           handleMenuClick={this.toggleLeftDrawer.bind(this)}
         />
 
-        <WatchView showLeftDrawer={this.state.showLeftDrawer} closeDrawer={this.toggleLeftDrawer.bind(this)} />
+        <WatchView 
+          showLeftDrawer={this.state.showLeftDrawer} 
+          closeDrawer={this.toggleLeftDrawer.bind(this)} 
+          slideDrawerOut={this.state.slideDrawerOut}
+        />
       </div>
     );
   }
