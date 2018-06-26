@@ -1,19 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LeftDrawer from '../LeftDrawer/LeftDrawer';
 import Player from '../Player/Player';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions/watchActions'
 
-class WatchView extends Component {
-  render() {
-    return (
-      <div className={'WatchView' 
-              + (this.props.showLeftDrawer ? ' left-drawer-open' : '')
-              + (this.props.slideDrawerOut ? ' slide-drawer-out' : '')}>
-        <LeftDrawer closeDrawer={this.props.closeDrawer} />
-
-        <Player />
-      </div>
-    );
+const WatchView = (props) => {
+  
+  // dispatch delayed hide drawer overlay action when slide drawer out set to true
+  if(props.slideDrawerOut) {
+    setTimeout(() => {
+      props.hideDrawerOverlay();
+    }, 250);
   }
+
+  return (
+    <div className={'WatchView' 
+            + (props.showLeftDrawer ? ' left-drawer-open' : '')
+            + (props.slideDrawerOut ? ' slide-drawer-out' : '')}>
+      <LeftDrawer closeDrawer={props.toggleLeftDrawer} />
+
+      <Player />
+    </div>
+  );
 }
 
-export default WatchView;
+const mapStateToProps = (state) => {
+  return state.watch;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WatchView);

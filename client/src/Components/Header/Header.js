@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as watchActions from '../../actions/watchActions'
 import logo from '../../resources/logo.png';
 import menuIcon from '../../resources/header/hamburger-menu.png';
 import cameraIcon from '../../resources/header/create-video.png';
@@ -25,7 +28,7 @@ class Header extends Component {
       <div className="Header">
         <div className="Header__container">
           <div className="Header__left-dock">
-            <button className="icon-button Header__menu-icon" onClick={this.props.handleMenuClick}>
+            <button className="icon-button Header__menu-icon" onClick={this.props.toggleLeftDrawer}>
               <img src={menuIcon} alt="" />
             </button>
 
@@ -51,4 +54,14 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+// todo: combine header and watch action creators, if necessary
+// https://stackoverflow.com/questions/35454633/redux-connect-with-multiples-actions-states
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(watchActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
