@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WatchView from './Components/WatchView/WatchView';
 import Header from './Components/Header/Header';
 import './App.css';
@@ -46,11 +47,18 @@ class App extends Component {
           handleMenuClick={this.toggleLeftDrawer.bind(this)}
         />
 
-        <WatchView 
-          showLeftDrawer={this.state.showLeftDrawer} 
-          closeDrawer={this.toggleLeftDrawer.bind(this)} 
-          slideDrawerOut={this.state.slideDrawerOut}
-        />
+        <Router>
+          <Switch>
+            <Route exact path="/"
+                  render={() => 
+                    <WatchView 
+                      showLeftDrawer={this.state.showLeftDrawer} 
+                      closeDrawer={this.toggleLeftDrawer.bind(this)} 
+                      slideDrawerOut={this.state.slideDrawerOut}
+                    />
+                  } />
+          </Switch>
+        </Router>
       </div>
     );
   }
