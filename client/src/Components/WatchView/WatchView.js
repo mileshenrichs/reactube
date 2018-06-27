@@ -4,6 +4,8 @@ import Player from '../Player/Player';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/watchActions'
+import WatchLeftColumn from './WatchLeftColumn/WatchLeftColumn';
+import WatchRightColumn from './WatchRightColumn/WatchRightColumn';
 
 const WatchView = (props) => {
   
@@ -20,7 +22,14 @@ const WatchView = (props) => {
             + (props.slideDrawerOut ? ' slide-drawer-out' : '')}>
       <LeftDrawer closeDrawer={props.toggleLeftDrawer} />
 
-      <Player />
+      <div className="WatchView__container">
+        <WatchLeftColumn>
+          <Player />
+        </WatchLeftColumn>
+
+        <WatchRightColumn>
+        </WatchRightColumn>
+      </div>
     </div>
   );
 }

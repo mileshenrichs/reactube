@@ -17,7 +17,10 @@ function watchReducer(state = {}, action) {
       }
 
     case 'HIDE_DRAWER_OVERLAY':
-      return Object.assign({}, state, {showLeftDrawer: false});
+      return Object.assign({}, state, {
+        showLeftDrawer: false,
+        slideDrawerOut: false
+      });
 
     default:
       return state;

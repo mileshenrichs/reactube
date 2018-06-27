@@ -45,6 +45,8 @@ class App extends Component {
         {this.state.showAccountMenu && 
           <AccountMenu />}
 
+        <div className="clearfix"></div>
+
         <Router>
           <Switch>
             <Route exact path="/" component={WatchView} />
