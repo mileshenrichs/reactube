@@ -46,7 +46,9 @@ class Header extends Component {
             <button className="Header__create-video">
               <img src={cameraIcon} alt="" />
             </button>
-            <ProfileIcon width={32} />
+            <span onClick={this.props.toggleAccountMenu}>
+              <ProfileIcon width={32} />
+            </span>
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ const LeftDrawer = (props) => {
       <div className="LeftDrawer__cover"></div>
 
       <div className="LeftDrawer__drawer">
-        <section className="LeftDrawer__header">
+        <section className="menu-section LeftDrawer__header">
           <button className="icon-button LeftDrawer__menu-icon" onClick={props.closeDrawer}>
             <img src={menuIcon} alt="" />
           </button>
@@ -30,13 +30,13 @@ const LeftDrawer = (props) => {
           </a>
         </section>
 
-        <section className="LeftDrawer__big-three">
+        <section className="menu-section LeftDrawer__big-three">
           <MenuLink imgSrc={homeIcon} text="Home" />
           <MenuLink imgSrc={fireIcon} text="Trending" />
           <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" />
         </section>
 
-        <section className="LeftDrawer__library">
+        <section className="menu-section LeftDrawer__library">
           <h3 className="LeftDrawer__section-heading">
             <a href="#">Library</a>
           </h3>
@@ -52,7 +52,7 @@ const LeftDrawer = (props) => {
           </div>
         </section>
 
-        <section className="LeftDrawer__subscriptions">
+        <section className="menu-section LeftDrawer__subscriptions">
           <h3 className="LeftDrawer__section-heading">
             <a href="#">Subscriptions</a>
           </h3>
@@ -85,11 +85,11 @@ const LeftDrawer = (props) => {
           </div>
         </section>
 
-        <section className="LeftDrawer__settings">
+        <section className="menu-section LeftDrawer__settings">
           <MenuLink imgSrc={settingsIcon} text="Settings" />
         </section>
 
-        <section className="LeftDrawer__footer">
+        <section className="menu-section LeftDrawer__footer">
           <p>Want to learn more about Reactube? Check out its Github repo <a href="https://github.com/mileshenrichs/reactube">here</a>!</p>
         </section>
 

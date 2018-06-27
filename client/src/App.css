@@ -96,20 +96,6 @@ body.drawer-open {
   margin-right: 22px;
 }
 
-.LeftDrawer__drawer section {
-  padding: 13px 0;
-  position: relative;
-}
-
-.LeftDrawer__drawer section::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  border-bottom: 1px solid #eeeeee;
-  width: 100%;
-}
-
 .LeftDrawer__drawer section:last-child {
   padding-bottom: 30px;
 }
@@ -320,8 +306,13 @@ button.SearchBar__search-button:hover img {
   top: 12px;
 }
 
+.Header .ProfileIcon__generated {
+  cursor: default;
+}
+
 .ProfileIcon {
   display: inline-block;
+  user-select: none;
 }
 
 .ProfileIcon__generated {
@@ -330,6 +321,66 @@ button.SearchBar__search-button:hover img {
   border-radius: 50px;
   position: relative;
   text-align: center;
+}
+
+.AccountMenu {
+  width: 300px;
+  position: absolute;
+  top: 48px;
+  right: 16px;
+  background: #ffffff;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
+  color: #111111;
+}
+
+a .AccountMenu__header {
+  color: #111111;
+}
+
+.AccountMenu__header {
+  background: #eeeeee;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.AccountMenu__header--profile-icon {
+  width: 56px;
+  float: left;
+}
+
+.AccountMenu__header--account-details {
+  float: left;
+}
+
+.AccountMenu__header--account-details h3 {
+  font-size: 100%;
+  font-weight: 500;
+}
+
+.AccountMenu__header--account-details span {
+  font-size: 87.5%;
+}
+
+.menu-section {
+  padding: 13px 0;
+  position: relative;
+}
+
+.menu-section::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid #eeeeee;
+  width: 100%;
+}
+
+.AccountMenu .MenuLink img {
+  left: 19px;
+}
+
+.AccountMenu .MenuLink__text {
+  left: 72px;
 }
 
 .Player {
