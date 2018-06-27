@@ -29,6 +29,8 @@ const WatchView = (props) => {
 
         <WatchRightColumn>
         </WatchRightColumn>
+
+        <div className="clearfix"></div>
       </div>
     </div>
   );

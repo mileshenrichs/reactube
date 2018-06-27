@@ -1,9 +1,10 @@
 import React from 'react';
+import RelatedVideos from './RelatedVideos/RelatedVideos';
 
 const WatchRightColumn = () => {
   return (
     <div className="WatchRightColumn">
-      WatchRightColumn
+      <RelatedVideos />
     </div>
   );
 }
