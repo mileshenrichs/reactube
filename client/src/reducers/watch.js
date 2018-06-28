@@ -1,5 +1,4 @@
 function watchReducer(state = {}, action) {
-  //console.log(state, action);
 
   switch(action.type) {
     case 'TOGGLE_DRAWER':
@@ -21,6 +20,12 @@ function watchReducer(state = {}, action) {
         showLeftDrawer: false,
         slideDrawerOut: false
       });
+
+    case 'RATE_VIDEO':
+      return {
+        ...state,
+        userRating: action.liked ? 'LIKE' : 'DISLIKE'
+      }
 
     default:
       return state;

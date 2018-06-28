@@ -1304,6 +1304,30 @@ img.RelatedVideo__menu-open {
   float: left;
 }
 
+.InteractionDock__like-dislike.user-liked .like-button span {
+  color: #111111;
+}
+
+.InteractionDock__like-dislike.user-liked .like-button img {
+  opacity: 1;
+}
+
+.InteractionDock__like-dislike.user-liked .like-button:hover img {
+  opacity: 0.8;
+}
+
+.InteractionDock__like-dislike.user-disliked .dislike-button span {
+  color: #111111;
+}
+
+.InteractionDock__like-dislike.user-disliked .dislike-button img {
+  opacity: 1;
+}
+
+.InteractionDock__like-dislike.user-disliked .dislike-button:hover img {
+  opacity: 0.8;
+}
+
 .InteractionDock .dislike-button {
   float: right;
 }

@@ -4,17 +4,19 @@ import dislike from '../../../../../resources/dislike.png';
 import share from '../../../../../resources/share.png';
 import addToPlaylist from '../../../../../resources/add-to-playlist.png';
 
-const InteractionDock = () => {
+const InteractionDock = ({ userRating, rateVideo }) => {
   return (
     <div className="InteractionDock">
       <div className="InteractionDock__like-dislike--container">
-        <div className="InteractionDock__like-dislike">
-          <button className="InteractionDock__button like-button">
+        <div className={'InteractionDock__like-dislike' + 
+                        (userRating === 'LIKE' ? ' user-liked' : '') + 
+                        (userRating === 'DISLIKE' ? ' user-disliked' : '')}>
+          <button className="InteractionDock__button like-button" onClick={() => rateVideo(true)}>
             <img src={like} alt="" />
             <span>85</span>
           </button>
 
-          <button className="InteractionDock__button dislike-button">
+          <button className="InteractionDock__button dislike-button" onClick={() => rateVideo(false)}>
             <img src={dislike} alt="" />
             <span>5</span>
           </button>

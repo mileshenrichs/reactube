@@ -1,13 +1,25 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const defaultState = {
   watch: {
     showLeftDrawer: false,
-    slideDrawerOut: false
+    slideDrawerOut: false,
+    userRating: undefined
+  },
+  notification: {
+    showNotification: false,
+    notificationText: undefined
   }
 }
 
-const store = createStore(rootReducer, defaultState);
+let middleware = [thunk];
+if (process.env.NODE_ENV === 'development') {
+  const { logger } = require('redux-logger');
+  middleware.push(logger);
+}
+
+const store = createStore(rootReducer, defaultState, applyMiddleware(...middleware));
 
 export default store;

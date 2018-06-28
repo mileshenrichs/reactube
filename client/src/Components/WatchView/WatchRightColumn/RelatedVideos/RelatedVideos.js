@@ -45,7 +45,7 @@ const RelatedVideos = () => {
       watchedProgress: 0
     },
     {
-      id: 'aHlwbm9zaXM',
+      id: 'bHlwbm9zaXM',
       thumbnailSrc: thumbnail1,
       videoLength: '25:23',
       title: '"Is Hypnosis Fake?" Hypnotist stuns TEDX crowd',
@@ -54,7 +54,7 @@ const RelatedVideos = () => {
       watchedProgress: 0
     },
     {
-      id: 'ZWxvbiBtdXN',
+      id: 'ZWxvriBtdXN',
       thumbnailSrc: thumbnail2,
       videoLength: '13:30',
       title: 'Elon Musk: How To Achieve 10x More Than Your Peers',
@@ -63,7 +63,7 @@ const RelatedVideos = () => {
       watchedProgress: .33
     },
     {
-      id: 'dGhlc2UgYm9',
+      id: 'dGhlcjUgYm9',
       thumbnailSrc: thumbnail3,
       videoLength: '6:01',
       title: 'MY BOSS QUIT TODAY',
@@ -72,7 +72,7 @@ const RelatedVideos = () => {
       watchedProgress: 1
     },
     {
-      id: 'cXVpY2sgaW5',
+      id: 'cXVpY2dgaW5',
       thumbnailSrc: thumbnail4,
       videoLength: '10:20',
       title: 'Double or Triple Your Internet Speed - This Method Actually Works!',
@@ -81,7 +81,7 @@ const RelatedVideos = () => {
       watchedProgress: 0
     },
     {
-      id: 'aHlwbm9zaXM',
+      id: 'aHlwbd9zaXM',
       thumbnailSrc: thumbnail1,
       videoLength: '25:23',
       title: '"Is Hypnosis Fake?" Hypnotist stuns TEDX crowd',
@@ -90,7 +90,7 @@ const RelatedVideos = () => {
       watchedProgress: 0
     },
     {
-      id: 'ZWxvbiBtdXN',
+      id: 'ZWxvbi4tdXN',
       thumbnailSrc: thumbnail2,
       videoLength: '13:30',
       title: 'Elon Musk: How To Achieve 10x More Than Your Peers',
@@ -99,7 +99,7 @@ const RelatedVideos = () => {
       watchedProgress: .33
     },
     {
-      id: 'dGhlc2UgYm9',
+      id: 'dGhlc2U6Ym9',
       thumbnailSrc: thumbnail3,
       videoLength: '6:01',
       title: 'MY BOSS QUIT TODAY',
@@ -108,7 +108,7 @@ const RelatedVideos = () => {
       watchedProgress: 1
     },
     {
-      id: 'cXVpY2sgaW5',
+      id: 'cXV3Y2sgaW5',
       thumbnailSrc: thumbnail4,
       videoLength: '10:20',
       title: 'Double or Triple Your Internet Speed - This Method Actually Works!',
