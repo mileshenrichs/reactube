@@ -18,6 +18,7 @@
 body {
   padding-bottom: 200px;
   font-size: 100%;
+  color: #111111;
 }
 
 body.drawer-open {
@@ -451,6 +452,7 @@ a .AccountMenu__header {
   padding-top: 56.25%;
   height: 0;
   background: #000;
+  overflow: hidden;
 }
 
 .Player__ReactPlayer {
@@ -1231,4 +1233,107 @@ img.RelatedVideo__menu-open {
 
 .RelatedVideo__menu li:hover {
   background: #eeeeee;
+}
+
+.VideoInfo section.info-section {
+  border-bottom: 1px solid #eeeeee;
+  padding: 18px 0;
+  position: relative;
+}
+
+.VideoInfo__video-title {
+  font-size: 112.5%;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 10px;
+}
+
+.VideoInfo__view-count {
+  font-size: 100%;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.InteractionDock {
+  position: absolute;
+  bottom: 8px;
+  right: 0;
+}
+
+.InteractionDock__button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.InteractionDock__button img {
+  width: 15px;
+  opacity: 0.4;
+  margin-right: 8px;
+}
+
+.InteractionDock__button:hover img {
+  opacity: 0.8;
+}
+
+.InteractionDock__button span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0a0a0;
+  position: relative;
+  bottom: 4px;
+  text-transform: uppercase;
+}
+
+.InteractionDock__like-dislike--container {
+  width: 118px;
+  display: inline-block;
+  margin-right: 18px;
+  position: relative;
+}
+
+.InteractionDock__like-dislike {
+  overflow: hidden;
+  padding: 0 8px;
+}
+
+.InteractionDock__like-dislike button img {
+  width: 20px;
+}
+
+.InteractionDock .like-button {
+  float: left;
+}
+
+.InteractionDock .dislike-button {
+  float: right;
+}
+
+.InteractionDock .share-button {
+  position: relative;
+  bottom: 5px;
+  margin-right: 22px;
+}
+
+.InteractionDock .add-to-playlist-button {
+  position: relative;
+  bottom: 7px;
+}
+
+.InteractionDock .like-meter-bg,
+.InteractionDock .like-meter-fill {
+  display: block;
+  height: 2px;
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+}
+
+.InteractionDock .like-meter-bg {
+  background: #cfcfcf;
+  width: 100%;
+}
+
+.InteractionDock .like-meter-fill {
+  background: #2793e6;
+  width: 93%;
 }

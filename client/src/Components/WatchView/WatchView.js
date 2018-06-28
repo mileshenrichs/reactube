@@ -6,6 +6,8 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/watchActions'
 import WatchLeftColumn from './WatchLeftColumn/WatchLeftColumn';
 import WatchRightColumn from './WatchRightColumn/WatchRightColumn';
+import VideoInfo from './WatchLeftColumn/VideoInfo/VideoInfo';
+import VideoComments from './WatchLeftColumn/VideoComments/VideoComments';
 
 const WatchView = (props) => {
   
@@ -25,6 +27,8 @@ const WatchView = (props) => {
       <div className="WatchView__container">
         <WatchLeftColumn>
           <Player />
+          <VideoInfo />
+          {/* <VideoComments /> */}
         </WatchLeftColumn>
 
         <WatchRightColumn>
