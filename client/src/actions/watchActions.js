@@ -23,11 +23,15 @@ export function rateVideo(liked) {
     })
 
     // make API call to save video like or dislike
+    // todo: replace with API call that responds with new liked status
+    // to determine whether to show a liked notification
     setTimeout(() => {
-      dispatch({
-        type: 'SHOW_NOTIFICATION',
-        notificationText: 'Added to Liked videos'
-      })
+      if(liked) {
+        dispatch({
+          type: 'SHOW_NOTIFICATION',
+          notificationText: 'Added to Liked videos'
+        })
+      }
     }, 500);
   }
 }

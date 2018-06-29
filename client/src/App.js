@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WatchView from './Components/WatchView/WatchView';
 import Header from './Components/Header/Header';
 import './App.css';
 import AccountMenu from './Components/Header/AccountMenu/AccountMenu';
+import Notification from './Components/Notification/Notification';
 
 class App extends Component {
   constructor(props) {
@@ -39,6 +41,16 @@ class App extends Component {
   }
 
   render() {
+
+    // set 4 second timeout to hide notification if present
+    if(this.props.notification.showNotification) {
+      setTimeout(() => {
+        this.props.dispatch({
+          type: 'CLOSE_NOTIFICATION'
+        });
+      }, 4000);
+    }
+
     return (
       <div className="App">
         <Header toggleAccountMenu={this.toggleAccountMenu.bind(this)} />
@@ -52,9 +64,18 @@ class App extends Component {
             <Route exact path="/" component={WatchView} />
           </Switch>
         </Router>
+
+        <Notification 
+          text={this.props.notification.notificationText}
+          visible={this.props.notification.showNotification} 
+        />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+export default connect(mapStateToProps)(App);

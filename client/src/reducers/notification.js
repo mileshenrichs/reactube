@@ -8,6 +8,13 @@ function notificationReducer(state = {}, action) {
         notificationText: action.notificationText
       };
 
+    case 'CLOSE_NOTIFICATION':
+      return {
+        ...state,
+        showNotification: false,
+        notificationText: undefined
+      }
+
     default:
       return state;
   }

@@ -36,6 +36,50 @@ body.drawer-open {
   width: 100%;
 }
 
+.Notification {
+  background: #323232;
+  position: fixed;
+  left: 14px;
+  bottom: 14px;
+  color: #f1f1ee;
+  padding: 16px 0 16px 24px;
+  width: 288px;
+  border-radius: 2px;
+  font-size: 87.5%;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  animation: slideInOutNotification 4s ease-in-out forwards;
+  display: none;
+}
+
+.Notification.visible {
+  display: inline-block;
+}
+
+@keyframes slideInOutNotification {
+  0% {
+    bottom: -100px;
+    opacity: 0.3;
+  }
+  4% {
+    opacity: 0.4;
+  }
+  8% {
+    bottom: 14px;
+    opacity: 1;
+  }
+  92% {
+    bottom: 14px;
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.5;
+  }
+  100% {
+    bottom: -100px;
+    opacity: 0;
+  }
+}
+
 .LeftDrawer__cover {
   position: absolute;
   top: 0;
@@ -1218,6 +1262,7 @@ img.RelatedVideo__menu-open {
   font-size: 81.25%;
   padding: 9px 0;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 2;
 }
 
 @media only screen and (max-width: 1400px) {

@@ -22,9 +22,15 @@ function watchReducer(state = {}, action) {
       });
 
     case 'RATE_VIDEO':
+      let userRating;
+      if(action.liked) {
+        userRating = state.userRating === 'LIKE' ? undefined : 'LIKE';
+      } else {
+        userRating = state.userRating === 'DISLIKE' ? undefined : 'DISLIKE';
+      }
       return {
         ...state,
-        userRating: action.liked ? 'LIKE' : 'DISLIKE'
+        userRating
       }
 
     default:
