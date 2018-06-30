@@ -6,7 +6,8 @@ const defaultState = {
   watch: {
     showLeftDrawer: false,
     slideDrawerOut: false,
-    userRating: undefined
+    userRating: undefined,
+    showVideoShareModal: false
   },
   notification: {
     showNotification: false,

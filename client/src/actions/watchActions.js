@@ -35,3 +35,17 @@ export function rateVideo(liked) {
     }, 500);
   }
 }
+
+export function toggleShareModal() {
+  // todo: send current video position in payload
+  return {
+    type: 'TOGGLE_SHARE_MODAL'
+  }
+}
+
+export function copiedShareLinkToClipboard() {
+  return {
+      type: 'SHOW_NOTIFICATION',
+      notificationText: 'Link copied to clipboard'
+  }
+}

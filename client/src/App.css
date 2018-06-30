@@ -37,6 +37,7 @@ body.drawer-open {
 }
 
 .Notification {
+  z-index: 1000;
   background: #323232;
   position: fixed;
   left: 14px;
@@ -1405,4 +1406,126 @@ img.RelatedVideo__menu-open {
 .InteractionDock .like-meter-fill {
   background: #2793e6;
   width: 93%;
+}
+
+.VideoShareModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.VideoShareModal__modal {
+  width: 516px;
+  background: #ffffff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 28px 24px;
+  box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInModal .3s ease-in-out forwards;
+}
+
+@keyframes fadeInModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.VideoShareModal__modal h3 {
+  font-weight: 400;
+  font-size: 100%;
+  margin-bottom: 20px;
+}
+
+.VideoShareModal__link-bar {
+  width: 100%;
+  padding: 11px 18px;
+  background: #fafafa;
+  border: 1px solid #ededed;
+  border-radius: 2px;
+  position: relative;
+}
+
+.VideoShareModal__link-bar input {
+  border: none;
+  background: transparent;
+  font-size: 87.5%;
+  width: 360px;
+}
+
+.VideoShareModal__link-bar button {
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #2793e6;
+  background: transparent;
+  border: none;
+  font-weight: 500;
+  font-size: 87.5%;
+  height: 44px;
+  position: absolute;
+  right: 6px;
+  top: 0;
+  padding: 0 20px;
+}
+
+.VideoShareModal__start-at {
+  margin-top: 24px;
+  border-top: 1px solid #eeeeee;
+  padding-top: 24px;
+  color: rgba(17, 17, 17, 0.8);
+  font-size: 87.5%;
+  height: 40px;
+}
+
+.VideoShareModal__start-at .start-time-deactivated {
+  color: #c1c1c1;
+}
+
+.VideoShareModal__start-at input[type="checkbox"] {
+  display: none;
+}
+
+.VideoShareModal__start-at label {
+  margin-right: 5px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+}
+
+.VideoShareModal__start-at label:before {
+  display: block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: url('resources/checkbox-unchecked.png') left center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: 100%;
+}
+
+.VideoShareModal__start-at input[type="checkbox"]:checked + label:before {
+  background: url('resources/checkbox-checked.png') left center no-repeat;
+  background-size: 100%;
+}
+
+.VideoShareModal__start-at input[type="text"] {
+  width: 50px;
+  border: none;
+  border-bottom: 1px solid #757575;
+  color: rgba(17, 17, 17, 0.8);
+  font-size: 14px;
+  position: relative;
+}
+
+.VideoShareModal__start-at input:focus {
+  border-bottom: 2px solid #111111;
 }

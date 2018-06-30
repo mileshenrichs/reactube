@@ -33,6 +33,12 @@ function watchReducer(state = {}, action) {
         userRating
       }
 
+    case 'TOGGLE_SHARE_MODAL':
+      return {
+        ...state,
+        showVideoShareModal: !state.showVideoShareModal
+      }
+
     default:
       return state;
   }

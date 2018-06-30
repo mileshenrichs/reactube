@@ -1,4 +1,4 @@
-import { formatSecondsToTime } from './dateTimeUtil';
+import { formatSecondsToTime, parseStartTimeToQueryString } from './dateTimeUtil';
 
 describe('Date/Time Util', () => {
   describe('formatSecondsToTime()', () => {
@@ -26,4 +26,26 @@ describe('Date/Time Util', () => {
       expect(formatSecondsToTime(11730)).toEqual('3:15:30');
     });
   });
+
+  describe('parseStartTimeToQueryString()', () => {
+    it('returns empty string when passed 0', () => {
+      expect(parseStartTimeToQueryString('0')).toEqual('');
+    });
+
+    it('returns 1m when passed 60', () => {
+      expect(parseStartTimeToQueryString('60')).toEqual('1m');
+    });
+
+    it('returns 2m30s when passed 150', () => {
+      expect(parseStartTimeToQueryString('150')).toEqual('2m30s');
+    });
+
+    it('returns 2m30s when passed 2:30', () => {
+      expect(parseStartTimeToQueryString('2:30')).toEqual('2m30s');
+    });
+
+    it('returns 45s when passed 0:45', () => {
+      expect(parseStartTimeToQueryString('0:45')).toEqual('45s');
+    })
+  })
 });

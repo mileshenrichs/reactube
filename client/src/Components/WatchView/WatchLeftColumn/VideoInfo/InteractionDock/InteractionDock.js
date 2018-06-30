@@ -4,7 +4,7 @@ import dislike from '../../../../../resources/dislike.png';
 import share from '../../../../../resources/share.png';
 import addToPlaylist from '../../../../../resources/add-to-playlist.png';
 
-const InteractionDock = ({ userRating, rateVideo }) => {
+const InteractionDock = ({ userRating, rateVideo, toggleShareModal }) => {
   return (
     <div className="InteractionDock">
       <div className="InteractionDock__like-dislike--container">
@@ -26,7 +26,7 @@ const InteractionDock = ({ userRating, rateVideo }) => {
         <span className="like-meter-fill"></span>
       </div>
 
-      <button className="InteractionDock__button share-button">
+      <button className="InteractionDock__button share-button" onClick={toggleShareModal}>
         <img src={share} alt="" />
         <span>Share</span>
       </button>

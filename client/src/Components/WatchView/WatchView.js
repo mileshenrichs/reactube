@@ -8,6 +8,7 @@ import WatchLeftColumn from './WatchLeftColumn/WatchLeftColumn';
 import WatchRightColumn from './WatchRightColumn/WatchRightColumn';
 import VideoInfo from './WatchLeftColumn/VideoInfo/VideoInfo';
 import VideoComments from './WatchLeftColumn/VideoComments/VideoComments';
+import VideoShareModal from './VideoShareModal/VideoShareModal';
 
 const WatchView = (props) => {
   
@@ -33,8 +34,12 @@ const WatchView = (props) => {
 
         <WatchRightColumn>
         </WatchRightColumn>
-
         <div className="clearfix"></div>
+
+        {props.showVideoShareModal && 
+          <VideoShareModal 
+            copiedToClipboard={props.copiedShareLinkToClipboard}
+            toggleShareModal={props.toggleShareModal} />}
       </div>
     </div>
   );
