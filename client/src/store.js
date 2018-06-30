@@ -7,7 +7,8 @@ const defaultState = {
     showLeftDrawer: false,
     slideDrawerOut: false,
     userRating: undefined,
-    showVideoShareModal: false
+    showVideoShareModal: false,
+    userPlaylistsContainingVideo: []
   },
   notification: {
     showNotification: false,

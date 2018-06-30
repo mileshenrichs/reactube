@@ -45,7 +45,45 @@ export function toggleShareModal() {
 
 export function copiedShareLinkToClipboard() {
   return {
-      type: 'SHOW_NOTIFICATION',
-      notificationText: 'Link copied to clipboard'
+    type: 'SHOW_NOTIFICATION',
+    notificationText: 'Link copied to clipboard'
+  }
+}
+
+export function addVideoToPlaylist(videoId, playlistId) {
+  return (dispatch) => {
+    dispatch({
+      type: 'ADD_VIDEO_TO_PLAYLIST',
+      videoId,
+      playlistId
+    });
+
+    // make API call to add to playlist
+    // if successful, show notification, else need to remove from playlist
+    setTimeout(() => {
+      dispatch({
+        type: 'SHOW_NOTIFICATION',
+        notificationText: `Added to ${playlistId}`
+      });
+    }, 300);
+  }
+}
+
+export function removeVideoFromPlaylist(videoId, playlistId) {
+  return (dispatch) => {
+    dispatch({
+      type: 'REMOVE_VIDEO_FROM_PLAYLIST',
+      videoId,
+      playlistId
+    });
+
+    // make API call to add to playlist
+    // if successful, show notification, else need to remove from playlist
+    setTimeout(() => {
+      dispatch({
+        type: 'SHOW_NOTIFICATION',
+        notificationText: `Removed from ${playlistId}`
+      });
+    }, 300);
   }
 }

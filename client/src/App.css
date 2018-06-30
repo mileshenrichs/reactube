@@ -1418,15 +1418,18 @@ img.RelatedVideo__menu-open {
   z-index: 5;
 }
 
+.interaction-popout {
+  background: #ffffff;
+  padding: 28px 24px;
+  box-shadow: 0 6px 30px 3px rgba(0, 0, 0, 0.5);
+}
+
 .VideoShareModal__modal {
   width: 516px;
-  background: #ffffff;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 28px 24px;
-  box-shadow: 0 6px 30px 5px rgba(0, 0, 0, 0.5);
   animation: fadeInModal .3s ease-in-out forwards;
 }
 
@@ -1528,4 +1531,26 @@ img.RelatedVideo__menu-open {
 
 .VideoShareModal__start-at input:focus {
   border-bottom: 2px solid #111111;
+}
+
+.AddToMenu {
+  position: absolute;
+  bottom: 40px;
+  right: -260px;
+  z-index: 2;
+  width: 300px;
+  padding: 0;
+}
+
+.AddToMenu section {
+  border-bottom: 1px solid #eeeeee;
+  padding: 18px 24px;
+}
+
+.AddToMenu section:last-child {
+  border-bottom: 0;
+}
+
+.AddToMenu__playlist-row label {
+  font-size: 87.5%;
 }

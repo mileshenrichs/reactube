@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../../../actions/watchActions'
 import InteractionDock from './InteractionDock/InteractionDock';
 
-const VideoInfo = ({ userRating, rateVideo, toggleShareModal }) => {
+const VideoInfo = ({ userRating, rateVideo, toggleShareModal, addVideoToPlaylist, userPlaylistsContainingVideo, removeVideoFromPlaylist }) => {
   return (
     <div className="VideoInfo">
       <section className="info-section">
@@ -15,6 +15,9 @@ const VideoInfo = ({ userRating, rateVideo, toggleShareModal }) => {
           userRating={userRating}
           rateVideo={rateVideo} 
           toggleShareModal={toggleShareModal}
+          userPlaylistsContainingVideo={userPlaylistsContainingVideo}
+          addVideoToPlaylist={addVideoToPlaylist}
+          removeVideoFromPlaylist={removeVideoFromPlaylist}
         />
       </section>
     </div>
@@ -22,13 +25,13 @@ const VideoInfo = ({ userRating, rateVideo, toggleShareModal }) => {
 }
 
 const mapStateToProps = (state) => {
-  const { userRating } = state.watch;
-  return {userRating};
+  const { userRating, userPlaylistsContainingVideo } = state.watch;
+  return {userRating, userPlaylistsContainingVideo};
 }
 
-const { rateVideo, toggleShareModal } = actions;
+const { rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist } = actions;
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({rateVideo, toggleShareModal}, dispatch);
+  return bindActionCreators({rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoInfo);

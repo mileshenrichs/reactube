@@ -3,8 +3,9 @@ import like from '../../../../../resources/like.png';
 import dislike from '../../../../../resources/dislike.png';
 import share from '../../../../../resources/share.png';
 import addToPlaylist from '../../../../../resources/add-to-playlist.png';
+import AddToMenu from './AddToMenu/AddToMenu';
 
-const InteractionDock = ({ userRating, rateVideo, toggleShareModal }) => {
+const InteractionDock = ({ userRating, rateVideo, toggleShareModal, userPlaylistsContainingVideo, addVideoToPlaylist, removeVideoFromPlaylist }) => {
   return (
     <div className="InteractionDock">
       <div className="InteractionDock__like-dislike--container">
@@ -34,6 +35,12 @@ const InteractionDock = ({ userRating, rateVideo, toggleShareModal }) => {
       <button className="InteractionDock__button add-to-playlist-button">
         <img src={addToPlaylist} alt="" />
       </button>
+
+      <AddToMenu 
+        userPlaylistsContainingVideo={userPlaylistsContainingVideo}
+        addVideoToPlaylist={addVideoToPlaylist}   
+        removeVideoFromPlaylist={removeVideoFromPlaylist}
+      />
     </div>
   );
 }

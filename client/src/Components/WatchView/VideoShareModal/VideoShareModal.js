@@ -113,7 +113,7 @@ class VideoShareModal extends Component {
 
     return (
       <div className="VideoShareModal">
-        <div className="VideoShareModal__modal" ref={node => this.modal = node}>
+        <div className="VideoShareModal__modal interaction-popout" ref={node => this.modal = node}>
           <h3>Share a link</h3>
   
           <div className="VideoShareModal__link-bar">
