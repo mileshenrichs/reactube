@@ -58,6 +58,12 @@ function watchReducer(state = {}, action) {
         return state;
       }
 
+    case 'TOGGLE_ADD_TO_MENU':
+      return {
+        ...state,
+        showAddToMenu: !state.showAddToMenu
+      }
+
     default:
       return state;
   }

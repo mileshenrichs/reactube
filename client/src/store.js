@@ -8,7 +8,8 @@ const defaultState = {
     slideDrawerOut: false,
     userRating: undefined,
     showVideoShareModal: false,
-    userPlaylistsContainingVideo: []
+    userPlaylistsContainingVideo: [],
+    showAddToMenu: false
   },
   notification: {
     showNotification: false,
@@ -21,32 +22,32 @@ const defaultState = {
       {
         id: 'PLA432C0E49DA6710',
         name: 'Watch Later',
-        private: true
+        privacy: 'PRIVATE'
       },
       {
         id: 'PLA532C0E49DA6710',
         name: 'Algorithms',
-        private: true
+        privacy: 'UNLISTED'
       },
       {
         id: 'PLA632C0E49DA6710',
         name: 'Favorites',
-        private: true
+        privacy: 'PRIVATE'
       },
       {
         id: 'PLA432C0D49DA6710',
         name: 'Yum',
-        private: false
+        privacy: 'PUBLIC'
       },
       {
         id: 'PLA432C0E49DA8710',
         name: 'Reason Tutorials',
-        private: false
+        privacy: 'PUBLIC'
       },
       {
         id: 'PLAECCC0E491A6710',
         name: 'MW3 Singles',
-        private: false
+        privacy: 'PUBLIC'
       }
     ]
   }

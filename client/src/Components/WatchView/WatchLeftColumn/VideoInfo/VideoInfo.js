@@ -19,6 +19,9 @@ const VideoInfo = (props) => {
           addVideoToPlaylist={props.addVideoToPlaylist}
           removeVideoFromPlaylist={props.removeVideoFromPlaylist}
           userPlaylists={props.userPlaylists}
+          showAddToMenu={props.showAddToMenu}
+          toggleAddToMenu={props.toggleAddToMenu}
+          createPlaylistAndAddVideo={props.createPlaylistAndAddVideo}
         />
       </section>
     </div>
@@ -26,14 +29,18 @@ const VideoInfo = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const { userRating, userPlaylistsContainingVideo } = state.watch;
+  const { userRating, userPlaylistsContainingVideo, showAddToMenu } = state.watch;
   const userPlaylists = state.user.playlists;
-  return {userRating, userPlaylistsContainingVideo, userPlaylists};
+  return {userRating, userPlaylistsContainingVideo, userPlaylists, showAddToMenu};
 }
 
-const { rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist } = actions;
+const { rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist, createPlaylistAndAddVideo, toggleAddToMenu } = actions;
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist}, dispatch);
+  return bindActionCreators({
+    rateVideo, toggleShareModal, addVideoToPlaylist, 
+    removeVideoFromPlaylist, createPlaylistAndAddVideo,
+    toggleAddToMenu
+  }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoInfo);

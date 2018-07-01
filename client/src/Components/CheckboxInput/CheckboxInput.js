@@ -19,7 +19,7 @@ const CheckboxInput = ({ inputId, checked, changeHandler, labelText, checkboxToL
 CheckboxInput.propTypes = {
   inputId: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
-  changeHandler: PropTypes.func,
+  changeHandler: PropTypes.func.isRequired,
   labelText: PropTypes.string.isRequired,
   checkboxToLabelDistance: PropTypes.number
 };

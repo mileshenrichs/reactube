@@ -89,3 +89,34 @@ export function removeVideoFromPlaylist(videoId, playlistId) {
     }, 300);
   }
 }
+
+export function toggleAddToMenu() {
+  return {
+    type: 'TOGGLE_ADD_TO_MENU'
+  }
+}
+
+export function createPlaylistAndAddVideo(playlist, videoId) {
+  return (dispatch) => {
+    // make API call to create playlist
+    setTimeout(() => {
+      // pretend API call responds with playlist info
+      const res = {
+        createdPlaylistId: 'PLA632C0E49DA6712'
+      };
+
+      playlist.id = res.createdPlaylistId;
+      // if successful, dispatch action to reflect new playlist in user store
+      dispatch({
+        type: 'NEW_PLAYLIST_CREATED',
+        playlist
+      });
+
+      // then, call action to add video to created playlist
+      dispatch(addVideoToPlaylist(videoId, res.createdPlaylistId));
+
+      // then, if that API call is successful, close AddToMenu
+      dispatch(toggleAddToMenu());
+    }, 250);
+  }
+}
