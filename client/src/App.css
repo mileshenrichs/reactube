@@ -81,6 +81,37 @@ body.drawer-open {
   }
 }
 
+.CheckboxInput {
+  display: inline-block;
+}
+
+.CheckboxInput input[type="checkbox"] {
+  display: none;
+}
+
+.CheckboxInput label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+}
+
+.CheckboxInput label:before {
+  display: block;
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: url('resources/checkbox-unchecked.png') left center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-size: 100%;
+}
+
+.CheckboxInput input[type="checkbox"]:checked + label:before {
+  background: url('resources/checkbox-checked.png') left center no-repeat;
+  background-size: 100%;
+}
+
 .LeftDrawer__cover {
   position: absolute;
   top: 0;
@@ -1490,38 +1521,12 @@ img.RelatedVideo__menu-open {
 
 .VideoShareModal__start-at .start-time-deactivated {
   color: #c1c1c1;
-}
-
-.VideoShareModal__start-at input[type="checkbox"] {
-  display: none;
-}
-
-.VideoShareModal__start-at label {
-  margin-right: 5px;
-  cursor: pointer;
-  position: relative;
-  padding-left: 25px;
-}
-
-.VideoShareModal__start-at label:before {
-  display: block;
-  content: "";
-  width: 18px;
-  height: 18px;
-  background: url('resources/checkbox-unchecked.png') left center no-repeat;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-size: 100%;
-}
-
-.VideoShareModal__start-at input[type="checkbox"]:checked + label:before {
-  background: url('resources/checkbox-checked.png') left center no-repeat;
-  background-size: 100%;
+  margin-left: 5px;
 }
 
 .VideoShareModal__start-at input[type="text"] {
   width: 50px;
+  margin-left: 5px;
   border: none;
   border-bottom: 1px solid #757575;
   color: rgba(17, 17, 17, 0.8);

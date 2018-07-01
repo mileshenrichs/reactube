@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { parseStartTimeToQueryString } from '../../../util/dateTimeUtil';
+import CheckboxInput from '../../CheckboxInput/CheckboxInput';
 
 class VideoShareModal extends Component {
   constructor(props) {
@@ -20,7 +21,6 @@ class VideoShareModal extends Component {
    * @param {MouseEvent} e mousedown event
    */
   handleClickWhileModalOpen(e) {
-    console.log('handleClickWhileModalOpen');
     if(this.modal && !this.modal.contains(e.target)) {
       this.props.toggleShareModal();
     }
@@ -124,8 +124,12 @@ class VideoShareModal extends Component {
           </div>
 
           <div className="VideoShareModal__start-at">
-            <input type="checkbox" id="start-at-checkbox" checked={this.state.useStartAtTime} onChange={this.startAtCheckboxChanged.bind(this)} />
-            <label htmlFor="start-at-checkbox">Start at</label> {startAtInput}
+            <CheckboxInput 
+              inputId="start-at-checkbox" 
+              checked={this.state.useStartAtTime} 
+              changeHandler={this.startAtCheckboxChanged.bind(this)}
+              labelText="Start at"
+            /> {startAtInput}
           </div>
         </div>
       </div>

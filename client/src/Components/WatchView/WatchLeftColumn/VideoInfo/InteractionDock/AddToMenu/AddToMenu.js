@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CheckboxInput from '../../../../../CheckboxInput/CheckboxInput';
 
 class AddToMenu extends Component {
 
@@ -19,9 +20,13 @@ class AddToMenu extends Component {
   
         <section>
           <div className="AddToMenu__playlist-row">
-            <input type="checkbox" onChange={() => this.handleCheckboxClick('PLA9B2660749DA6729')}
-                checked={this.props.userPlaylistsContainingVideo.includes('PLA9B2660749DA6729')} />
-            <label>Watch Later</label>
+            <CheckboxInput
+              inputId="PLA9B2660749DA6729"
+              checked={this.props.userPlaylistsContainingVideo.includes('PLA9B2660749DA6729')}
+              changeHandler={() => this.handleCheckboxClick('PLA9B2660749DA6729')}
+              labelText="Watch Later"
+              checkboxToLabelDistance={11}
+            />
           </div>
         </section>
   
