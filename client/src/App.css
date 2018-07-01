@@ -1554,8 +1554,43 @@ img.RelatedVideo__menu-open {
 
 .AddToMenu section:last-child {
   border-bottom: 0;
+  padding: 0;
+}
+
+.AddToMenu__playlist-row {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.AddToMenu__playlist-row:last-child {
+  margin-bottom: 0;
 }
 
 .AddToMenu__playlist-row label {
   font-size: 87.5%;
+}
+
+.AddToMenu__playlist-row img {
+  width: 15px;
+  position: relative;
+  top: 2px;
+  float: right;
+}
+
+.AddToMenu__create-new-playlist-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  padding: 17px 26px;
+}
+
+.AddToMenu__create-new-playlist-button img {
+  width: 15px;
+  position: relative;
+  top: 2px;
+  margin-right: 13px;
 }

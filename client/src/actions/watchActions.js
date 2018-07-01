@@ -51,11 +51,12 @@ export function copiedShareLinkToClipboard() {
 }
 
 export function addVideoToPlaylist(videoId, playlistId) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({
       type: 'ADD_VIDEO_TO_PLAYLIST',
       videoId,
-      playlistId
+      playlistId,
+      userId: getState().user.id
     });
 
     // make API call to add to playlist
@@ -70,11 +71,12 @@ export function addVideoToPlaylist(videoId, playlistId) {
 }
 
 export function removeVideoFromPlaylist(videoId, playlistId) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     dispatch({
       type: 'REMOVE_VIDEO_FROM_PLAYLIST',
       videoId,
-      playlistId
+      playlistId,
+      userId: getState().user.id
     });
 
     // make API call to add to playlist

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../../../actions/watchActions'
 import InteractionDock from './InteractionDock/InteractionDock';
 
-const VideoInfo = ({ userRating, rateVideo, toggleShareModal, addVideoToPlaylist, userPlaylistsContainingVideo, removeVideoFromPlaylist }) => {
+const VideoInfo = (props) => {
   return (
     <div className="VideoInfo">
       <section className="info-section">
@@ -12,12 +12,13 @@ const VideoInfo = ({ userRating, rateVideo, toggleShareModal, addVideoToPlaylist
         <span className="VideoInfo__view-count">18,901 views</span>
 
         <InteractionDock 
-          userRating={userRating}
-          rateVideo={rateVideo} 
-          toggleShareModal={toggleShareModal}
-          userPlaylistsContainingVideo={userPlaylistsContainingVideo}
-          addVideoToPlaylist={addVideoToPlaylist}
-          removeVideoFromPlaylist={removeVideoFromPlaylist}
+          userRating={props.userRating}
+          rateVideo={props.rateVideo} 
+          toggleShareModal={props.toggleShareModal}
+          userPlaylistsContainingVideo={props.userPlaylistsContainingVideo}
+          addVideoToPlaylist={props.addVideoToPlaylist}
+          removeVideoFromPlaylist={props.removeVideoFromPlaylist}
+          userPlaylists={props.userPlaylists}
         />
       </section>
     </div>
@@ -26,7 +27,8 @@ const VideoInfo = ({ userRating, rateVideo, toggleShareModal, addVideoToPlaylist
 
 const mapStateToProps = (state) => {
   const { userRating, userPlaylistsContainingVideo } = state.watch;
-  return {userRating, userPlaylistsContainingVideo};
+  const userPlaylists = state.user.playlists;
+  return {userRating, userPlaylistsContainingVideo, userPlaylists};
 }
 
 const { rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist } = actions;

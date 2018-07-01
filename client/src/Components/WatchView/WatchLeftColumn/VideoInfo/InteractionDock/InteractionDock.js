@@ -5,19 +5,19 @@ import share from '../../../../../resources/share.png';
 import addToPlaylist from '../../../../../resources/add-to-playlist.png';
 import AddToMenu from './AddToMenu/AddToMenu';
 
-const InteractionDock = ({ userRating, rateVideo, toggleShareModal, userPlaylistsContainingVideo, addVideoToPlaylist, removeVideoFromPlaylist }) => {
+const InteractionDock = (props) => {
   return (
     <div className="InteractionDock">
       <div className="InteractionDock__like-dislike--container">
         <div className={'InteractionDock__like-dislike' + 
-                        (userRating === 'LIKE' ? ' user-liked' : '') + 
-                        (userRating === 'DISLIKE' ? ' user-disliked' : '')}>
-          <button className="InteractionDock__button like-button" onClick={() => rateVideo(true)}>
+                        (props.userRating === 'LIKE' ? ' user-liked' : '') + 
+                        (props.userRating === 'DISLIKE' ? ' user-disliked' : '')}>
+          <button className="InteractionDock__button like-button" onClick={() => props.rateVideo(true)}>
             <img src={like} alt="" />
             <span>85</span>
           </button>
 
-          <button className="InteractionDock__button dislike-button" onClick={() => rateVideo(false)}>
+          <button className="InteractionDock__button dislike-button" onClick={() => props.rateVideo(false)}>
             <img src={dislike} alt="" />
             <span>5</span>
           </button>
@@ -27,7 +27,7 @@ const InteractionDock = ({ userRating, rateVideo, toggleShareModal, userPlaylist
         <span className="like-meter-fill"></span>
       </div>
 
-      <button className="InteractionDock__button share-button" onClick={toggleShareModal}>
+      <button className="InteractionDock__button share-button" onClick={props.toggleShareModal}>
         <img src={share} alt="" />
         <span>Share</span>
       </button>
@@ -37,9 +37,10 @@ const InteractionDock = ({ userRating, rateVideo, toggleShareModal, userPlaylist
       </button>
 
       <AddToMenu 
-        userPlaylistsContainingVideo={userPlaylistsContainingVideo}
-        addVideoToPlaylist={addVideoToPlaylist}   
-        removeVideoFromPlaylist={removeVideoFromPlaylist}
+        userPlaylistsContainingVideo={props.userPlaylistsContainingVideo}
+        addVideoToPlaylist={props.addVideoToPlaylist}   
+        removeVideoFromPlaylist={props.removeVideoFromPlaylist}
+        userPlaylists={props.userPlaylists}
       />
     </div>
   );

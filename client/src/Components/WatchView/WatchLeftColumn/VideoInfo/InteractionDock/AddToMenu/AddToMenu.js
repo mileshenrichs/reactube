@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import CheckboxInput from '../../../../../CheckboxInput/CheckboxInput';
+import privateIcon from '../../../../../../resources/private.png';
+import publicIcon from '../../../../../../resources/public.png';
+import plus from '../../../../../../resources/create-new.png';
 
 class AddToMenu extends Component {
 
-  handleCheckboxClick(playlistId) {
+  handlePlaylistRowClick(e, playlistId) {
+    e.preventDefault(); // prevent propagation to checkbox
+
     if(!this.props.userPlaylistsContainingVideo.includes(playlistId)) {
       this.props.addVideoToPlaylist('aHlwbm9zaXM', playlistId);
     } else {
@@ -19,19 +24,26 @@ class AddToMenu extends Component {
         </section>
   
         <section>
-          <div className="AddToMenu__playlist-row">
-            <CheckboxInput
-              inputId="PLA9B2660749DA6729"
-              checked={this.props.userPlaylistsContainingVideo.includes('PLA9B2660749DA6729')}
-              changeHandler={() => this.handleCheckboxClick('PLA9B2660749DA6729')}
-              labelText="Watch Later"
-              checkboxToLabelDistance={11}
-            />
-          </div>
+          {this.props.userPlaylists.map(playlist => {
+            return (
+              <div className="AddToMenu__playlist-row" key={playlist.id} onClick={(e) => this.handlePlaylistRowClick(e, playlist.id)}>
+                <CheckboxInput
+                  inputId={playlist.id}
+                  checked={this.props.userPlaylistsContainingVideo.includes(playlist.id)}
+                  labelText={playlist.name}
+                  checkboxToLabelDistance={11}
+                />
+                <img src={playlist.private ? privateIcon : publicIcon} alt="" />
+              </div>
+            );
+          })}
         </section>
   
         <section>
-          Create new playlist
+          <button className="AddToMenu__create-new-playlist-button">
+            <img src={plus} alt="" />
+            <span>Create new playlist</span>
+          </button>
         </section>
       </div>
     );
