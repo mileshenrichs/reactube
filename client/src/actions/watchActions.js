@@ -120,3 +120,9 @@ export function createPlaylistAndAddVideo(playlist, videoId) {
     }, 250);
   }
 }
+
+export function toggleDescriptionExpansion() {
+  return {
+    type: 'TOGGLE_DESCRIPTION_EXPANSION'
+  }
+}

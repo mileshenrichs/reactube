@@ -9,7 +9,8 @@ const defaultState = {
     userRating: undefined,
     showVideoShareModal: false,
     userPlaylistsContainingVideo: [],
-    showAddToMenu: false
+    showAddToMenu: false,
+    showExpandedDescription: false
   },
   notification: {
     showNotification: false,

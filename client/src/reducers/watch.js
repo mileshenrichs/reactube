@@ -64,6 +64,12 @@ function watchReducer(state = {}, action) {
         showAddToMenu: !state.showAddToMenu
       }
 
+    case 'TOGGLE_DESCRIPTION_EXPANSION':
+      return {
+        ...state,
+        showExpandedDescription: !state.showExpandedDescription
+      }
+
     default:
       return state;
   }
