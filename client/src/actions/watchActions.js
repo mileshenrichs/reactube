@@ -133,3 +133,10 @@ export function changeCommentSortOrder(sortByNewest) {
     sortByNewest
   }
 }
+
+export function postComment(commentText) {
+  return {
+    type: 'POST_COMMENT',
+    commentText
+  }
+}

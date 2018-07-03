@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../../../actions/watchActions'
 import sortIcon from '../../../../resources/sort.png';
+import CreateComment from './CreateComment/CreateComment';
 
 class VideoComments extends Component {
   constructor(props) {
@@ -52,6 +53,8 @@ class VideoComments extends Component {
               </ul>}
           </span>
         </div>
+
+        <CreateComment postComment={this.props.postComment} />
       </div>
     );
   }
@@ -61,9 +64,9 @@ const mapStateToProps = (state) => {
   return {};
 }
 
-const { changeCommentSortOrder } = actions;
+const { changeCommentSortOrder, postComment } = actions;
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeCommentSortOrder}, dispatch);
+  return bindActionCreators({changeCommentSortOrder, postComment}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoComments);

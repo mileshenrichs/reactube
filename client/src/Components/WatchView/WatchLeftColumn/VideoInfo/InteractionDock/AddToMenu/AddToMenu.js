@@ -82,7 +82,7 @@ class AddToMenu extends Component {
         <section className="AddToMenu__create-form">
           <div className="AddMenu__create-form--input-group">
             <label htmlFor="playlist-name">Name</label>
-            <input type="text" id="playlist-name" className="modal-text-input" placeholder="Enter playlist name..."
+            <input type="text" id="playlist-name" className="underlined-text-input" placeholder="Enter playlist name..."
                   value={this.state.newPlaylistName} onChange={this.onNewPlaylistNameChanged.bind(this)} />
             <span className="AddToMenu__create-form--charcount">{this.state.newPlaylistName.length}/150</span>
             <div className="clearfix"></div>
@@ -90,7 +90,7 @@ class AddToMenu extends Component {
 
           <div className="AddMenu__create-form--input-group privacy">
             <label htmlFor="playlist-privacy">Privacy</label>
-            <input type="text" readOnly autoComplete="off" id="playlist-privacy" className="modal-text-input" 
+            <input type="text" readOnly autoComplete="off" id="playlist-privacy" className="underlined-text-input" 
                 value={this.state.newPlaylistSelectedPrivacy.optionName} onClick={() => this.setState({showPrivacyDropdown: true})} />
             <img className="dropdown-arrow" src={dropdownArrow} alt="" />
 

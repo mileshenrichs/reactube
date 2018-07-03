@@ -102,7 +102,7 @@ class VideoShareModal extends Component {
     let startAtInput;
     if(this.state.useStartAtTime) {
       startAtInput = (
-        <input type="text" value={this.state.startAtTime} className="modal-text-input"
+        <input type="text" value={this.state.startAtTime} className="underlined-text-input"
           onChange={this.startAtInputTextChanged.bind(this)} onBlur={this.adjustStartAtInput.bind(this)} />
       );
     } else {

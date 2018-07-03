@@ -1539,13 +1539,13 @@ img.RelatedVideo__menu-open {
   color: rgba(17, 17, 17, 0.8);
 }
 
-.modal-text-input {
+.underlined-text-input {
   border: none;
   border-bottom: 1px solid #757575;
   font-size: 14px;
 }
 
-.modal-text-input:focus {
+.underlined-text-input:focus {
   border-bottom: 2px solid #111111;
 }
 
@@ -1829,10 +1829,15 @@ section.AddToMenu__create-form {
   border: none;
   background: transparent;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .VideoComments {
   margin-top: 18px;
+}
+
+.VideoComments__header {
+  margin-bottom: 28px;
 }
 
 .VideoComments__comments-count {
@@ -1862,4 +1867,60 @@ section.AddToMenu__create-form {
   position: absolute;
   top: 30px;
   right: -40px;
+}
+
+.CreateComment {
+  overflow: hidden;
+}
+
+.CreateComment .ProfileIcon,
+.CreateComment__create-form {
+  float: left;
+}
+
+.CreateComment .ProfileIcon {
+  margin-right: 15px;
+}
+
+.CreateComment__create-form {
+  width: 93%;
+}
+
+.CreateComment__create-form textarea {
+  resize: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: 24px;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 8px;
+}
+
+.CreateComment__buttons {
+  float: right;
+}
+
+.CreateComment__buttons button {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 17px;
+  border-radius: 3px;
+}
+
+.CreateComment__buttons button.cancel {
+  color: #707479;
+}
+
+.CreateComment__buttons button.cancel:hover {
+  color: #414141;
+}
+
+.CreateComment__buttons button.comment {
+  color: #ffffff;
+  background: #2793e6;
+  margin-left: 8px;
+}
+
+.CreateComment__buttons button.comment:disabled {
+  opacity: 0.2;
 }
