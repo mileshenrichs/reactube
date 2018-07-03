@@ -70,6 +70,12 @@ function watchReducer(state = {}, action) {
         showExpandedDescription: !state.showExpandedDescription
       }
 
+    case 'CHANGE_COMMENT_SORT_ORDER':
+      return {
+        ...state,
+        sortCommentsByNewest: action.sortByNewest
+      }
+
     default:
       return state;
   }

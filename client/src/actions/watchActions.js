@@ -126,3 +126,10 @@ export function toggleDescriptionExpansion() {
     type: 'TOGGLE_DESCRIPTION_EXPANSION'
   }
 }
+
+export function changeCommentSortOrder(sortByNewest) {
+  return {
+    type: 'CHANGE_COMMENT_SORT_ORDER',
+    sortByNewest
+  }
+}

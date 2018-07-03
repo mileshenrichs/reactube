@@ -1288,6 +1288,15 @@ img.RelatedVideo__menu-open {
   position: absolute;
   top: 32px;
   right: -110px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .RelatedVideo__menu {
+    right: 0;
+  }
+}
+
+.inline-menu {
   background: #ffffff;
   list-style-type: none;
   color: #111111;
@@ -1297,19 +1306,18 @@ img.RelatedVideo__menu-open {
   z-index: 2;
 }
 
-@media only screen and (max-width: 1400px) {
-  .RelatedVideo__menu {
-    right: 0;
-  }
-}
-
-.RelatedVideo__menu li {
+.inline-menu li {
   padding: 16px 0 16px 16px;
   cursor: pointer;
 }
 
-.RelatedVideo__menu li:hover {
+.inline-menu li:hover {
   background: #eeeeee;
+}
+
+.inline-menu li:focus,
+.inline-menu li:active {
+  background: #d3d3d3;
 }
 
 .VideoInfo section.info-section {
@@ -1815,4 +1823,43 @@ section.AddToMenu__create-form {
   cursor: pointer;
   font-size: 13px;
   margin-left: 62px;
+}
+
+.transparent-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.VideoComments {
+  margin-top: 18px;
+}
+
+.VideoComments__comments-count {
+  margin-right: 30px;
+}
+
+.VideoComments__sort-control {
+  position: relative;
+}
+
+.VideoComments__header button img {
+  width: 18px;
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+}
+
+.VideoComments__header button span {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.VideoComments__sort-menu {
+  width: 126px;
+  position: absolute;
+  top: 30px;
+  right: -40px;
 }

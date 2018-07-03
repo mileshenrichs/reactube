@@ -67,7 +67,7 @@ class RelatedVideo extends Component {
         </a>
 
         {this.state.showOptionsMenu && 
-            <ul className="RelatedVideo__menu" ref={node => this.optionsMenu = node}>
+            <ul className="RelatedVideo__menu inline-menu" ref={node => this.optionsMenu = node}>
               <li>Add to Watch Later</li>
               <li>Add to Playlist</li>
             </ul>}

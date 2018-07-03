@@ -29,7 +29,7 @@ const WatchView = (props) => {
         <WatchLeftColumn>
           <Player />
           <VideoInfo />
-          {/* <VideoComments /> */}
+          <VideoComments />
         </WatchLeftColumn>
 
         <WatchRightColumn>

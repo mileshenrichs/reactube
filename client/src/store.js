@@ -10,7 +10,8 @@ const defaultState = {
     showVideoShareModal: false,
     userPlaylistsContainingVideo: [],
     showAddToMenu: false,
-    showExpandedDescription: false
+    showExpandedDescription: false,
+    sortCommentsByNewest: false
   },
   notification: {
     showNotification: false,
