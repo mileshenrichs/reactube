@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../../../actions/watchActions'
 import sortIcon from '../../../../resources/sort.png';
 import CreateComment from './CreateComment/CreateComment';
+import CommentsList from './CommentsList/CommentsList';
 
 class VideoComments extends Component {
   constructor(props) {
@@ -11,6 +12,11 @@ class VideoComments extends Component {
     this.state = {
       showSortMenu: false
     }
+  }
+
+  componentDidMount() {
+    // fetch comments for video
+    this.props.getVideoComments();
   }
 
   toggleSortMenu() {
@@ -38,7 +44,7 @@ class VideoComments extends Component {
     return (
       <div className="VideoComments">
         <div className="VideoComments__header">
-          <span className="VideoComments__comments-count">502 Comments</span>
+          <span className="VideoComments__comments-count">{this.props.videoComments.length} Comments</span>
   
           <span className="VideoComments__sort-control">
             <button className="VideoComments__sort-button transparent-button" 
@@ -55,18 +61,21 @@ class VideoComments extends Component {
         </div>
 
         <CreateComment postComment={this.props.postComment} />
+
+        <CommentsList comments={this.props.videoComments} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  const { videoComments } = state.watch;
+  return {videoComments};
 }
 
-const { changeCommentSortOrder, postComment } = actions;
+const { changeCommentSortOrder, postComment, getVideoComments } = actions;
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({changeCommentSortOrder, postComment}, dispatch);
+  return bindActionCreators({changeCommentSortOrder, postComment, getVideoComments}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VideoComments);

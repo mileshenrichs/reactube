@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import ProfileIcon from '../../../../ProfileIcon/ProfileIcon';
+import PropTypes from 'prop-types';
 
 class CreateComment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showButtons: false,
+      showButtons: this.props.isReply ? true : false, // usually hidden, but default to show when is reply
       comment: ''
     }
   }
@@ -21,7 +22,12 @@ class CreateComment extends Component {
 
   postComment() {
     if(this.state.comment.length) {
-      this.props.postComment(this.state.comment);
+      // pass different params to postComment action depending on whether is reply or original comment
+      if(!this.props.isReply) {
+        this.props.postComment(this.state.comment);
+      } else {
+        this.props.postComment('139EEB02F3', this.state.comment);
+      }
     }
   }
 
@@ -30,12 +36,17 @@ class CreateComment extends Component {
       showButtons: false,
       comment: ''
     });
+
+    // call onCancel hook, if passed as prop (used to prompt parent element to hide CreateComment)
+    if(this.props.onCancel) {
+      this.props.onCancel();
+    }
   }
 
   render() {
     return (
       <div className="CreateComment">
-        <ProfileIcon width={40} />
+        <ProfileIcon width={this.props.isReply ? 24 : 40} />
         <div className="CreateComment__create-form">
           <textarea className="underlined-text-input" ref={node => this.textarea = node} onKeyUp={this.setTextareaHeight.bind(this)} 
               onClick={() => this.setState({showButtons: true})} value={this.state.comment} 
@@ -45,7 +56,7 @@ class CreateComment extends Component {
             <div className="CreateComment__buttons">
               <button className="cancel transparent-button" onClick={this.cancelComment.bind(this)}>Cancel</button>
               <button className="comment transparent-button" disabled={this.state.comment.length === 0} onClick={this.postComment.bind(this)}>
-                Comment
+                {this.props.isReply ? 'Reply' : 'Comment'}
               </button>
             </div>}
         </div>
@@ -53,5 +64,11 @@ class CreateComment extends Component {
     );
   }
 }
+
+CreateComment.propTypes = {
+  isReply: PropTypes.bool,
+  postComment: PropTypes.func.isRequired,
+  onCancel: PropTypes.func
+};
 
 export default CreateComment;

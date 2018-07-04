@@ -4,6 +4,8 @@ import rootReducer from './reducers';
 
 const defaultState = {
   watch: {
+    watchingVideoId: 'aHlwbm9zaXM',
+    videoComments: [],
     showLeftDrawer: false,
     slideDrawerOut: false,
     userRating: undefined,
@@ -11,7 +13,13 @@ const defaultState = {
     userPlaylistsContainingVideo: [],
     showAddToMenu: false,
     showExpandedDescription: false,
-    sortCommentsByNewest: false
+    sortCommentsByNewest: false,
+    userCommentRatings: [
+      {
+        commentId: 2,
+        liked: true
+      }
+    ]
   },
   notification: {
     showNotification: false,

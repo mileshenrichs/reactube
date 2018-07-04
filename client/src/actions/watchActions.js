@@ -140,3 +140,110 @@ export function postComment(commentText) {
     commentText
   }
 }
+
+export function postCommentReply(replyingToId, commentText) {
+  return {
+    type: 'POST_COMMENT_REPLY',
+    replyingToId,
+    commentText
+  }
+}
+
+export function getVideoComments() {
+  return (dispatch, getState) => {
+    const videoId = getState().watch.watchingVideoId;
+    
+    // make API call to get all comments for video
+    setTimeout(() => {
+      const videoComments = [
+        {
+          id: 1,
+          author: 'Jayvolr',
+          dateSince: '1 year ago',
+          commentText: 'I feel like I\'m getting a coding lesson from Mark Wahlberg.',
+          likeCount: 178,
+          isVideoAuthor: false,
+          replies: [
+            {
+              id: 4,
+              author: 'Traversy Media',
+              dateSince: '1 year ago',
+              commentText: 'LOL you are the third person to say that :) Hope you liked the video',
+              likeCount: 46,
+              isVideoAuthor: true
+            },
+            {
+              id: 5,
+              author: 'Jayvolr',
+              dateSince: '1 year ago',
+              commentText: 'That\'s hilarious, lol. This video was a big help, thank you!',
+              likeCount: 4,
+              isVideoAuthor: false
+            }
+          ]
+        },
+        {
+          id: 2,
+          author: 'raazs35',
+          dateSince: '1 year ago',
+          commentText: 'I speed up the video 2X and finished this in about 40 mins. This is so helpful.',
+          likeCount: 78,
+          isVideoAuthor: false,
+          replies: []
+        },
+        {
+          id: 3,
+          author: 'Rajni Nair',
+          dateSince: '1 year ago',
+          commentText: 'Firstly, Thank you so much for sharing your expertise. Must say that it\'s the best crash course on Youtube on Nodejs. You are one of the best tutors out here. Cheers.',
+          likeCount: 32,
+          isVideoAuthor: false,
+          replies: []
+        },
+        {
+          id: 6,
+          author: 'Miles Henrichs',
+          dateSince: '2 days ago',
+          commentText: 'This video is extraordinary.',
+          likeCount: 0,
+          isVideoAuthor: false,
+          replies: []
+        }
+      ];
+
+      dispatch({
+        type: 'COMMENTS_LOADED',
+        videoComments
+      })
+    }, 500);
+  }
+}
+
+export function rateComment(commentId, liked) {
+  return (dispatch, getState) => {
+    const commentRating = getState().watch.userCommentRatings.find(rating => rating.commentId === commentId);
+
+    if(commentRating) {
+      const userRatingIndex = getState().watch.userCommentRatings.indexOf(commentRating);
+      // if rating is the same as existing rating, remove/undo rating altogether
+      if(commentRating.liked === liked) {
+        dispatch({
+          type: 'REMOVE_COMMENT_RATING',
+          userRatingIndex
+        })
+      } else {
+        dispatch({
+          type: 'MODIFY_COMMENT_RATING',
+          userRatingIndex,
+          liked
+        })
+      }
+    } else {
+      dispatch({
+        type: 'RATE_COMMENT',
+        commentId,
+        liked
+      })
+    }
+  }
+}

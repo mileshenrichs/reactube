@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../../../actions/watchActions'
+import * as actions from '../../../../actions/watchActions';
 import InteractionDock from './InteractionDock/InteractionDock';
 import ProfileIcon from '../../../ProfileIcon/ProfileIcon';
 import SubscribeButton from '../../../SubscribeButton/SubscribeButton';

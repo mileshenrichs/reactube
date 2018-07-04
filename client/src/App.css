@@ -1733,14 +1733,35 @@ section.AddToMenu__create-form {
   display: block;
 }
 
-.metadata-text .meta-creator a {
+.meta-creator a {
   font-size: 87.5%;
   font-weight: 500;
   color: #0a0a0a;
   text-decoration: none;
+  position: relative;
 }
 
-.metadata-text .meta-publish-date {
+.meta-creator.is-video-author a {
+  background: #888888;
+  color: #ffffff;
+  padding: 2px 24px 2px 8px;
+  border-radius: 14px;
+}
+
+.meta-creator.is-video-author a:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url('resources/white-checkmark.png') right 8px center no-repeat;
+  background-size: 10px;
+}
+
+.meta-publish-date,
+.meta-time-since {
   font-size: 81.25%;
   color: #707070;
 }
@@ -1923,4 +1944,119 @@ section.AddToMenu__create-form {
 
 .CreateComment__buttons button.comment:disabled {
   opacity: 0.2;
+}
+
+.CommentsList {
+  padding-top: 26px;
+}
+
+.Comment {
+  margin-bottom: 11px;
+}
+
+.Comment.showing-replies {
+  margin-bottom: 6px;
+}
+
+.Comment.reply {
+  margin-bottom: 4px;
+}
+
+.Comment .ProfileIcon,
+.Comment__details {
+  float: left;
+}
+
+.Comment .ProfileIcon {
+  margin-right: 16px;
+}
+
+.Comment__details {
+  position: relative;
+  bottom: 2px;
+  width: 90%;
+}
+
+.Comment__title {
+  margin-bottom: 6px;
+}
+
+.Comment__title .meta-creator a {
+  margin-right: 10px;
+  font-size: 13px;
+}
+
+.Comment__text {
+  font-size: 87.5%;
+  margin-bottom: 6px;
+}
+
+.Comment__buttons {
+  position: relative;
+  right: 5px;
+  margin-bottom: 3px;
+}
+
+.Comment__buttons--like-dislike button {
+  width: 16px;
+  opacity: 0.4;
+  padding: 6px;
+  box-sizing: content-box;
+  margin-right: 2px;
+}
+
+.Comment__buttons--like-dislike button:hover {
+  opacity: 0.8;
+}
+
+.Comment__buttons--like-dislike.liked button.like {
+  opacity: 1;
+}
+
+.Comment__buttons--like-dislike.disliked button.dislike {
+  opacity: 1;
+}
+
+.Comment__buttons--like-dislike img {
+  width: 100%;
+}
+
+.Comment__buttons--like-dislike .comment-like-count {
+  font-size: 81.25%;
+  color: #707070;
+  position: relative;
+  bottom: 3px;
+  margin-right: 8px;
+}
+
+.Comment__button--reply {
+  font-size: 13px;
+  font-weight: 500;
+  color: #707070;
+  position: relative;
+  bottom: 4px;
+  padding: 8px 14px;
+}
+
+.Comment__button--reply:hover {
+  color: #414141;
+}
+
+.Comment__view-replies button {
+  margin-bottom: 12px;
+}
+
+.Comment__view-replies button span {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  margin-right: 6px;
+}
+
+.Comment__view-replies button img {
+  width: 10px;
+}
+
+.Comment__showing-replies .Comment__view-replies button img {
+  transform: rotate(180deg);
 }
