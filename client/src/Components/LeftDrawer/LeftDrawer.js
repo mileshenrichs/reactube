@@ -16,24 +16,26 @@ import settingsIcon from '../../resources/left-drawer/settings.png';
 
 const LeftDrawer = (props) => {
   return (
-    <div className="LeftDrawer">
+    <div className={'LeftDrawer' + (props.displayAsModal ? ' as-modal' : '')}>
     
-      <div className="LeftDrawer__cover"></div>
+      {props.displayAsModal && 
+        <div className="LeftDrawer__cover"></div>}
 
       <div className="LeftDrawer__drawer">
-        <section className="menu-section LeftDrawer__header">
-          <button className="icon-button LeftDrawer__menu-icon" onClick={props.closeDrawer}>
-            <img src={menuIcon} alt="" />
-          </button>
-          <a href="#">
-            <img className="LeftDrawer__logo" src={logo} alt="Reactube" />
-          </a>
-        </section>
+        {props.displayAsModal && 
+          <section className="menu-section LeftDrawer__header">
+            <button className="icon-button LeftDrawer__menu-icon" onClick={props.closeDrawer}>
+              <img src={menuIcon} alt="" />
+            </button>
+            <a href="#">
+              <img className="LeftDrawer__logo" src={logo} alt="Reactube" />
+            </a>
+          </section>}
 
         <section className="menu-section LeftDrawer__big-three">
           <MenuLink imgSrc={homeIcon} text="Home" />
           <MenuLink imgSrc={fireIcon} text="Trending" />
-          <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" />
+          <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" url="/feed/subscriptions" />
         </section>
 
         <section className="menu-section LeftDrawer__library">

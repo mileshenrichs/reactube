@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const MenuLink = ({ url, imgSrc, text, notificationCount, children }) => {
   return (
     <div className="MenuLink">
-      <a href={url || '#'} title={text}>
+      <Link to={url || '#'} title={text}>
         {imgSrc ? (<img src={imgSrc} alt="" />) 
                 : (children)}
         <span className="MenuLink__text">{text}</span>
-      </a>
+      </Link>
     </div>
   );
 }

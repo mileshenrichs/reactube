@@ -9,6 +9,7 @@ import Header from './Components/Header/Header';
 import './App.css';
 import AccountMenu from './Components/Header/AccountMenu/AccountMenu';
 import Notification from './Components/Notification/Notification';
+import SubscriptionsView from './Components/SubscriptionsView/SubscriptionsView';
 
 class App extends Component {
   constructor(props) {
@@ -69,13 +70,15 @@ class App extends Component {
 
         <div className="clearfix"></div>
 
-        <LeftDrawer closeDrawer={this.props.toggleLeftDrawer} />
+        <LeftDrawer 
+          closeDrawer={this.props.toggleLeftDrawer} 
+          displayAsModal={window.location.pathname.includes('watch')}
+        />
 
-        <Router>
-          <Switch>
-            <Route exact path="/" component={WatchView} />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route exact path="/watch" component={WatchView} />
+          <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
+        </Switch>
 
         <Notification 
           text={this.props.notification.notificationText}

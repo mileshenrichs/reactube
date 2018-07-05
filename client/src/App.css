@@ -19,6 +19,7 @@ body {
   padding-bottom: 200px;
   font-size: 100%;
   color: #111111;
+  margin-top: 86px;
 }
 
 body.drawer-open {
@@ -112,6 +113,15 @@ body.drawer-open {
   background-size: 100%;
 }
 
+.page-container {
+  width: 100%;
+  float: right;
+}
+
+.App[class="App left-drawer-open"] .page-container {
+  width: calc(100% - 240px);
+}
+
 .LeftDrawer__cover {
   position: absolute;
   top: 0;
@@ -123,6 +133,10 @@ body.drawer-open {
   z-index: 3;
 }
 
+.LeftDrawer.as-modal .LeftDrawer__cover {
+  z-index: 4;
+}
+
 .App.left-drawer-open .LeftDrawer__cover {
   display: block;
 }
@@ -130,20 +144,34 @@ body.drawer-open {
 .LeftDrawer__drawer {
   width: 240px;
   transform: translateX(-300px);
-  height: 100vh;
+  height: calc(100vh - 57px);
   background: #f5f5f5;
   overflow: hidden;
   position: absolute;
-  top: 0;
+  top: 57px;
   left: 0;
+  z-index: 3;
+}
+
+.LeftDrawer.as-modal .LeftDrawer__drawer {
+  height: 100vh;
+  top: 0;
   z-index: 4;
 }
 
 .App.left-drawer-open .LeftDrawer__drawer {
+  transform: translateX(0);
+}
+
+.App.left-drawer-open .LeftDrawer.as-modal .LeftDrawer__drawer {
   animation: slideInDrawer .25s ease-in-out forwards;
 }
 
 .App.slide-drawer-out .LeftDrawer__drawer {
+  transform: translateX(-300px);
+}
+
+.App.slide-drawer-out .LeftDrawer.as-modal .LeftDrawer__drawer {
   animation: slideOutDrawer .25s ease-in-out forwards;
 }
 
@@ -281,6 +309,10 @@ section.LeftDrawer__footer a {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   margin-bottom: 25px;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  background: #ffffff;
 }
 
 .Header__container {

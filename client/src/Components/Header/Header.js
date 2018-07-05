@@ -4,6 +4,7 @@ import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as appActions from '../../actions/appActions'
+import { Link } from 'react-router-dom';
 import logo from '../../resources/logo.png';
 import menuIcon from '../../resources/header/hamburger-menu.png';
 import cameraIcon from '../../resources/header/create-video.png';
@@ -32,9 +33,9 @@ class Header extends Component {
               <img src={menuIcon} alt="" />
             </button>
 
-            <a href="#">
+            <Link to="/">
               <img className="Header__logo" src={logo} alt="Reactube" />
-            </a>
+            </Link>
           </div>
 
           <SearchBar 
