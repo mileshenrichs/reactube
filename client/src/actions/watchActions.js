@@ -8,6 +8,7 @@ export function toggleLeftDrawer() {
 }
 
 // switch off drawer overlay after animating slide out
+// used for the modal-like drawer in WatchView
 export function hideDrawerOverlay() {
   return {
     type: 'HIDE_DRAWER_OVERLAY'

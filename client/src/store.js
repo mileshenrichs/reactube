@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
 const defaultState = {
+  app: {
+    showLeftDrawer: false,
+    slideDrawerOut: false
+  },
   watch: {
     watchingVideoId: 'aHlwbm9zaXM',
     videoComments: [],
-    showLeftDrawer: false,
-    slideDrawerOut: false,
     userRating: undefined,
     showVideoShareModal: false,
     userPlaylistsContainingVideo: [],

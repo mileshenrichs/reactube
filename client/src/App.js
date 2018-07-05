@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import * as actions from './actions/appActions';
+import LeftDrawer from './Components/LeftDrawer/LeftDrawer';
 import WatchView from './Components/WatchView/WatchView';
 import Header from './Components/Header/Header';
 import './App.css';
@@ -42,22 +45,31 @@ class App extends Component {
 
   render() {
 
+    // dispatch delayed hide drawer overlay action when slide drawer out set to true
+    if(this.props.app.slideDrawerOut) {
+      setTimeout(() => {
+        this.props.hideDrawerOverlay();
+      }, 250);
+    }
+
     // set 4 second timeout to hide notification if present
     if(this.props.notification.showNotification) {
       setTimeout(() => {
-        this.props.dispatch({
-          type: 'CLOSE_NOTIFICATION'
-        });
+        this.props.closeNotification();
       }, 4000);
     }
 
     return (
-      <div className="App">
+      <div className={'App' 
+      + (this.props.app.showLeftDrawer ? ' left-drawer-open' : '')
+      + (this.props.app.slideDrawerOut ? ' slide-drawer-out' : '')}>
         <Header toggleAccountMenu={this.toggleAccountMenu.bind(this)} />
         {this.state.showAccountMenu && 
           <AccountMenu />}
 
         <div className="clearfix"></div>
+
+        <LeftDrawer closeDrawer={this.props.toggleLeftDrawer} />
 
         <Router>
           <Switch>
@@ -78,4 +90,8 @@ const mapStateToProps = (state) => {
   return state;
 }
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

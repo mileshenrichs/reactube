@@ -3,7 +3,7 @@ import SearchBar from './SearchBar/SearchBar';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as watchActions from '../../actions/watchActions'
+import * as appActions from '../../actions/appActions'
 import logo from '../../resources/logo.png';
 import menuIcon from '../../resources/header/hamburger-menu.png';
 import cameraIcon from '../../resources/header/create-video.png';
@@ -63,7 +63,7 @@ const mapStateToProps = (state) => {
 // todo: combine header and watch action creators, if necessary
 // https://stackoverflow.com/questions/35454633/redux-connect-with-multiples-actions-states
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(watchActions, dispatch);
+  return bindActionCreators(appActions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

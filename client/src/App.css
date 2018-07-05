@@ -123,7 +123,7 @@ body.drawer-open {
   z-index: 3;
 }
 
-.WatchView.left-drawer-open .LeftDrawer__cover {
+.App.left-drawer-open .LeftDrawer__cover {
   display: block;
 }
 
@@ -139,11 +139,11 @@ body.drawer-open {
   z-index: 4;
 }
 
-.WatchView.left-drawer-open .LeftDrawer__drawer {
+.App.left-drawer-open .LeftDrawer__drawer {
   animation: slideInDrawer .25s ease-in-out forwards;
 }
 
-.WatchView.slide-drawer-out .LeftDrawer__drawer {
+.App.slide-drawer-out .LeftDrawer__drawer {
   animation: slideOutDrawer .25s ease-in-out forwards;
 }
 
