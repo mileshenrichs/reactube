@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import VideoThumbnail from './VideoThumbnail/VideoThumbnail';
+import VideoThumbnail from '../../../VideoThumbnail/VideoThumbnail';
 import menuIcon from '../../../../resources/vertical-dots.png';
 
 class RelatedVideo extends Component {

@@ -4,7 +4,7 @@ import rootReducer from './reducers';
 
 const defaultState = {
   app: {
-    showLeftDrawer: false,
+    showLeftDrawer: true,
     slideDrawerOut: false
   },
   watch: {

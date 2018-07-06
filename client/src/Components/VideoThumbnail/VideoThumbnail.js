@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import watchLaterIcon from '../../../../../resources/watch-later.png';
+import watchLaterIcon from '../../resources/watch-later.png';
 
-const VideoThumbnail = ({ thumbnailSrc, videoLength, watchedProgress }) => {
+const VideoThumbnail = ({ width, thumbnailSrc, videoLength, watchedProgress }) => {
   return (
-    <div className="VideoThumbnail">
+    <div className="VideoThumbnail" style={{width}}>
       <img src={thumbnailSrc} alt="" />
       <span className="VideoThumbnail__watch-later">
         <img src={watchLaterIcon} alt="" />
@@ -21,6 +21,7 @@ const VideoThumbnail = ({ thumbnailSrc, videoLength, watchedProgress }) => {
 }
 
 VideoThumbnail.propTypes = {
+  width: PropTypes.number.isRequired,
   thumbnailSrc: PropTypes.string.isRequired,
   videoLength: PropTypes.string.isRequired,
   watchedProgress: PropTypes.number

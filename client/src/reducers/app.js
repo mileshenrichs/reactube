@@ -3,7 +3,7 @@ function appReducer(state = {}, action) {
   switch(action.type) {
     case 'TOGGLE_DRAWER':
       // prevent body scrolling when drawer open
-      document.body.classList.toggle('drawer-open');
+      //document.body.classList.toggle('drawer-open');
 
       const newShowDrawerState = !state.showLeftDrawer;
       if(newShowDrawerState === false) {
