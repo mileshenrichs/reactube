@@ -44,7 +44,8 @@ const LeftDrawer = (props) => {
             <a href="#">Library</a>
           </h3>
 
-          <MenuLink imgSrc={historyIcon} text="History" />
+          <MenuLink imgSrc={historyIcon} text="History" url="/feed/history"
+                  active={window.location.href.includes('/feed/history')} />
           <MenuLink imgSrc={watchLaterIcon} text="Watch Later" />
           <MenuLink imgSrc={likeIcon} text="Liked Videos" />
           <MenuLink imgSrc={playlistIcon} text="Basketball shooting" />

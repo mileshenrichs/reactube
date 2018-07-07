@@ -10,6 +10,7 @@ import './App.css';
 import AccountMenu from './Components/Header/AccountMenu/AccountMenu';
 import Notification from './Components/Notification/Notification';
 import SubscriptionsView from './Components/SubscriptionsView/SubscriptionsView';
+import HistoryView from './Components/HistoryView/HistoryView';
 
 class App extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/watch" component={WatchView} />
           <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
+          <Route exact path="/feed/history" component={HistoryView} />
         </Switch>
 
         <Notification 

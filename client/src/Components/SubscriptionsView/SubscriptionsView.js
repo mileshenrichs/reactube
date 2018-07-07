@@ -141,7 +141,11 @@ class SubscriptionsView extends Component {
     return (
       <div className="SubscriptionsView page-container">
         <div className="feed-container">
-          <VideoList videos={videos} />
+          <VideoList 
+            videos={videos} 
+            showTitles={true} 
+            showTimeSince={true}
+          />
         </div>
       </div>
     );

@@ -47,6 +47,7 @@ class RelatedVideo extends Component {
       <div className="RelatedVideo">
         <a href="#" style={{display: 'block', overflow: 'hidden'}} title={this.props.video.title}>
           <VideoThumbnail 
+            width={168}
             thumbnailSrc={this.props.video.thumbnailSrc} 
             videoLength={this.props.video.videoLength} 
             watchedProgress={this.props.video.watchedProgress}

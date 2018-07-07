@@ -2197,7 +2197,8 @@ section.AddToMenu__create-form {
   margin-left: 8px;
 }
 
-img.VideoListItem__menu-open {
+img.VideoListItem__menu-open,
+img.VideoListItem__remove {
   width: 14px;
   position: absolute;
   right: 10px;
@@ -2207,12 +2208,21 @@ img.VideoListItem__menu-open {
   cursor: pointer;
 }
 
+img.VideoListItem__remove {
+  width: 22px;
+  opacity: 0.4;
+}
+
 .VideoListItem:hover img.VideoListItem__menu-open {
   opacity: 0.4;
 }
 
 .VideoListItem:hover img.VideoListItem__menu-open:hover {
   opacity: 1;
+}
+
+.VideoListItem:hover img.VideoListItem__remove:hover {
+  opacity: 0.8;
 }
 
 .VideoListItem__menu {
@@ -2230,4 +2240,30 @@ img.VideoListItem__menu-open {
 
 .VideoListItem:hover .VideoThumbnail__watch-later {
   display: inline-block;
+}
+
+.HistoryView .VideoList {
+  width: 900px;
+}
+
+.HistoryView .VideoListItem {
+  border: 0;
+  padding: 5px;
+}
+
+.VideoListItem__remove-tooltip {
+  background: rgba(17, 17, 17, 0.7);
+  font-size: 13px;
+  color: #eeeeee;
+  border-radius: 4px;
+  padding: 9px 12px;
+  position: absolute;
+  top: 40px;
+  right: -68px;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+}
+
+.VideoListItem__remove-tooltip.show {
+  opacity: 1;
 }
