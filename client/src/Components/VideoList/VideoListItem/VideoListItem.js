@@ -59,7 +59,7 @@ class VideoListItem extends Component {
       );
     } else {
       itemInteractionButton = (
-        <img className="VideoListItem__menu-open" src={menuIcon} alt="" ref={node => this.menuIcon = node}
+        <img className="list-item__menu-open" src={menuIcon} alt="" ref={node => this.menuIcon = node}
               style={menuIconStyle}
               onClick={this.toggleOptionsMenu.bind(this)}
               onMouseEnter={() => this.setState({hoveringMenuIcon: true})}
@@ -68,7 +68,7 @@ class VideoListItem extends Component {
     }
 
     return (
-      <div className="VideoListItem">
+      <div className="VideoListItem list-item">
   
       {this.props.showTitle && 
         <ListItemTitle

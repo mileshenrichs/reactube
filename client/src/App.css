@@ -1384,6 +1384,17 @@ img.RelatedVideo__menu-open {
   background: #d3d3d3;
 }
 
+.inline-menu li.has-link {
+  padding: 0;
+}
+
+.inline-menu li.has-link a {
+  display: block;
+  padding: 16px 0 16px 16px;
+  color: #111111;
+  text-decoration: none;
+}
+
 .VideoInfo section.info-section {
   border-bottom: 1px solid #eeeeee;
   padding: 18px 0;
@@ -2199,7 +2210,7 @@ section.AddToMenu__create-form {
   margin-left: 8px;
 }
 
-img.VideoListItem__menu-open,
+img.list-item__menu-open,
 img.list-item__remove {
   width: 14px;
   position: absolute;
@@ -2215,19 +2226,19 @@ img.list-item__remove {
   opacity: 0.4;
 }
 
-.VideoListItem:hover img.VideoListItem__menu-open {
+.list-item:hover img.list-item__menu-open {
   opacity: 0.4;
 }
 
-.VideoListItem:hover img.VideoListItem__menu-open:hover {
+.list-item:hover img.list-item__menu-open:hover {
   opacity: 1;
 }
 
-.VideoListItem:hover img.list-item__remove:hover {
+.list-item:hover img.list-item__remove:hover {
   opacity: 0.8;
 }
 
-.VideoListItem__menu {
+.list-item__menu {
   width: 138px;
   position: absolute;
   top: 32px;
@@ -2278,12 +2289,12 @@ img.list-item__remove {
 
 .HistoryControls__search {
   width: 250px;
-  padding: 12px 0 12px 32px;
+  padding: 8px 0 12px 32px;
 }
 
 .HistoryControls__search-input-container {
   position: relative;
-  height: 58px;
+  height: 74px;
   margin-left: 16px;
 }
 
@@ -2299,12 +2310,12 @@ img.list-item__remove {
 }
 
 img.HistoryControls__search--search-icon {
-  top: 12px;
+  top: 8px;
   left: 4px;
 }
 
 img.HistoryControls__search--clear-icon {
-  top: 13px;
+  top: 9px;
   right: 124px;
   opacity: 0.5;
 }
@@ -2316,6 +2327,10 @@ img.HistoryControls__search--clear-icon {
 .HistoryControls section {
   padding: 16px;
   border-bottom: 1px solid #eeeeee;
+}
+
+.HistoryControls section:first-child {
+  padding-top: 0;
 }
 
 .RadioInput {
@@ -2369,4 +2384,57 @@ button.HistoryControls__clear-history {
 .SearchHistoryItem__time-since {
   font-size: 75%;
   color: rgba(136, 136, 136, 0.8);
+}
+
+.CommentHistory {
+  width: 900px;
+  float: left;
+  height: 1500px;
+}
+
+.CommentHistoryItem {
+  font-size: 87.25%;
+  margin-bottom: 34px;
+  position: relative;
+}
+
+.CommentHistoryItem span {
+  display: block;
+}
+
+.CommentHistoryItem a.item-info-link {
+  color: #111111;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.CommentHistoryItem a.info-video-title {
+  color: #065fd4;
+}
+
+.CommentHistoryItem a.item-info-link:hover {
+  color: #065fd4;
+}
+
+.CommentHistoryItem__time-since {
+  font-size: 13px;
+  color: rgba(136, 136, 136, 0.8);
+}
+
+.CommentHistoryItem__info,
+.CommentHistoryItem__comment-text {
+  margin-bottom: 10px;
+}
+
+.CommentHistoryItem .list-item__menu {
+  font-size: 13px;
+  top: 40px;
+  right: 26px;
+  width: 70px;
+}
+
+.CommentHistoryItem img.list-item__menu-open {
+  width: 13px;
+  top: 4px;
+  right: 70px;
 }

@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import VideoList from '../VideoList/VideoList';
 import HistoryControls from './HistoryControls/HistoryControls';
 import SearchHistory from './SearchHistory/SearchHistory';
+import CommentHistory from './CommentHistory/CommentHistory';
 
 class HistoryView extends Component {
 
@@ -32,6 +33,10 @@ class HistoryView extends Component {
 
             <Route exact path={this.props.match.path + '/search_history'} render={() => (
               <SearchHistory />
+            )} />
+
+            <Route exact path={this.props.match.path + '/comment_history'} render={() => (
+              <CommentHistory />
             )} />
           </Switch>
 
