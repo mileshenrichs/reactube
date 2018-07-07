@@ -27,7 +27,7 @@ const AccountMenu = () => {
         <MenuLink imgSrc={signOutIcon} text="Sign Out" />
       </section>
 
-      <section className="menu-section">
+      <section className="menu-section settings-link">
         <MenuLink imgSrc={settingsIcon} text="Settings" />
       </section>
     </div>

@@ -35,7 +35,8 @@ const LeftDrawer = (props) => {
         <section className="menu-section LeftDrawer__big-three">
           <MenuLink imgSrc={homeIcon} text="Home" />
           <MenuLink imgSrc={fireIcon} text="Trending" />
-          <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" url="/feed/subscriptions" />
+          <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" url="/feed/subscriptions" 
+                  active={window.location.href.includes('/feed/subscriptions')} />
         </section>
 
         <section className="menu-section LeftDrawer__library">
