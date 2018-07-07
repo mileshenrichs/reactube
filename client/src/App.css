@@ -2200,7 +2200,7 @@ section.AddToMenu__create-form {
 }
 
 img.VideoListItem__menu-open,
-img.VideoListItem__remove {
+img.list-item__remove {
   width: 14px;
   position: absolute;
   right: 10px;
@@ -2210,7 +2210,7 @@ img.VideoListItem__remove {
   cursor: pointer;
 }
 
-img.VideoListItem__remove {
+img.list-item__remove {
   width: 22px;
   opacity: 0.4;
 }
@@ -2223,7 +2223,7 @@ img.VideoListItem__remove {
   opacity: 1;
 }
 
-.VideoListItem:hover img.VideoListItem__remove:hover {
+.VideoListItem:hover img.list-item__remove:hover {
   opacity: 0.8;
 }
 
@@ -2254,7 +2254,7 @@ img.VideoListItem__remove {
   padding: 5px;
 }
 
-.VideoListItem__remove-tooltip {
+.list-item__remove-tooltip {
   background: rgba(17, 17, 17, 0.7);
   font-size: 13px;
   color: #eeeeee;
@@ -2267,7 +2267,7 @@ img.VideoListItem__remove {
   opacity: 0;
 }
 
-.VideoListItem__remove-tooltip.show {
+.list-item__remove-tooltip.show {
   opacity: 1;
 }
 
@@ -2339,4 +2339,34 @@ button.HistoryControls__clear-history {
   font-weight: 500;
   padding: 10px 16px;
   font-size: 14px;
+}
+
+.SearchHistory {
+  width: 900px;
+  float: left;
+  height: 1500px;
+}
+
+.SearchHistoryItem {
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.SearchHistoryItem a {
+  text-decoration: none;
+}
+
+.SearchHistoryItem span:not(.list-item__remove-tooltip) {
+  display: block;
+  font-weight: 500;
+}
+
+.SearchHistoryItem__query {
+  color: #0a0a0a;
+  margin-bottom: 4px;
+}
+
+.SearchHistoryItem__time-since {
+  font-size: 75%;
+  color: rgba(136, 136, 136, 0.8);
 }

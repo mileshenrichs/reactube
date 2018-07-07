@@ -51,10 +51,10 @@ class VideoListItem extends Component {
     if(this.props.includeRemoveButton) {
       itemInteractionButton = (
         <span>
-          <img className="VideoListItem__remove" src={removeIcon} alt="" onClick={() => this.props.removeVideoFromHistory(this.props.video.id)}
+          <img className="list-item__remove" src={removeIcon} alt="" onClick={() => this.props.removeVideoFromHistory(this.props.video.id)}
               onMouseEnter={() => this.setState({hoveringRemoveIcon: true})}
               onMouseLeave={() => this.setState({hoveringRemoveIcon: false})} />
-          <span className={'VideoListItem__remove-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>Remove from Watch history</span>
+          <span className={'list-item__remove-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>Remove from Watch history</span>
         </span>
       );
     } else {

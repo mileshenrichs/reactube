@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import * as actions from './actions/appActions';
 import LeftDrawer from './Components/LeftDrawer/LeftDrawer';
 import WatchView from './Components/WatchView/WatchView';
@@ -79,7 +79,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/watch" component={WatchView} />
           <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
-          <Route exact path="/feed/history" component={HistoryView} />
+          <Route path="/feed/history" component={HistoryView} />
         </Switch>
 
         <Notification 

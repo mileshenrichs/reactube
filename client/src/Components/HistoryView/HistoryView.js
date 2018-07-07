@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/historyActions';
+import { Route, Switch } from 'react-router-dom';
 import VideoList from '../VideoList/VideoList';
 import HistoryControls from './HistoryControls/HistoryControls';
+import SearchHistory from './SearchHistory/SearchHistory';
 
 class HistoryView extends Component {
 
@@ -17,13 +19,21 @@ class HistoryView extends Component {
     return (
       <div className="HistoryView page-container">
         <div className="feed-container">
-          <VideoList 
-            videos={this.props.watchedVideos} 
-            showTitles={false} 
-            includeRemoveButtons={true}
-            showTimeSince={false}
-            removeVideoFromHistory={this.props.removeVideoFromHistory}
-          />
+          <Switch>
+            <Route exact path={this.props.match.path + '/'} render={() => (
+              <VideoList 
+                videos={this.props.watchedVideos} 
+                showTitles={false} 
+                includeRemoveButtons={true}
+                showTimeSince={false}
+                removeVideoFromHistory={this.props.removeVideoFromHistory}
+              />
+            )} />
+
+            <Route exact path={this.props.match.path + '/search_history'} render={() => (
+              <SearchHistory />
+            )} />
+          </Switch>
 
           <HistoryControls />
         </div>
