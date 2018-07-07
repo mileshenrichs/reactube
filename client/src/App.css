@@ -121,6 +121,7 @@ body.drawer-open {
 .feed-container {
   width: 1284px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .App[class="App left-drawer-open"] .page-container {
@@ -1606,6 +1607,7 @@ img.RelatedVideo__menu-open {
   border: none;
   border-bottom: 1px solid #757575;
   font-size: 14px;
+  background: transparent;
 }
 
 .underlined-text-input:focus {
@@ -2244,6 +2246,7 @@ img.VideoListItem__remove {
 
 .HistoryView .VideoList {
   width: 900px;
+  float: left;
 }
 
 .HistoryView .VideoListItem {
@@ -2266,4 +2269,74 @@ img.VideoListItem__remove {
 
 .VideoListItem__remove-tooltip.show {
   opacity: 1;
+}
+
+.HistoryControls {
+  width: 384px;
+  float: right;
+}
+
+.HistoryControls__search {
+  width: 250px;
+  padding: 12px 0 12px 32px;
+}
+
+.HistoryControls__search-input-container {
+  position: relative;
+  height: 58px;
+  margin-left: 16px;
+}
+
+.HistoryControls__search-input-container img {
+  width: 16px;
+  position: absolute;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.HistoryControls__search-input-container.focused img {
+  opacity: 1;
+}
+
+img.HistoryControls__search--search-icon {
+  top: 12px;
+  left: 4px;
+}
+
+img.HistoryControls__search--clear-icon {
+  top: 13px;
+  right: 124px;
+  opacity: 0.5;
+}
+
+.HistoryControls__type-filter {
+  margin-bottom: 8px;
+}
+
+.HistoryControls section {
+  padding: 16px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.RadioInput {
+  cursor: pointer;
+}
+
+.RadioInput__text {
+  font-size: 87.5%;
+  font-weight: 500;
+}
+
+.RadioInput__radio-button {
+  width: 16px;
+  float: right;
+  position: relative;
+  top: 2px;
+}
+
+button.HistoryControls__clear-history {
+  color: rgba(17, 17, 17, 0.6);
+  font-weight: 500;
+  padding: 10px 16px;
+  font-size: 14px;
 }

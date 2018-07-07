@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/historyActions';
 import VideoList from '../VideoList/VideoList';
+import HistoryControls from './HistoryControls/HistoryControls';
 
 class HistoryView extends Component {
 
@@ -23,6 +24,8 @@ class HistoryView extends Component {
             showTimeSince={false}
             removeVideoFromHistory={this.props.removeVideoFromHistory}
           />
+
+          <HistoryControls />
         </div>
       </div>
     );
