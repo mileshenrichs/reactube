@@ -2138,12 +2138,12 @@ section.AddToMenu__create-form {
 }
 
 .VideoList .VideoListItem {
-  padding: 20px 0;
-  border-bottom: 1px solid #eeeeee;
+  border: 0;
+  padding: 5px;
 }
 
 .VideoList .VideoListItem:first-child {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 .VideoListItem__thumbnail-link {
@@ -2258,11 +2258,6 @@ img.list-item__remove {
 .HistoryView .VideoList {
   width: 900px;
   float: left;
-}
-
-.HistoryView .VideoListItem {
-  border: 0;
-  padding: 5px;
 }
 
 .list-item__remove-tooltip {

@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import promiseMiddleware from 'redux-promise-middleware';
 import rootReducer from './reducers';
 import thumbnail5 from './resources/example-thumb-5.jpg';
 import thumbnail6 from './resources/example-thumb-6.jpg';
@@ -13,7 +14,11 @@ import profilePic4 from './resources/example-profpic-4.jpg';
 const defaultState = {
   app: {
     showLeftDrawer: true,
-    slideDrawerOut: false
+    slideDrawerOut: false,
+    searchQuery: ''
+  },
+  search: {
+    results: []
   },
   watch: {
     watchingVideoId: 'aHlwbm9zaXM',
@@ -193,7 +198,7 @@ const defaultState = {
   }
 }
 
-let middleware = [thunk];
+let middleware = [thunk, promiseMiddleware()];
 if (process.env.NODE_ENV === 'development') {
   const { logger } = require('redux-logger');
   middleware.push(logger);

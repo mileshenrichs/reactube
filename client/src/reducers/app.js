@@ -20,6 +20,12 @@ function appReducer(state = {}, action) {
         showLeftDrawer: false,
         slideDrawerOut: false
       });
+
+    case 'SEARCH_PENDING':
+      return {
+        ...state,
+        searchQuery: action.meta.searchQuery
+      }
       
     default:
       return state;

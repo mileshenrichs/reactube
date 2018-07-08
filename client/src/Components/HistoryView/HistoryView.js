@@ -25,6 +25,7 @@ class HistoryView extends Component {
               <VideoList 
                 videos={this.props.watchedVideos} 
                 showTitles={false} 
+                showBorders={false}
                 includeRemoveButtons={true}
                 showTimeSince={false}
                 removeVideoFromHistory={this.props.removeVideoFromHistory}

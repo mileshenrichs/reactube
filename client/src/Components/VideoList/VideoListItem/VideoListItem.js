@@ -47,6 +47,15 @@ class VideoListItem extends Component {
       document.addEventListener('mousedown', this.handleClickWhileOptionsMenuOpen);
     }
 
+    // set styles according to showBorder prop
+    let listItemStyle = {};
+    if(this.props.showBorder) {
+      listItemStyle = {
+        padding: '20px 0',
+        borderBottom: '1px solid #eeeeee'
+      }
+    }
+
     let itemInteractionButton; // either menu icon or remove icon
     if(this.props.includeRemoveButton) {
       itemInteractionButton = (
@@ -68,7 +77,7 @@ class VideoListItem extends Component {
     }
 
     return (
-      <div className="VideoListItem list-item">
+      <div className="VideoListItem list-item" style={listItemStyle}>
   
       {this.props.showTitle && 
         <ListItemTitle
@@ -89,10 +98,11 @@ class VideoListItem extends Component {
           {itemInteractionButton}
 
             {this.state.showOptionsMenu && 
-              <ul className="VideoListItem__menu inline-menu" ref={node => this.optionsMenu = node}>
+              <ul className="list-item__menu inline-menu" ref={node => this.optionsMenu = node}>
                 <li>Add to Watch Later</li>
                 <li>Add to Playlist</li>
-                <li>Hide</li>
+                {window.location.href.includes('feed/subscriptions') && 
+                  <li>Hide</li>}
               </ul>}
 
           <Link to="/watch" style={{display: 'block', height: 138}}>
@@ -114,6 +124,7 @@ class VideoListItem extends Component {
 VideoListItem.propTypes = {
   video: PropTypes.object.isRequired,
   showTitle: PropTypes.bool.isRequired,
+  showBorder: PropTypes.bool.isRequired,
   showTimeSince: PropTypes.bool.isRequired,
   includeRemoveButton: PropTypes.bool,
   removeVideoFromHistory: PropTypes.func

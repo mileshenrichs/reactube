@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { connect } from 'react-redux';
@@ -9,27 +9,12 @@ import logo from '../../resources/logo.png';
 import menuIcon from '../../resources/header/hamburger-menu.png';
 import cameraIcon from '../../resources/header/create-video.png';
 
-class Header extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: ''
-    }
-  }
-
-  handleSearchTermChange(e) {
-    this.setState({
-      searchTerm: e.target.value
-    });
-  }
-
-  render() {
+const Header = (props) => {
     return (
       <div className="Header">
         <div className="Header__container">
           <div className="Header__left-dock">
-            <button className="icon-button Header__menu-icon" onClick={this.props.toggleLeftDrawer}>
+            <button className="icon-button Header__menu-icon" onClick={props.toggleLeftDrawer}>
               <img src={menuIcon} alt="" />
             </button>
 
@@ -39,22 +24,20 @@ class Header extends Component {
           </div>
 
           <SearchBar 
-            searchTerm={this.state.searchTerm}
-            handleSearchTermChange={this.handleSearchTermChange.bind(this)}
+            performSearch={props.performSearch}
           />
 
           <div className="Header__right-dock">
             <button className="Header__create-video">
               <img src={cameraIcon} alt="" />
             </button>
-            <span onClick={this.props.toggleAccountMenu}>
+            <span onClick={props.toggleAccountMenu}>
               <ProfileIcon width={32} />
             </span>
           </div>
         </div>
       </div>
     );
-  }
 }
 
 const mapStateToProps = (state) => {

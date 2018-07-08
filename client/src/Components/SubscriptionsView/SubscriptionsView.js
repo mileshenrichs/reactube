@@ -144,6 +144,7 @@ class SubscriptionsView extends Component {
           <VideoList 
             videos={videos} 
             showTitles={true} 
+            showBorders={true}
             showTimeSince={true}
           />
         </div>
