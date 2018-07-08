@@ -31,8 +31,15 @@ export function closeNotification() {
   }
 }
 
-export function performSearch(searchQuery, requiresRedirect) {
-  return (dispatch) => {
+export function updateSearchQuery(newQuery) {
+  return {
+    type: 'UPDATE_SEARCH_QUERY',
+    newQuery
+  }
+}
+
+export function performSearch(requiresRedirect) {
+  return (dispatch, getState) => {
     dispatch({
       type: 'SEARCH',
       payload: new Promise((resolve, reject) => {
@@ -158,11 +165,11 @@ export function performSearch(searchQuery, requiresRedirect) {
         }, 2000)
       }),
       meta: {
-        searchQuery
+        searchQuery: getState().app.searchQuery
       }
     }).then(res => {
       if(res.action.type === 'SEARCH_FULFILLED' && requiresRedirect) {
-        history.push('/results?search_query=' + encodeURIComponent(searchQuery).replace(/%20/g, "+"))
+        history.push('/results?search_query=' + encodeURIComponent(getState().app.searchQuery).replace(/%20/g, "+"))
       }
     })
   }

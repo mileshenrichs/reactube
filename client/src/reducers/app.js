@@ -21,6 +21,12 @@ function appReducer(state = {}, action) {
         slideDrawerOut: false
       });
 
+    case 'UPDATE_SEARCH_QUERY':
+      return {
+        ...state,
+        searchQuery: action.newQuery
+      }
+
     case 'SEARCH_PENDING':
       return {
         ...state,

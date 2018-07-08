@@ -1,30 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as appActions from '../../../actions/appActions'
 import searchIcon from '../../../resources/header/search.png';
 
-class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: ''
-    };
-  }
-
-  render() {
+const SearchBar = ({ searchQuery, performSearch, updateSearchQuery }) => {
     return (
       <div className="SearchBar">
         <form onSubmit={(e) => {
           e.preventDefault();
-          this.props.performSearch(this.state.searchTerm, true)
+          performSearch(true);
         }}>
           <input type="text" placeholder="Search" name="search_query"
-              value={this.state.searchTerm} onChange={(e) => this.setState({searchTerm: e.target.value})} />
+              value={searchQuery} onChange={(e) => updateSearchQuery(e.target.value)} />
           <button type="submit" className="SearchBar__search-button">
             <img src={searchIcon} alt="" />
           </button>
         </form>
       </div>
     );
-  }
 }
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+  const { searchQuery } = state.app;
+  return {searchQuery};
+}
+
+const { performSearch, updateSearchQuery } = appActions;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({performSearch, updateSearchQuery}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

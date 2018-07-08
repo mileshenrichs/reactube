@@ -15,7 +15,8 @@ class SearchResultsView extends Component {
     // if results haven't been fetched prior to page load, perform search
     if(!this.props.results.length) {
       const searchQuery = qs.parse(this.props.location.search.slice(1)).search_query;
-      this.props.performSearch(searchQuery, false);
+      this.props.updateSearchQuery(searchQuery);
+      this.props.performSearch(false);
     }
   }
 
@@ -39,9 +40,9 @@ const mapStateToProps = (state) => {
   return state.search;
 }
 
-const { performSearch } = appActions;
+const { performSearch, updateSearchQuery } = appActions;
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({performSearch}, dispatch);
+  return bindActionCreators({performSearch, updateSearchQuery}, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsView);
