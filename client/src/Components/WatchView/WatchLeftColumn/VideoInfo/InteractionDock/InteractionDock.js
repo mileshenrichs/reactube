@@ -3,18 +3,23 @@ import like from '../../../../../resources/like.png';
 import dislike from '../../../../../resources/dislike.png';
 import share from '../../../../../resources/share.png';
 import addToPlaylist from '../../../../../resources/add-to-playlist.png';
-import AddToMenu from './AddToMenu/AddToMenu';
+import AddToMenu from '../../../../AddToMenu/AddToMenu';
 
 class InteractionDock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showAddToMenu: false
+    }
+  }
 
-  // add event listener if AddToMenu is open
   componentWillReceiveProps(nextProps) {
-    if(nextProps.showAddToMenu) {
-      setTimeout(() => {
-        const addToMenu = document.querySelector('.AddToMenu');
-        
-        document.addEventListener('mousedown', this.handleClickWhenAddToMenuOpen.bind(this));
-      }, 1);
+    // close AddToMenu when prompted by redux store flag (occurs after new playlist has been created)
+    if(nextProps.closeAddToMenu && this.state.showAddToMenu) {
+      this.setState({
+        showAddToMenu: false
+      });
+      this.addToMenu = undefined;
     }
   }
 
@@ -23,16 +28,34 @@ class InteractionDock extends Component {
    * @param {MouseEvent} e click event on page
    */
   handleClickWhenAddToMenuOpen(e) {
-    if(this.props.showAddToMenu) {
-      const addToMenu = document.querySelector('.AddToMenu');
+    if(this.state.showAddToMenu) {
       const menuToggleButton = document.querySelector('.InteractionDock__button.add-to-playlist-button');
-      if(!addToMenu.contains(e.target) && !menuToggleButton.contains(e.target)) {
-        this.props.toggleAddToMenu();
+      if(!this.addToMenu.contains(e.target) && !menuToggleButton.contains(e.target)) {
+        this.toggleAddToMenu();
       }
     }
   }
 
+  toggleAddToMenu() {
+    this.setState((prevState) => ({
+      showAddToMenu: !prevState.showAddToMenu
+    }));
+  }
+
   render() {
+    // reset addToMenu instance variable when hidden
+    if(!this.state.showAddToMenu) {
+      this.addToMenu = undefined;
+    }
+
+    // add event listener if AddToMenu is open
+    if(this.state.showAddToMenu && !this.addToMenu) {
+      setTimeout(() => {
+        this.addToMenu = document.querySelector('.AddToMenu');
+        document.addEventListener('mousedown', this.handleClickWhenAddToMenuOpen.bind(this));
+      }, 100);
+    }
+
     return (
       <div className="InteractionDock">
         <div className="InteractionDock__like-dislike--container">
@@ -59,18 +82,12 @@ class InteractionDock extends Component {
           <span>Share</span>
         </button>
   
-        <button className="InteractionDock__button add-to-playlist-button" onClick={this.props.toggleAddToMenu}>
+        <button className="InteractionDock__button add-to-playlist-button" onClick={this.toggleAddToMenu.bind(this)}>
           <img src={addToPlaylist} alt="" />
         </button>
   
-        {this.props.showAddToMenu && 
-          <AddToMenu 
-            userPlaylistsContainingVideo={this.props.userPlaylistsContainingVideo}
-            addVideoToPlaylist={this.props.addVideoToPlaylist}   
-            removeVideoFromPlaylist={this.props.removeVideoFromPlaylist}
-            userPlaylists={this.props.userPlaylists}
-            createPlaylistAndAddVideo={this.props.createPlaylistAndAddVideo}
-          />}
+        {this.state.showAddToMenu && 
+          <AddToMenu />}
       </div>
     );
   }

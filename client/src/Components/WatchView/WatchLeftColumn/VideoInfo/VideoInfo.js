@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../../../actions/watchActions';
+import * as watchActions from '../../../../actions/watchActions';
+import * as playlistActions from '../../../../actions/playlistActions';
 import InteractionDock from './InteractionDock/InteractionDock';
 import ProfileIcon from '../../../ProfileIcon/ProfileIcon';
 import SubscribeButton from '../../../SubscribeButton/SubscribeButton';
@@ -32,13 +33,7 @@ const VideoInfo = (props) => {
           userRating={props.userRating}
           rateVideo={props.rateVideo} 
           toggleShareModal={props.toggleShareModal}
-          userPlaylistsContainingVideo={props.userPlaylistsContainingVideo}
-          addVideoToPlaylist={props.addVideoToPlaylist}
-          removeVideoFromPlaylist={props.removeVideoFromPlaylist}
-          userPlaylists={props.userPlaylists}
-          showAddToMenu={props.showAddToMenu}
-          toggleAddToMenu={props.toggleAddToMenu}
-          createPlaylistAndAddVideo={props.createPlaylistAndAddVideo}
+          closeAddToMenu={props.closeAddToMenu}
         />
       </section>
 
@@ -77,18 +72,18 @@ const VideoInfo = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const { userRating, userPlaylistsContainingVideo, showAddToMenu, showExpandedDescription } = state.watch;
-  const userPlaylists = state.user.playlists;
-  return {userRating, userPlaylistsContainingVideo, userPlaylists, showAddToMenu, showExpandedDescription};
+  const { userRating, showExpandedDescription, closeAddToMenu } = state.watch;
+  const { userPlaylistsContainingVideo } = state.playlists.addToMenu;
+  const { userPlaylists } = state.playlists;
+  return {userRating, userPlaylistsContainingVideo, userPlaylists, showExpandedDescription, closeAddToMenu};
 }
 
-const { rateVideo, toggleShareModal, addVideoToPlaylist, removeVideoFromPlaylist, createPlaylistAndAddVideo, 
-        toggleAddToMenu, toggleDescriptionExpansion } = actions;
+const { rateVideo, toggleShareModal, toggleDescriptionExpansion } = watchActions;
+const { addVideoToPlaylist, removeVideoFromPlaylist, createPlaylistAndAddVideo } = playlistActions;
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     rateVideo, toggleShareModal, addVideoToPlaylist, 
-    removeVideoFromPlaylist, createPlaylistAndAddVideo,
-    toggleAddToMenu, toggleDescriptionExpansion
+    removeVideoFromPlaylist, createPlaylistAndAddVideo, toggleDescriptionExpansion
   }, dispatch);
 }
 

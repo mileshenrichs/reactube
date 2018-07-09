@@ -25,8 +25,7 @@ const defaultState = {
     videoComments: [],
     userRating: undefined,
     showVideoShareModal: false,
-    userPlaylistsContainingVideo: [],
-    showAddToMenu: false,
+    closeAddToMenu: false,
     showExpandedDescription: false,
     sortCommentsByNewest: false,
     userCommentRatings: [
@@ -156,14 +155,8 @@ const defaultState = {
       }
     ]
   },
-  notification: {
-    showNotification: false,
-    notificationText: undefined
-  },
-  user: {
-    id: 1,
-    name: 'Snooz.',
-    playlists: [
+  playlists: {
+    userPlaylists: [
       {
         id: 'PLA432C0E49DA6710',
         name: 'Watch Later',
@@ -194,7 +187,18 @@ const defaultState = {
         name: 'MW3 Singles',
         privacy: 'PUBLIC'
       }
-    ]
+    ],
+    addToMenu: {
+      userPlaylistsContainingVideo: [],
+    }
+  },
+  notification: {
+    showNotification: false,
+    notificationText: undefined
+  },
+  user: {
+    id: 1,
+    name: 'Snooz.'
   }
 }
 

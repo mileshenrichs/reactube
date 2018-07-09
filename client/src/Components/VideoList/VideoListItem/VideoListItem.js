@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import VideoThumbnail from '../../VideoThumbnail/VideoThumbnail';
 import ListItemTitle from '../../ListItemTitle/ListItemTitle';
+import AddToMenu from '../../AddToMenu/AddToMenu';
 import menuIcon from '../../../resources/vertical-dots.png';
 import removeIcon from '../../../resources/remove.png';
 
@@ -104,6 +105,9 @@ class VideoListItem extends Component {
                 {window.location.href.includes('feed/subscriptions') && 
                   <li>Hide</li>}
               </ul>}
+
+            {this.state.showAddToMenu && 
+              <AddToMenu />}
 
           <Link to="/watch" style={{display: 'block', height: 138}}>
             <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>

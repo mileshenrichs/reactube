@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import CheckboxInput from '../../../../../CheckboxInput/CheckboxInput';
-import privateIcon from '../../../../../../resources/private.png';
-import unlistedIcon from '../../../../../../resources/unlisted.png';
-import publicIcon from '../../../../../../resources/public.png';
-import plus from '../../../../../../resources/create-new.png';
-import dropdownArrow from '../../../../../../resources/dropdown-arrow.png';
+import CheckboxInput from '../CheckboxInput/CheckboxInput';
+import privateIcon from '../../resources/private.png';
+import unlistedIcon from '../../resources/unlisted.png';
+import publicIcon from '../../resources/public.png';
+import plus from '../../resources/create-new.png';
+import dropdownArrow from '../../resources/dropdown-arrow.png';
 import PrivacyDropdown from './PrivacyDropdown/PrivacyDropdown';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions/playlistActions';
 
 class AddToMenu extends Component {
   constructor(props) {
@@ -137,4 +140,15 @@ class AddToMenu extends Component {
   }
 }
 
-export default AddToMenu;
+const mapStateToProps = (state) => {
+  const { userPlaylistsContainingVideo } = state.playlists.addToMenu;
+  const { userPlaylists } = state.playlists;
+  return {userPlaylistsContainingVideo, userPlaylists};
+}
+
+const { addVideoToPlaylist, removeVideoFromPlaylist, createPlaylistAndAddVideo } = actions;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({addVideoToPlaylist, removeVideoFromPlaylist, createPlaylistAndAddVideo}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddToMenu);

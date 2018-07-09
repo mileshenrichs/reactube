@@ -19,29 +19,16 @@ function watchReducer(state = {}, action) {
         showVideoShareModal: !state.showVideoShareModal
       }
 
-    case 'ADD_VIDEO_TO_PLAYLIST':
+    case 'CLOSE_ADD_TO_MENU':
       return {
         ...state,
-        userPlaylistsContainingVideo: state.userPlaylistsContainingVideo.concat([action.playlistId])
+        closeAddToMenu: true
       }
 
-    case 'REMOVE_VIDEO_FROM_PLAYLIST':
-      const playlistToRemoveFrom = state.userPlaylistsContainingVideo.find(playlistId => playlistId === action.playlistId);
-      if(playlistToRemoveFrom) {
-        const playlistIndex = state.userPlaylistsContainingVideo.indexOf(playlistToRemoveFrom);
-        return {
-          ...state,
-          userPlaylistsContainingVideo: state.userPlaylistsContainingVideo.slice(0, playlistIndex)
-                                              .concat(state.userPlaylistsContainingVideo.slice(playlistIndex + 1))
-        }
-      } else {
-        return state;
-      }
-
-    case 'TOGGLE_ADD_TO_MENU':
+    case 'RESET_CLOSE_ADD_TO_MENU':
       return {
         ...state,
-        showAddToMenu: !state.showAddToMenu
+        closeAddToMenu: false
       }
 
     case 'TOGGLE_DESCRIPTION_EXPANSION':
