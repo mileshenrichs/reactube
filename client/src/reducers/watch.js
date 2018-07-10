@@ -19,18 +19,6 @@ function watchReducer(state = {}, action) {
         showVideoShareModal: !state.showVideoShareModal
       }
 
-    case 'CLOSE_ADD_TO_MENU':
-      return {
-        ...state,
-        closeAddToMenu: true
-      }
-
-    case 'RESET_CLOSE_ADD_TO_MENU':
-      return {
-        ...state,
-        closeAddToMenu: false
-      }
-
     case 'TOGGLE_DESCRIPTION_EXPANSION':
       return {
         ...state,

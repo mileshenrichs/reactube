@@ -9,6 +9,7 @@ import PrivacyDropdown from './PrivacyDropdown/PrivacyDropdown';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/playlistActions';
+import PropTypes from 'prop-types';
 
 class AddToMenu extends Component {
   constructor(props) {
@@ -38,9 +39,9 @@ class AddToMenu extends Component {
     e.preventDefault(); // prevent propagation to checkbox
 
     if(!this.props.userPlaylistsContainingVideo.includes(playlistId)) {
-      this.props.addVideoToPlaylist('aHlwbm9zaXM', playlistId);
+      this.props.addVideoToPlaylist(this.props.videoId, playlistId);
     } else {
-      this.props.removeVideoFromPlaylist('aHlwbm9zaXM', playlistId);
+      this.props.removeVideoFromPlaylist(this.props.videoId, playlistId);
     }
   }
 
@@ -57,7 +58,7 @@ class AddToMenu extends Component {
         name: this.state.newPlaylistName,
         privacy: this.state.newPlaylistSelectedPrivacy.type
       }
-      this.props.createPlaylistAndAddVideo(newPlaylist, 'aHlwbm9zaXM');
+      this.props.createPlaylistAndAddVideo(newPlaylist, this.props.videoId);
     }
   }
 
@@ -139,6 +140,10 @@ class AddToMenu extends Component {
     );
   }
 }
+
+AddToMenu.propTypes = {
+  videoId: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state) => {
   const { userPlaylistsContainingVideo } = state.playlists.addToMenu;

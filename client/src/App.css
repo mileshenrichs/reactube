@@ -2165,6 +2165,12 @@ section.AddToMenu__create-form {
   position: relative;
 }
 
+.VideoListItem__details .AddToMenu {
+  top: 34px;
+  bottom: initial;
+  box-shadow: 0 6px 20px 3px rgba(0, 0, 0, 0.1);
+}
+
 .VideoListItem__details--title {
   font-size: 112.5%;
   color: #111111;

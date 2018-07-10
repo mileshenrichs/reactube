@@ -11,6 +11,7 @@ class SearchResultsView extends Component {
     // set page title and background color
     document.title = 'Subscriptions - Reactube';
     document.body.style.backgroundColor = '#fafafa';
+    window.scrollTo(0, 0);
 
     // if results haven't been fetched prior to page load, perform search
     if(!this.props.results.length) {

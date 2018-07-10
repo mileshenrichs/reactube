@@ -25,7 +25,6 @@ const defaultState = {
     videoComments: [],
     userRating: undefined,
     showVideoShareModal: false,
-    closeAddToMenu: false,
     showExpandedDescription: false,
     sortCommentsByNewest: false,
     userCommentRatings: [
@@ -158,7 +157,7 @@ const defaultState = {
   playlists: {
     userPlaylists: [
       {
-        id: 'PLA432C0E49DA6710',
+        id: 'PLAWL2C0E49DA6710',
         name: 'Watch Later',
         privacy: 'PRIVATE'
       },
@@ -190,6 +189,7 @@ const defaultState = {
     ],
     addToMenu: {
       userPlaylistsContainingVideo: [],
+      closeAddToMenu: false
     }
   },
   notification: {

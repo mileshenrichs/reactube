@@ -72,8 +72,8 @@ const VideoInfo = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const { userRating, showExpandedDescription, closeAddToMenu } = state.watch;
-  const { userPlaylistsContainingVideo } = state.playlists.addToMenu;
+  const { userRating, showExpandedDescription } = state.watch;
+  const { userPlaylistsContainingVideo, closeAddToMenu } = state.playlists.addToMenu;
   const { userPlaylists } = state.playlists;
   return {userRating, userPlaylistsContainingVideo, userPlaylists, showExpandedDescription, closeAddToMenu};
 }

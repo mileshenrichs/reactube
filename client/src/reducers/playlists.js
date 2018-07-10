@@ -1,6 +1,7 @@
 export default function playlistsReducer(state = {}, action) {
   switch(action.type) {
 
+    // todo: make an API call every time an Add To menu is opened to compute userPlaylistsContainingVideo
     case 'ADD_VIDEO_TO_PLAYLIST':
       return {
         ...state,
@@ -30,6 +31,24 @@ export default function playlistsReducer(state = {}, action) {
     return {
       ...state,
       userPlaylists: state.userPlaylists.concat([action.playlist])
+    }
+
+    case 'CLOSE_ADD_TO_MENU':
+      return {
+        ...state,
+        addToMenu: {
+          ...state.addToMenu,
+          closeAddToMenu: true
+        }
+      }
+
+    case 'RESET_CLOSE_ADD_TO_MENU':
+    return {
+      ...state,
+      addToMenu: {
+        ...state.addToMenu,
+        closeAddToMenu: false
+      }
     }
 
     default:

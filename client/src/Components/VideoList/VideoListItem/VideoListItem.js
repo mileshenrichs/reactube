@@ -6,6 +6,9 @@ import ListItemTitle from '../../ListItemTitle/ListItemTitle';
 import AddToMenu from '../../AddToMenu/AddToMenu';
 import menuIcon from '../../../resources/vertical-dots.png';
 import removeIcon from '../../../resources/remove.png';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../../actions/playlistActions';
 
 class VideoListItem extends Component {
   constructor(props) {
@@ -13,8 +16,19 @@ class VideoListItem extends Component {
     this.state = {
       showOptionsMenu: false,
       hoveringMenuIcon: false,
-      hoveringRemoveIcon: false
+      hoveringRemoveIcon: false,
+      showAddToMenu: false
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // close AddToMenu when prompted by redux store flag (occurs after new playlist has been created)
+    if(nextProps.closeAddToMenu && this.state.showAddToMenu) {
+      this.setState({
+        showAddToMenu: false
+      });
+      this.addToMenu = undefined;
+    }
   }
 
   toggleOptionsMenu(e) {
@@ -22,6 +36,12 @@ class VideoListItem extends Component {
     this.setState((prevState) => ({
       showOptionsMenu: !prevState.showOptionsMenu
     }));
+  }
+
+  addToWatchLater() {
+    const watchLaterPlaylistId = this.props.userPlaylists.find(playlist => playlist.id.substring(0, 5) === 'PLAWL').id;
+    this.props.addVideoToPlaylist(this.props.video.id, watchLaterPlaylistId);
+    this.setState({showOptionsMenu: false});
   }
 
   /**
@@ -32,6 +52,21 @@ class VideoListItem extends Component {
     if (this.optionsMenu && !this.optionsMenu.contains(e.target) && !this.menuIcon.contains(e.target)) {
       this.toggleOptionsMenu(e);
     }
+  }
+
+  handleClickWhileAddToMenuOpen = (e) => {
+    const addToMenu = document.querySelector('.AddToMenu');
+    if(addToMenu && !addToMenu.contains(e.target)) {
+      this.setState({
+        showAddToMenu: false
+      });
+    }
+  }
+
+  // clean up menu click listeners
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickWhileOptionsMenuOpen);
+    document.removeEventListener('mousedown', this.handleClickWhileAddToMenuOpen);
   }
 
   render() {
@@ -46,6 +81,9 @@ class VideoListItem extends Component {
 
     if(this.state.showOptionsMenu) {
       document.addEventListener('mousedown', this.handleClickWhileOptionsMenuOpen);
+    }
+    if(this.state.showAddToMenu) {
+      document.addEventListener('mousedown', this.handleClickWhileAddToMenuOpen);
     }
 
     // set styles according to showBorder prop
@@ -100,14 +138,14 @@ class VideoListItem extends Component {
 
             {this.state.showOptionsMenu && 
               <ul className="list-item__menu inline-menu" ref={node => this.optionsMenu = node}>
-                <li>Add to Watch Later</li>
-                <li>Add to Playlist</li>
+                <li onClick={this.addToWatchLater.bind(this)}>Add to Watch Later</li>
+                <li onClick={() => this.setState({showAddToMenu: true, showOptionsMenu: false})}>Add to Playlist</li>
                 {window.location.href.includes('feed/subscriptions') && 
                   <li>Hide</li>}
               </ul>}
 
             {this.state.showAddToMenu && 
-              <AddToMenu />}
+              <AddToMenu videoId={this.props.video.id} />}
 
           <Link to="/watch" style={{display: 'block', height: 138}}>
             <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>
@@ -134,4 +172,15 @@ VideoListItem.propTypes = {
   removeVideoFromHistory: PropTypes.func
 };
 
-export default VideoListItem;
+const mapStateToProps = (state) => {
+  const { closeAddToMenu } = state.playlists.addToMenu;
+  const { userPlaylists } = state.playlists;
+  return {closeAddToMenu, userPlaylists};
+}
+
+const { addVideoToPlaylist } = actions;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({addVideoToPlaylist}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(VideoListItem);
