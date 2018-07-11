@@ -10,6 +10,7 @@ import profilePic1 from './resources/example-profpic-1.jpg';
 import profilePic2 from './resources/example-profpic-2.jpg';
 import profilePic3 from './resources/example-profpic-3.jpg';
 import profilePic4 from './resources/example-profpic-4.jpg';
+import channelCover from './resources/example-channel-cover.jpg';
 
 const defaultState = {
   app: {
@@ -153,6 +154,10 @@ const defaultState = {
         watchedProgress: 0
       }
     ]
+  },
+  channel: {
+    coverImgSrc: channelCover,
+    username: undefined
   },
   playlists: {
     userPlaylists: [

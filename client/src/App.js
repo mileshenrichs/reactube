@@ -12,6 +12,7 @@ import Notification from './Components/Notification/Notification';
 import SubscriptionsView from './Components/SubscriptionsView/SubscriptionsView';
 import HistoryView from './Components/HistoryView/HistoryView';
 import SearchResultsView from './Components/SearchResultsView/SearchResultsView';
+import ChannelView from './Components/ChannelView/ChannelView';
 
 class App extends Component {
   constructor(props) {
@@ -79,6 +80,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/results" component={SearchResultsView} />
           <Route exact path="/watch" component={WatchView} />
+          <Route path="/user/:username" component={ChannelView} />
           <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
           <Route path="/feed/history" component={HistoryView} />
         </Switch>

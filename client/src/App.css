@@ -19,12 +19,16 @@ body {
   padding-bottom: 200px;
   font-size: 100%;
   color: #111111;
-  margin-top: 78px;
+  margin-top: 57px;
   background-color: #fafafa;
 }
 
 body.drawer-open {
   overflow: hidden;
+}
+
+.text-color-secondary {
+  color: rgba(17, 17, 17, 0.6);
 }
 
 .icon-button {
@@ -1326,7 +1330,6 @@ a .AccountMenu__header {
 .RelatedVideo__creator,
 .RelatedVideo__view-count {
   font-size: 81.25%;
-  color: rgba(17, 17, 17, 0.6);
   line-height: 18px;
 }
 
@@ -1411,7 +1414,6 @@ img.RelatedVideo__menu-open {
 
 .VideoInfo__view-count {
   font-size: 100%;
-  color: rgba(17, 17, 17, 0.6);
 }
 
 .InteractionDock {
@@ -1957,7 +1959,6 @@ section.AddToMenu__create-form {
   font-weight: 500;
   text-transform: uppercase;
   font-size: 14px;
-  color: rgba(17, 17, 17, 0.6);
 }
 
 .VideoComments__sort-menu {
@@ -2352,7 +2353,6 @@ img.HistoryControls__search--clear-icon {
 }
 
 button.HistoryControls__clear-history {
-  color: rgba(17, 17, 17, 0.6);
   font-weight: 500;
   padding: 10px 16px;
   font-size: 14px;
@@ -2439,4 +2439,79 @@ button.HistoryControls__clear-history {
   width: 13px;
   top: 4px;
   right: 70px;
+}
+
+.ChannelCover__cover-image {
+  width: 100%;
+}
+
+.ChannelView__header {
+  width: 100%;
+  background: #fafafa;
+  padding-top: 16px;
+}
+
+.ChannelHeaderInfo {
+  width: 1284px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.ChannelHeaderInfo .ProfileIcon,
+.ChannelHeaderInfo .ChannelHeaderInfo__name-and-subs {
+  float: left;
+}
+
+.ChannelHeaderInfo .SubscribeButton {
+  float: right;
+  position: relative;
+  top: 20px;
+  margin-right: 6px;
+}
+
+.ChannelHeaderInfo .ProfileIcon {
+  margin-right: 24px;
+}
+
+.ChannelHeaderInfo__name-and-subs {
+  position: relative;
+  top: 12px;
+}
+
+.ChannelHeaderInfo__name {
+  font-size: 150%;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+.ChannelHeaderInfo__subs-count {
+  font-size: 87.5%;
+}
+
+.ChannelNav {
+  width: 100%;
+  background: #fafafa;
+  position: sticky;
+  top: 56px;
+  z-index: 4;
+}
+
+.ChannelNav__container {
+  width: 1284px;
+  margin: 0 auto;
+}
+
+.ChannelNavLink {
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 32px;
+  font-size: 87.5%;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.ChannelNavLink.current {
+  border-bottom: 3px solid #6e6e6e;
+  color: #111111;
 }

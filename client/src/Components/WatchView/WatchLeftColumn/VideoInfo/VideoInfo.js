@@ -27,7 +27,7 @@ const VideoInfo = (props) => {
     <div className="VideoInfo">
       <section className="info-section">
         <h1 className="VideoInfo__video-title">Big Buck Bunny (Season 1, Episode 1)</h1>
-        <span className="VideoInfo__view-count">18,901 views</span>
+        <span className="VideoInfo__view-count text-color-secondary">18,901 views</span>
 
         <InteractionDock 
           userRating={props.userRating}

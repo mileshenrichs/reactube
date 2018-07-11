@@ -56,8 +56,8 @@ class RelatedVideo extends Component {
           <div className="RelatedVideo__details">
             <span className="RelatedVideo__title">{this.props.video.title}</span>
   
-            <span className="RelatedVideo__creator">{this.props.video.creator}</span>
-            <span className="RelatedVideo__view-count">{this.props.video.views} views</span>
+            <span className="RelatedVideo__creator text-color-secondary">{this.props.video.creator}</span>
+            <span className="RelatedVideo__view-count text-color-secondary">{this.props.video.views} views</span>
           </div>
   
           <img className="RelatedVideo__menu-open" src={menuIcon} alt="" ref={node => this.menuIcon = node}

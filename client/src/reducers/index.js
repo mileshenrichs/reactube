@@ -6,7 +6,8 @@ import user from './user';
 import app from './app';
 import search from './search';
 import playlists from './playlists';
+import channel from './channel';
 
-const rootReducer = combineReducers({app, search, watch, history, playlists, notification, user});
+const rootReducer = combineReducers({app, search, watch, history, channel, playlists, notification, user});
 
 export default rootReducer;

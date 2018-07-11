@@ -50,7 +50,7 @@ class VideoComments extends Component {
             <button className="VideoComments__sort-button transparent-button" 
                 onClick={this.toggleSortMenu.bind(this)} ref={node => this.sortByButton = node}>
               <img src={sortIcon} alt="" />
-              <span>Sort By</span>
+              <span className="text-color-secondary">Sort By</span>
             </button>
             {this.state.showSortMenu && 
               <ul className="VideoComments__sort-menu inline-menu" ref={node => this.sortMenu = node}>
