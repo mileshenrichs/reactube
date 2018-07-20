@@ -143,6 +143,7 @@ class SubscriptionsView extends Component {
         <div className="feed-container">
           <VideoList 
             videos={videos} 
+            displayAs="list"
             showTitles={true} 
             showBorders={true}
             showTimeSince={true}

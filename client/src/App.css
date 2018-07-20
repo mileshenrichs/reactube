@@ -2263,11 +2263,6 @@ img.list-item__remove {
   display: inline-block;
 }
 
-.HistoryView .VideoList {
-  width: 900px;
-  float: left;
-}
-
 .list-item__remove-tooltip {
   background: rgba(17, 17, 17, 0.7);
   font-size: 13px;
@@ -2283,6 +2278,56 @@ img.list-item__remove {
 
 .list-item__remove-tooltip.show {
   opacity: 1;
+}
+
+.VideoList.as-grid .list-item {
+  width: 210px;
+  padding: 0;
+  float: left;
+}
+
+.VideoList.as-grid .list-item:not(:last-child) {
+  margin: 0 4px 18px 0;
+}
+
+.VideoList.as-grid .VideoListItem__thumbnail-link,
+.VideoList.as-grid .VideoListItem__details {
+  float: none;
+}
+
+.VideoList.as-grid .VideoListItem__thumbnail-link {
+  width: auto;
+  margin: 0 0 4px 0;
+}
+
+.VideoList.as-grid .VideoListItem__details {
+  width: auto;
+}
+
+.VideoList.as-grid .VideoThumbnail {
+  margin-right: 0;
+}
+
+.VideoList.as-grid .VideoListItem__details--title {
+  font-size: 87.5%;
+  font-weight: 500;
+  max-height: 38px;
+  overflow: hidden;
+  padding-right: 25px;
+}
+
+.VideoList.as-grid .VideoListItem__subtitle {
+  margin: 2px 0 0 0;
+}
+
+.VideoList.as-grid img.list-item__menu-open {
+  width: 13px;
+  right: 7px;
+}
+
+.HistoryView .VideoList {
+  width: 900px;
+  float: left;
 }
 
 .HistoryControls {
@@ -2514,4 +2559,14 @@ button.HistoryControls__clear-history {
 .ChannelNavLink.current {
   border-bottom: 3px solid #6e6e6e;
   color: #111111;
+}
+
+.ChannelView__content {
+  width: 1284px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.ChannelView .VideoList {
+  margin-top: 30px;
 }

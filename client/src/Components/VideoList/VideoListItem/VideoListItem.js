@@ -126,7 +126,7 @@ class VideoListItem extends Component {
   
         <Link className="VideoListItem__thumbnail-link" to="/watch">
           <VideoThumbnail
-            width={246}
+            width={this.props.displayAs === 'list' ? 246 : 210}
             thumbnailSrc={this.props.video.thumbnailSrc}
             videoLength={this.props.video.videoLength}
             watchedProgress={this.props.video.watchedProgress}
@@ -147,14 +147,16 @@ class VideoListItem extends Component {
             {this.state.showAddToMenu && 
               <AddToMenu videoId={this.props.video.id} />}
 
-          <Link to="/watch" style={{display: 'block', height: 138}}>
+          <Link to="/watch" style={{display: 'block', height: this.props.displayAs === 'list' ? 138 : 62}}>
             <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>
             <div className="VideoListItem__subtitle">
-              <span className="subtitle-item creator-name">{this.props.video.creator.name}</span>
+              {this.props.displayAs === 'list' && 
+                <span className="subtitle-item creator-name">{this.props.video.creator.name}</span>}
               <span className="subtitle-item view-count">{this.props.video.views} views</span>
               {this.props.showTimeSince && <span className="subtitle-item time-since">{this.props.video.timeSince} ago</span>}
             </div>
-            <p className="VideoListItem__description">{this.props.video.description}</p>
+            {this.props.displayAs === 'list' && 
+              <p className="VideoListItem__description">{this.props.video.description}</p>}
           </Link>
         </div>
         <div className="clearfix"></div>
@@ -165,6 +167,7 @@ class VideoListItem extends Component {
 
 VideoListItem.propTypes = {
   video: PropTypes.object.isRequired,
+  displayAs: PropTypes.string.isRequired,
   showTitle: PropTypes.bool.isRequired,
   showBorder: PropTypes.bool.isRequired,
   showTimeSince: PropTypes.bool.isRequired,

@@ -24,6 +24,7 @@ class HistoryView extends Component {
             <Route exact path={this.props.match.path + '/'} render={() => (
               <VideoList 
                 videos={this.props.watchedVideos} 
+                displayAs="list"
                 showTitles={false} 
                 showBorders={false}
                 includeRemoveButtons={true}

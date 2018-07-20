@@ -27,6 +27,7 @@ class SearchResultsView extends Component {
         <div className="feed-container">
           <VideoList 
             videos={this.props.results} 
+            displayAs="list"
             showTitles={false} 
             showBorders={false}
             showTimeSince={true}
