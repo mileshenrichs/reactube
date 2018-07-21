@@ -124,7 +124,7 @@ class VideoListItem extends Component {
           text={this.props.video.creator.name}  
         />}
   
-        <Link className="VideoListItem__thumbnail-link" to="/watch">
+        <Link className="list-item__thumbnail-link" to="/watch">
           <VideoThumbnail
             width={this.props.displayAs === 'list' ? 246 : 210}
             thumbnailSrc={this.props.video.thumbnailSrc}

@@ -16,6 +16,14 @@ import profilePic1 from '../../resources/example-profpic-1.jpg';
 import profilePic2 from '../../resources/example-profpic-2.jpg';
 import profilePic3 from '../../resources/example-profpic-3.jpg';
 import profilePic4 from '../../resources/example-profpic-4.jpg';
+import thumbnail9 from '../../resources/example-thumb-9.jpg';
+import thumbnail10 from '../../resources/example-thumb-10.jpg';
+import thumbnail11 from '../../resources/example-thumb-11.jpg';
+import thumbnail12 from '../../resources/example-thumb-12.jpg';
+import thumbnail13 from '../../resources/example-thumb-13.jpg';
+import thumbnail14 from '../../resources/example-thumb-14.jpg';
+import thumbnail15 from '../../resources/example-thumb-15.jpg';
+import thumbnail16 from '../../resources/example-thumb-16.jpg';
 
 class ChannelView extends Component {
   constructor(props) {
@@ -176,6 +184,57 @@ class ChannelView extends Component {
       }
     ];
 
+    const playlists = [
+      {
+        id: 'PLA6F2C0E49DA6710',
+        name: 'Fortnite Battle Royale',
+        videoCount: 262,
+        thumbnailSrc: thumbnail9
+      },
+      {
+        id: 'PLA6F2C0E49DA3710',
+        name: 'Interviews and Vlogs',
+        videoCount: 18,
+        thumbnailSrc: thumbnail10
+      },
+      {
+        id: 'PLA6F2C0A49DA6710',
+        name: 'HALO',
+        videoCount: 115,
+        thumbnailSrc: thumbnail11
+      },
+      {
+        id: 'PLA6F2C0G49DA6710',
+        name: 'Stream Playlist',
+        videoCount: 228,
+        thumbnailSrc: thumbnail12
+      },
+      {
+        id: 'PLA6F2C0E59DA6710',
+        name: 'Realm Royale',
+        videoCount: 3,
+        thumbnailSrc: thumbnail13
+      },
+      {
+        id: 'PLA6F2C0E49BA6710',
+        name: 'Ninja Las Vegas 2018',
+        videoCount: 9,
+        thumbnailSrc: thumbnail14
+      },
+      {
+        id: 'PLA6F2C0E99DA6710',
+        name: 'Ninjas Freestyle beats',
+        videoCount: 5,
+        thumbnailSrc: thumbnail15
+      },
+      {
+        id: 'PLA6F2C0E49DA3610',
+        name: 'PUBG',
+        videoCount: 55,
+        thumbnailSrc: thumbnail16
+      }
+    ];
+
     const currentPageName = this.getCurrentPageName();
 
     // listen for clicks if sort menu open (to close if clicked outside)
@@ -248,6 +307,13 @@ class ChannelView extends Component {
                   videos={videos} 
                   displayAs="grid"
                   showTimeSince
+                />
+              )} />
+
+              <Route exact path={this.props.match.path + '/playlists'} render={() => (
+                <VideoList 
+                  playlists={playlists} 
+                  displayAs="grid"
                 />
               )} />
             </Switch>

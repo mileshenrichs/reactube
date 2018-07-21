@@ -1,29 +1,45 @@
 import React from 'react';
 import VideoListItem from './VideoListItem/VideoListItem';
 import PropTypes from 'prop-types';
+import PlaylistItem from './PlaylistItem/PlaylistItem';
 
-const VideoList = ({ videos, displayAs, showTitles, showBorders, includeRemoveButtons, showTimeSince, removeVideoFromHistory }) => {
+const VideoList = ({ videos, playlists, displayAs, showTitles, showBorders, includeRemoveButtons, showTimeSince, removeVideoFromHistory }) => {
+
+  // distinguish between list of videos vs list of playlists
+  let listItems;
+  if(videos) {
+    listItems = videos.map(video => (
+      <VideoListItem 
+        key={video.id}
+        video={video} 
+        displayAs={displayAs}
+        showTitle={showTitles} 
+        showBorder={showBorders}
+        includeRemoveButton={includeRemoveButtons}
+        showTimeSince={showTimeSince}
+        removeVideoFromHistory={removeVideoFromHistory}
+      />
+    ));
+  } else {
+    listItems = playlists.map(playlist => (
+      <PlaylistItem 
+        key={playlist.id}
+        playlist={playlist}
+      />
+    ));
+  }
+
   return (
     <div className={'VideoList' + (displayAs === 'list' ? ' as-list' : ' as-grid')}>
-      {videos.map(video => (
-        <VideoListItem 
-          key={video.id}
-          video={video} 
-          displayAs={displayAs}
-          showTitle={showTitles} 
-          showBorder={showBorders}
-          includeRemoveButton={includeRemoveButtons}
-          showTimeSince={showTimeSince}
-          removeVideoFromHistory={removeVideoFromHistory}
-        />
-      ))}
+      {listItems}
       <div className="clearfix"></div>
     </div>
   );
 }
 
 VideoList.propTypes = {
-  videos: PropTypes.array.isRequired,
+  videos: PropTypes.array,
+  playlists: PropTypes.array,
   displayAs: PropTypes.string.isRequired,
   showTitles: PropTypes.bool,
   showBorders: PropTypes.bool,

@@ -361,6 +361,10 @@ section.LeftDrawer__footer a {
   background: #ffffff;
 }
 
+body.hide-header-shadow .Header {
+  box-shadow: none;
+}
+
 .Header__container {
   width: 97%;
   margin: 0 auto;
@@ -1311,6 +1315,65 @@ a .AccountMenu__header {
   background: #e62117;
 }
 
+.VideoThumbnail__playlist-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 4px);
+  text-align: center;
+}
+
+.VideoThumbnail__playlist-overlay--full-overlay {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  padding-top: 47px;
+  z-index: 1;
+  position: relative;
+}
+
+.VideoThumbnail__playlist-overlay span {
+  color: #d0d0d0;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 81.25%;
+}
+
+.VideoThumbnail__playlist-overlay--full-overlay span img {
+  width: 18px;
+  opacity: 0.9;
+  margin-right: 3px;
+  position: relative;
+  top: 4px;
+}
+
+.VideoThumbnail:hover .VideoThumbnail__playlist-overlay--full-overlay {
+  opacity: 1;
+}
+
+.VideoThumbnail__playlist-overlay--video-count {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  padding-top: 36px;
+}
+
+.VideoThumbnail__playlist-overlay--video-count span {
+  display: block;
+  font-weight: 400;
+  font-size: 100%;
+  margin-bottom: 6px;
+}
+
+.VideoThumbnail__playlist-overlay--video-count img {
+  width: 18px;
+  opacity: 0.9;
+}
+
 .RelatedVideo:hover .VideoThumbnail__watch-later {
   display: inline-block;
 }
@@ -2156,7 +2219,7 @@ section.AddToMenu__create-form {
   padding-top: 0 !important;
 }
 
-.VideoListItem__thumbnail-link {
+.list-item__thumbnail-link {
   display: block;
   width: 246px; 
   overflow: hidden;
@@ -2298,12 +2361,12 @@ img.list-item__remove {
   margin: 0 4px 18px 0;
 }
 
-.VideoList.as-grid .VideoListItem__thumbnail-link,
+.VideoList.as-grid .list-item__thumbnail-link,
 .VideoList.as-grid .VideoListItem__details {
   float: none;
 }
 
-.VideoList.as-grid .VideoListItem__thumbnail-link {
+.VideoList.as-grid .list-item__thumbnail-link {
   width: auto;
   margin: 0 0 4px 0;
 }
@@ -2608,4 +2671,15 @@ img.HistoryControls__search--clear-icon {
 
 .ChannelView.on-playlists .VideoList {
   margin-top: 32px;
+}
+
+.VideoList.as-grid .list-item.PlaylistItem {
+  margin-bottom: 36px;
+}
+
+.PlaylistItem__name {
+  display: inline-block;
+  font-size: 87.5%;
+  font-weight: 500;
+  color: #0a0a0a;
 }
