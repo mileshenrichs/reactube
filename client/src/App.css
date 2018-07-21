@@ -2683,3 +2683,18 @@ img.HistoryControls__search--clear-icon {
   font-weight: 500;
   color: #0a0a0a;
 }
+
+.ChannelDescription {
+  margin-top: 30px;
+}
+
+.ChannelDescription h2 {
+  font-weight: 400;
+  font-size: 100%;
+  margin-bottom: 26px;
+}
+
+.ChannelDescription p {
+  font-size: 87.5%;
+  line-height: 21px;
+}

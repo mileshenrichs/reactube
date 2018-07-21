@@ -24,6 +24,7 @@ import thumbnail13 from '../../resources/example-thumb-13.jpg';
 import thumbnail14 from '../../resources/example-thumb-14.jpg';
 import thumbnail15 from '../../resources/example-thumb-15.jpg';
 import thumbnail16 from '../../resources/example-thumb-16.jpg';
+import ChannelDescription from './ChannelDescription/ChannelDescription';
 
 class ChannelView extends Component {
   constructor(props) {
@@ -275,7 +276,7 @@ class ChannelView extends Component {
       );
     } else {
       return (
-        <div className={'ChannelView page-container' + (currentPageName === 'playlists' ? ' on-playlists' : '')} style={{height: 10000}}>
+        <div className={'ChannelView page-container' + (currentPageName === 'playlists' ? ' on-playlists' : '')}>
           <ChannelCover coverImg={this.props.coverImgSrc} />
     
           <div className="ChannelView__header">
@@ -315,6 +316,10 @@ class ChannelView extends Component {
                   playlists={playlists} 
                   displayAs="grid"
                 />
+              )} />
+
+              <Route exact path={this.props.match.path + '/about'} render={() => (
+                <ChannelDescription description={this.props.channelDescription} />
               )} />
             </Switch>
           </div>
