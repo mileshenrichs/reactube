@@ -142,11 +142,11 @@ class SubscriptionsView extends Component {
       <div className="SubscriptionsView page-container">
         <div className="feed-container">
           <VideoList 
-            videos={videos} 
+            videos={videos}
             displayAs="list"
-            showTitles={true} 
-            showBorders={true}
-            showTimeSince={true}
+            showTitles
+            showBorders
+            showTimeSince
           />
         </div>
       </div>

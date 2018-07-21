@@ -21,11 +21,11 @@ class HistoryControls extends Component {
     let clearHistoryButton;
     if(this.props.location.pathname === '/feed/history') {
       clearHistoryButton = (
-        <button className="HistoryControls__clear-history transparent-button text-color-secondary">Clear all watch history</button>
+        <button className="transparent-button text-button">Clear all watch history</button>
       );
     } else if(this.props.location.pathname.includes('search_history')) {
       clearHistoryButton = (
-        <button className="HistoryControls__clear-history transparent-button text-color-secondary">Clear all search history</button>
+        <button className="transparent-button text-button">Clear all search history</button>
       );
     }
 

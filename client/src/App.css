@@ -31,6 +31,20 @@ body.drawer-open {
   color: rgba(17, 17, 17, 0.6);
 }
 
+.transparent-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.text-button {
+  font-weight: 500;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: rgba(17, 17, 17, 0.6);
+}
+
 .icon-button {
   border: none;
   background: transparent;
@@ -121,6 +135,7 @@ body.drawer-open {
 .page-container {
   width: 100%;
   float: right;
+  padding-top: 26px;
 }
 
 .feed-container {
@@ -1925,13 +1940,6 @@ section.AddToMenu__create-form {
   margin-left: 62px;
 }
 
-.transparent-button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
 .VideoComments {
   margin-top: 18px;
 }
@@ -1944,18 +1952,18 @@ section.AddToMenu__create-form {
   margin-right: 30px;
 }
 
-.VideoComments__sort-control {
+.sort-control {
   position: relative;
 }
 
-.VideoComments__header button img {
+.sort-control button img {
   width: 18px;
   position: relative;
   top: 3px;
   margin-right: 10px;
 }
 
-.VideoComments__header button span {
+.sort-control button span {
   font-weight: 500;
   text-transform: uppercase;
   font-size: 14px;
@@ -2397,12 +2405,6 @@ img.HistoryControls__search--clear-icon {
   top: 2px;
 }
 
-button.HistoryControls__clear-history {
-  font-weight: 500;
-  padding: 10px 16px;
-  font-size: 14px;
-}
-
 .SearchHistory {
   width: 900px;
   float: left;
@@ -2490,6 +2492,10 @@ button.HistoryControls__clear-history {
   width: 100%;
 }
 
+.ChannelView {
+  padding-top: 0;
+}
+
 .ChannelView__header {
   width: 100%;
   background: #fafafa;
@@ -2537,7 +2543,7 @@ button.HistoryControls__clear-history {
   width: 100%;
   background: #fafafa;
   position: sticky;
-  top: 56px;
+  top: 55px;
   z-index: 4;
 }
 
@@ -2567,6 +2573,39 @@ button.HistoryControls__clear-history {
   overflow: hidden;
 }
 
+.ChannelView__content--header {
+  padding-top: 20px;
+}
+
+.ChannelView__content--header h2 {
+  font-size: 100%;
+  font-weight: 400;
+  display: inline;
+  margin-right: 26px;
+}
+
+.ChannelView.on-playlists .ChannelView__content--header h2 {
+  position: relative;
+  top: 8px;
+}
+
+.ChannelView__content--header .sort-control {
+  float: right;
+  position: relative;
+  top: 4px;
+}
+
+.ChannelView__sort-menu {
+  width: 160px;
+  position: absolute;
+  top: 30px;
+  right: 3px;
+}
+
 .ChannelView .VideoList {
-  margin-top: 30px;
+  margin-top: 14px;
+}
+
+.ChannelView.on-playlists .VideoList {
+  margin-top: 32px;
 }

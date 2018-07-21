@@ -28,9 +28,7 @@ class SearchResultsView extends Component {
           <VideoList 
             videos={this.props.results} 
             displayAs="list"
-            showTitles={false} 
-            showBorders={false}
-            showTimeSince={true}
+            showTimeSince
           />
         </div>
       </div>

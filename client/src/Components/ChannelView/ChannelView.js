@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/channelActions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import ChannelCover from './ChannelCover/ChannelCover';
 import ChannelHeaderInfo from './ChannelHeaderInfo/ChannelHeaderInfo';
 import ChannelNav from './ChannelNav/ChannelNav';
 import VideoList from '../VideoList/VideoList';
+import sortIcon from '../../resources/sort.png';
 import thumbnail5 from '../../resources/example-thumb-5.jpg';
 import thumbnail6 from '../../resources/example-thumb-6.jpg';
 import thumbnail7 from '../../resources/example-thumb-7.jpg';
@@ -17,6 +18,13 @@ import profilePic3 from '../../resources/example-profpic-3.jpg';
 import profilePic4 from '../../resources/example-profpic-4.jpg';
 
 class ChannelView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showSortMenu: false
+    };
+  }
+
   componentDidMount() {
     // set page title and background color
     document.title = 'Ninja - Reactube';
@@ -24,6 +32,22 @@ class ChannelView extends Component {
 
     // pass current channel info to redux store
     this.props.updateChannelUsername(this.props.match.params.username);
+  }
+
+  toggleSortMenu() {
+    this.setState((prevState) => ({
+      showSortMenu: !prevState.showSortMenu
+    }));
+  }
+
+  handleClickWhileSortMenuOpen(e) {
+    if(this.state.showSortMenu) {
+      if(!this.sortMenu.contains(e.target) && !this.sortByButton.contains(e.target)) {
+        this.setState({
+          showSortMenu: false
+        });
+      }
+    }
   }
 
   getCurrentPageName() {
@@ -152,29 +176,81 @@ class ChannelView extends Component {
       }
     ];
 
+    const currentPageName = this.getCurrentPageName();
+
+    // listen for clicks if sort menu open (to close if clicked outside)
+    if(this.state.showSortMenu) {
+      document.addEventListener('mousedown', this.handleClickWhileSortMenuOpen.bind(this));
+    }
+
+    let contentHeaderText;
+    if(currentPageName === 'videos') {
+      contentHeaderText = 'Uploads';
+    } else if(currentPageName === 'playlists') {
+      contentHeaderText = 'Created Playlists';
+    }
+
+    let sortMenuUl;
+    if(currentPageName === 'videos') {
+      sortMenuUl = (
+        <ul className="ChannelView__sort-menu inline-menu" ref={node => this.sortMenu = node}>
+          <li onClick={() => this.props.changeVideoSortOrder('POPULAR')}>Most popular</li>
+          <li onClick={() => this.props.changeVideoSortOrder('OLDEST')}>Date added (oldest)</li>
+          <li onClick={() => this.props.changeVideoSortOrder('NEWEST')}>Date added (newest)</li>
+        </ul>
+      );
+    } else {
+      sortMenuUl = (
+        <ul className="ChannelView__sort-menu inline-menu" ref={node => this.sortMenu = node}>
+          <li onClick={() => this.props.changePlaylistSortOrder('OLDEST')}>Date created (oldest)</li>
+          <li onClick={() => this.props.changePlaylistSortOrder('NEWEST')}>Date created (newest)</li>
+          <li onClick={() => this.props.changePlaylistSortOrder('LAST_ADDED')}>Last video added</li>
+        </ul>
+      );
+    }
+
     // if not on one of specified channel pages, redirect by default to /videos
-    if(!['videos', 'playlists', 'about'].includes(this.getCurrentPageName())) {
+    if(!['videos', 'playlists', 'about'].includes(currentPageName)) {
       return (
         <Redirect to={this.props.location.pathname + '/videos'} />
       );
     } else {
       return (
-        <div className="ChannelView page-container" style={{height: 10000}}>
+        <div className={'ChannelView page-container' + (currentPageName === 'playlists' ? ' on-playlists' : '')} style={{height: 10000}}>
           <ChannelCover coverImg={this.props.coverImgSrc} />
     
           <div className="ChannelView__header">
             <ChannelHeaderInfo />
           </div>
           <ChannelNav
-            currentPage={this.getCurrentPageName()}  
+            currentPage={currentPageName}  
           />
   
           <div className="ChannelView__content">
-            <VideoList 
-              videos={videos} 
-              displayAs="grid"
-              showTimeSince
-            />
+            {currentPageName !== 'about' && 
+              <div className={'ChannelView__content--header'}>
+                <h2>{contentHeaderText}</h2>
+                {currentPageName === 'videos' && 
+                  <button className="transparent-button text-button">Play all</button>}
+                <span className="sort-control">
+                  <button className="sort-button transparent-button" 
+                      onClick={this.toggleSortMenu.bind(this)} ref={node => this.sortByButton = node}>
+                    <img src={sortIcon} alt="" />
+                    <span className="text-color-secondary">Sort By</span>
+                  </button>
+                  {this.state.showSortMenu && sortMenuUl}
+                </span>
+              </div>}
+
+            <Switch>
+              <Route exact path={this.props.match.path + '/videos'} render={() => (
+                <VideoList 
+                  videos={videos} 
+                  displayAs="grid"
+                  showTimeSince
+                />
+              )} />
+            </Switch>
           </div>
         </div>
       );

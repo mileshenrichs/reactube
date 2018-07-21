@@ -17,6 +17,7 @@ const VideoList = ({ videos, displayAs, showTitles, showBorders, includeRemoveBu
           removeVideoFromHistory={removeVideoFromHistory}
         />
       ))}
+      <div className="clearfix"></div>
     </div>
   );
 }

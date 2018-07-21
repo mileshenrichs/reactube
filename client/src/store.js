@@ -157,7 +157,9 @@ const defaultState = {
   },
   channel: {
     coverImgSrc: channelCover,
-    username: undefined
+    username: undefined,
+    videoSortOrder: 'NEWEST',
+    playlistSortOrder: 'LAST_ADDED'
   },
   playlists: {
     userPlaylists: [

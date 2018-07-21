@@ -46,8 +46,8 @@ class VideoComments extends Component {
         <div className="VideoComments__header">
           <span className="VideoComments__comments-count">{this.props.videoComments.length} Comments</span>
   
-          <span className="VideoComments__sort-control">
-            <button className="VideoComments__sort-button transparent-button" 
+          <span className="sort-control">
+            <button className="sort-button transparent-button" 
                 onClick={this.toggleSortMenu.bind(this)} ref={node => this.sortByButton = node}>
               <img src={sortIcon} alt="" />
               <span className="text-color-secondary">Sort By</span>
