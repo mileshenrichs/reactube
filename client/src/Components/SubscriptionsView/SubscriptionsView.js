@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import VideoList from '../VideoList/VideoList';
+import * as actions from '../../actions/subscriptionsActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import gridIcon from '../../resources/layout-control/grid.png';
+import listIcon from '../../resources/layout-control/list.png';
 import thumbnail5 from '../../resources/example-thumb-5.jpg';
 import thumbnail6 from '../../resources/example-thumb-6.jpg';
 import thumbnail7 from '../../resources/example-thumb-7.jpg';
@@ -10,11 +15,38 @@ import profilePic3 from '../../resources/example-profpic-3.jpg';
 import profilePic4 from '../../resources/example-profpic-4.jpg';
 
 class SubscriptionsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hoveringGridIcon: false,
+      hoveringListIcon: false
+    };
+  }
 
   componentDidMount() {
     // set page title and background color
     document.title = 'Subscriptions - Reactube';
     document.body.style.backgroundColor = '#fafafa';
+  }
+
+  // vary <VideoList> props depending on layout (grid vs list)
+  getVideoListProps() {
+    let videoListProps;
+    if(this.props.useListLayout) {
+      videoListProps = {
+        displayAs: 'list',
+        showTitles: true,
+        showBorders: true,
+        showTimeSince: true
+      };
+    } else {
+      videoListProps = {
+        displayAs: 'grid',
+        showTimeSince: true,
+        showCreatorInGrid: true
+      };
+    }
+    return videoListProps;
   }
 
   render() {
@@ -138,15 +170,31 @@ class SubscriptionsView extends Component {
       }
     ];
 
+    const videoListProps = this.getVideoListProps();
+
     return (
       <div className="SubscriptionsView page-container">
         <div className="feed-container">
+          <div className="SubscriptionsView__layout-select">
+            <button className={'icon-button' + (!this.props.useListLayout ? ' selected' : '')}
+                    onMouseOver={() => this.setState({hoveringGridIcon: true})}
+                    onMouseOut={() => this.setState({hoveringGridIcon: false})}
+                    onClick={() => this.props.setVideoLayout(false)}>
+              <img src={gridIcon} alt="" />
+            </button>
+            <span className={'info-tooltip tooltip-grid' + (this.state.hoveringGridIcon ? ' show' : '')}>Grid</span>
+            <button className={'icon-button' + (this.props.useListLayout ? ' selected' : '')}
+                    onMouseOver={() => this.setState({hoveringListIcon: true})}
+                    onMouseOut={() => this.setState({hoveringListIcon: false})}
+                    onClick={() => this.props.setVideoLayout(true)}>
+              <img src={listIcon} alt="" />
+            </button>
+            <span className={'info-tooltip tooltip-list' + (this.state.hoveringListIcon ? ' show' : '')}>List</span>
+          </div>
+
           <VideoList 
             videos={videos}
-            displayAs="list"
-            showTitles
-            showBorders
-            showTimeSince
+            {...videoListProps}
           />
         </div>
       </div>
@@ -154,4 +202,12 @@ class SubscriptionsView extends Component {
   }
 }
 
-export default SubscriptionsView;
+const mapStateToProps = (state) => {
+  return state.subscriptions;
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(actions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SubscriptionsView);

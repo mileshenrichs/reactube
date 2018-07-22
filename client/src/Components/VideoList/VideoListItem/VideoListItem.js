@@ -69,6 +69,15 @@ class VideoListItem extends Component {
     document.removeEventListener('mousedown', this.handleClickWhileAddToMenuOpen);
   }
 
+  // todo: remove this once fix block links for list items
+  calcDetailsLinkHeight() {
+    if(this.props.showCreatorInGrid) {
+      return 80;
+    } else {
+      return this.props.displayAs === 'list' ? 138 : 62;
+    }
+  }
+
   render() {
     // keep menu icon visible while menu is open
     let menuIconStyle = {};
@@ -102,7 +111,9 @@ class VideoListItem extends Component {
           <img className="list-item__remove" src={removeIcon} alt="" onClick={() => this.props.removeVideoFromHistory(this.props.video.id)}
               onMouseEnter={() => this.setState({hoveringRemoveIcon: true})}
               onMouseLeave={() => this.setState({hoveringRemoveIcon: false})} />
-          <span className={'list-item__remove-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>Remove from Watch history</span>
+          <span className={'list-item__remove-tooltip info-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>
+            Remove from Watch history
+          </span>
         </span>
       );
     } else {
@@ -147,11 +158,13 @@ class VideoListItem extends Component {
             {this.state.showAddToMenu && 
               <AddToMenu videoId={this.props.video.id} />}
 
-          <Link to="/watch" style={{display: 'block', height: this.props.displayAs === 'list' ? 138 : 62}}>
+          <Link to="/watch" style={{display: 'block', height: this.calcDetailsLinkHeight()}}>
             <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>
             <div className="VideoListItem__subtitle">
-              {this.props.displayAs === 'list' && 
-                <span className="subtitle-item creator-name">{this.props.video.creator.name}</span>}
+              {(this.props.displayAs === 'list' || this.props.showCreatorInGrid) &&
+                <span className={'subtitle-item creator-name' + (this.props.showCreatorInGrid ? ' shown-in-grid' : '')}>
+                  {this.props.video.creator.name}
+                </span>}
               <span className="subtitle-item view-count">{this.props.video.views} views</span>
               {this.props.showTimeSince && <span className="subtitle-item time-since">{this.props.video.timeSince} ago</span>}
             </div>
@@ -172,7 +185,8 @@ VideoListItem.propTypes = {
   showBorder: PropTypes.bool.isRequired,
   showTimeSince: PropTypes.bool.isRequired,
   includeRemoveButton: PropTypes.bool,
-  removeVideoFromHistory: PropTypes.func
+  removeVideoFromHistory: PropTypes.func,
+  showCreatorInGrid: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {

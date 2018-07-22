@@ -3,7 +3,8 @@ import VideoListItem from './VideoListItem/VideoListItem';
 import PropTypes from 'prop-types';
 import PlaylistItem from './PlaylistItem/PlaylistItem';
 
-const VideoList = ({ videos, playlists, displayAs, showTitles, showBorders, includeRemoveButtons, showTimeSince, removeVideoFromHistory }) => {
+const VideoList = ({ videos, playlists, displayAs, showTitles, showBorders, 
+                    includeRemoveButtons, showTimeSince, removeVideoFromHistory, showCreatorInGrid }) => {
 
   // distinguish between list of videos vs list of playlists
   let listItems;
@@ -18,6 +19,7 @@ const VideoList = ({ videos, playlists, displayAs, showTitles, showBorders, incl
         includeRemoveButton={includeRemoveButtons}
         showTimeSince={showTimeSince}
         removeVideoFromHistory={removeVideoFromHistory}
+        showCreatorInGrid={showCreatorInGrid}
       />
     ));
   } else {
@@ -45,7 +47,8 @@ VideoList.propTypes = {
   showBorders: PropTypes.bool,
   includeRemoveButtons: PropTypes.bool,
   showTimeSince: PropTypes.bool,
-  removeVideoFromHistory: PropTypes.func
+  removeVideoFromHistory: PropTypes.func,
+  showCreatorInGrid: PropTypes.bool
 };
 
 VideoList.defaultProps = {

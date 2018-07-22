@@ -141,7 +141,6 @@ body.drawer-open {
 .feed-container {
   width: 1284px;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .App[class="App left-drawer-open"] .page-container {
@@ -1973,6 +1972,49 @@ section.AddToMenu__create-form {
   width: 100%;
 }
 
+.SubscriptionsView .feed-container {
+  position: relative;
+}
+
+.SubscriptionsView__layout-select {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.SubscriptionsView__layout-select button {
+  width: 22px;
+}
+
+.SubscriptionsView__layout-select button:first-child {
+  margin-right: 18px;
+}
+
+.SubscriptionsView__layout-select button img {
+  opacity: 0.4;
+}
+
+.SubscriptionsView__layout-select button.selected img {
+  opacity: 1;
+}
+
+.SubscriptionsView__layout-select .info-tooltip {
+  top: 42px;
+  z-index: 2;
+}
+
+.SubscriptionsView__layout-select .info-tooltip.tooltip-grid {
+  right: 26px;
+}
+
+.SubscriptionsView__layout-select .info-tooltip.tooltip-list {
+  right: -12px;
+}
+
+.SubscriptionsView .VideoList.as-grid {
+  padding-top: 40px;
+}
+
 .VideoInfo__description {
   font-size: 87.5%;
   padding-left: 62px;
@@ -2261,7 +2303,7 @@ section.AddToMenu__create-form {
   margin-bottom: 8px;
 }
 
-.VideoListItem__subtitle span:not(:last-child):after {
+.VideoListItem__subtitle span:not(:last-child):not(.shown-in-grid):after {
   content: "•";
   padding: 0 6px;
   position: relative;
@@ -2271,6 +2313,12 @@ section.AddToMenu__create-form {
 
 .VideoListItem__subtitle .creator-name:hover {
   color: #0a0a0a;
+}
+
+.VideoListItem__subtitle .creator-name.shown-in-grid {
+  display: block;
+  position: relative;
+  top: 2px;
 }
 
 .VideoListItem__description {
@@ -2334,21 +2382,24 @@ img.list-item__remove {
   display: inline-block;
 }
 
-.list-item__remove-tooltip {
+.info-tooltip {
   background: rgba(17, 17, 17, 0.7);
   font-size: 13px;
   color: #eeeeee;
   border-radius: 4px;
   padding: 9px 12px;
   position: absolute;
-  top: 40px;
-  right: -68px;
   transition: opacity .3s ease-in-out;
   opacity: 0;
 }
 
-.list-item__remove-tooltip.show {
+.info-tooltip.show {
   opacity: 1;
+}
+
+.list-item__remove-tooltip {
+  top: 40px;
+  right: -68px;
 }
 
 .VideoList.as-grid .list-item {

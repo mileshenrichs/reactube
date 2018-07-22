@@ -35,6 +35,9 @@ const defaultState = {
       }
     ]
   },
+  subscriptions: {
+    useListLayout: true
+  },
   history: {
     watchedVideos: [
       {
