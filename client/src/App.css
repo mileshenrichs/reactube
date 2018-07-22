@@ -2257,6 +2257,11 @@ section.AddToMenu__create-form {
   padding: 5px;
 }
 
+.list-item__cursor-pointer-container {
+  cursor: pointer;
+  display: inline-block;
+}
+
 .VideoList .VideoListItem:first-child {
   padding-top: 0 !important;
 }
@@ -2303,12 +2308,13 @@ section.AddToMenu__create-form {
   margin-bottom: 8px;
 }
 
-.VideoListItem__subtitle span:not(:last-child):not(.shown-in-grid):after {
+.VideoListItem__subtitle .subtitle-item:not(:last-child):not(.shown-in-grid):after {
   content: "•";
   padding: 0 6px;
   position: relative;
   top: 1px;
   color: #777777;
+  font-size: 14px;
 }
 
 .VideoListItem__subtitle .creator-name:hover {

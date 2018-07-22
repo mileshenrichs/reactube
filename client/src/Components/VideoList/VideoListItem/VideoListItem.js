@@ -69,15 +69,6 @@ class VideoListItem extends Component {
     document.removeEventListener('mousedown', this.handleClickWhileAddToMenuOpen);
   }
 
-  // todo: remove this once fix block links for list items
-  calcDetailsLinkHeight() {
-    if(this.props.showCreatorInGrid) {
-      return 80;
-    } else {
-      return this.props.displayAs === 'list' ? 138 : 62;
-    }
-  }
-
   render() {
     // keep menu icon visible while menu is open
     let menuIconStyle = {};
@@ -135,44 +126,48 @@ class VideoListItem extends Component {
           text={this.props.video.creator.name}  
         />}
   
-        <Link className="list-item__thumbnail-link" to="/watch">
-          <VideoThumbnail
-            width={this.props.displayAs === 'list' ? 246 : 210}
-            thumbnailSrc={this.props.video.thumbnailSrc}
-            videoLength={this.props.video.videoLength}
-            watchedProgress={this.props.video.watchedProgress}
-          />
-        </Link>
-  
-        <div className="VideoListItem__details">
-          {itemInteractionButton}
+        <div className="list-item__cursor-pointer-container">
+          <Link className="list-item__thumbnail-link" to="/watch">
+            <VideoThumbnail
+              width={this.props.displayAs === 'list' ? 246 : 210}
+              thumbnailSrc={this.props.video.thumbnailSrc}
+              videoLength={this.props.video.videoLength}
+              watchedProgress={this.props.video.watchedProgress}
+            />
+          </Link>
+    
+          <div className="VideoListItem__details">
+            {itemInteractionButton}
 
-            {this.state.showOptionsMenu && 
-              <ul className="list-item__menu inline-menu" ref={node => this.optionsMenu = node}>
-                <li onClick={this.addToWatchLater.bind(this)}>Add to Watch Later</li>
-                <li onClick={() => this.setState({showAddToMenu: true, showOptionsMenu: false})}>Add to Playlist</li>
-                {window.location.href.includes('feed/subscriptions') && 
-                  <li>Hide</li>}
-              </ul>}
+              {this.state.showOptionsMenu && 
+                <ul className="list-item__menu inline-menu" ref={node => this.optionsMenu = node}>
+                  <li onClick={this.addToWatchLater.bind(this)}>Add to Watch Later</li>
+                  <li onClick={() => this.setState({showAddToMenu: true, showOptionsMenu: false})}>Add to Playlist</li>
+                  {window.location.href.includes('feed/subscriptions') && 
+                    <li>Hide</li>}
+                </ul>}
 
-            {this.state.showAddToMenu && 
-              <AddToMenu videoId={this.props.video.id} />}
+              {this.state.showAddToMenu && 
+                <AddToMenu videoId={this.props.video.id} />}
 
-          <Link to="/watch" style={{display: 'block', height: this.calcDetailsLinkHeight()}}>
-            <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>
+            <Link to="/watch">
+              <h2 className="VideoListItem__details--title" title={this.props.video.title}>{this.props.video.title}</h2>
+            </Link>
             <div className="VideoListItem__subtitle">
               {(this.props.displayAs === 'list' || this.props.showCreatorInGrid) &&
-                <span className={'subtitle-item creator-name' + (this.props.showCreatorInGrid ? ' shown-in-grid' : '')}>
-                  {this.props.video.creator.name}
-                </span>}
+                <Link to="/user/NinjasHyper" className={'subtitle-item creator-name' + (this.props.showCreatorInGrid ? ' shown-in-grid' : '')}>
+                  <span className="creator-name">
+                    {this.props.video.creator.name}
+                  </span>
+                </Link>}
               <span className="subtitle-item view-count">{this.props.video.views} views</span>
               {this.props.showTimeSince && <span className="subtitle-item time-since">{this.props.video.timeSince} ago</span>}
             </div>
             {this.props.displayAs === 'list' && 
               <p className="VideoListItem__description">{this.props.video.description}</p>}
-          </Link>
+          </div>
+          <div className="clearfix"></div>
         </div>
-        <div className="clearfix"></div>
       </div>
     );
   }
