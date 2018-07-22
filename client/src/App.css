@@ -2415,7 +2415,7 @@ img.list-item__remove {
 }
 
 .VideoList.as-grid .list-item:not(:last-child) {
-  margin: 0 4px 18px 0;
+  margin: 0 4px 24px 0;
 }
 
 .VideoList.as-grid .list-item__thumbnail-link,
@@ -2754,4 +2754,19 @@ img.HistoryControls__search--clear-icon {
 .ChannelDescription p {
   font-size: 87.5%;
   line-height: 21px;
+}
+
+.FeedSection:not(:first-child) {
+  padding-top: 22px;
+}
+
+.FeedSection:not(:last-child) {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 6px;
+}
+
+.FeedSection__heading {
+  font-weight: 500;
+  font-size: 100%;
+  margin-bottom: 24px;
 }

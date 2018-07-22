@@ -13,6 +13,8 @@ import SubscriptionsView from './Components/SubscriptionsView/SubscriptionsView'
 import HistoryView from './Components/HistoryView/HistoryView';
 import SearchResultsView from './Components/SearchResultsView/SearchResultsView';
 import ChannelView from './Components/ChannelView/ChannelView';
+import HomeView from './Components/HomeView/HomeView';
+import TrendingView from './Components/TrendingView/TrendingView';
 
 class App extends Component {
   constructor(props) {
@@ -78,6 +80,8 @@ class App extends Component {
         />
 
         <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route exact path="/feed/trending" component={TrendingView} />
           <Route exact path="/results" component={SearchResultsView} />
           <Route exact path="/watch" component={WatchView} />
           <Route path="/user/:username" component={ChannelView} />
