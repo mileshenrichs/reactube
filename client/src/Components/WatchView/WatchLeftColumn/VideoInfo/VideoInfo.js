@@ -34,6 +34,7 @@ const VideoInfo = (props) => {
           rateVideo={props.rateVideo} 
           toggleShareModal={props.toggleShareModal}
           closeAddToMenu={props.closeAddToMenu}
+          watchingVideoId={props.watchingVideoId}
         />
       </section>
 
@@ -72,10 +73,10 @@ const VideoInfo = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  const { userRating, showExpandedDescription } = state.watch;
+  const { userRating, showExpandedDescription, watchingVideoId } = state.watch;
   const { userPlaylistsContainingVideo, closeAddToMenu } = state.playlists.addToMenu;
   const { userPlaylists } = state.playlists;
-  return {userRating, userPlaylistsContainingVideo, userPlaylists, showExpandedDescription, closeAddToMenu};
+  return {userRating, userPlaylistsContainingVideo, userPlaylists, showExpandedDescription, watchingVideoId, closeAddToMenu};
 }
 
 const { rateVideo, toggleShareModal, toggleDescriptionExpansion } = watchActions;

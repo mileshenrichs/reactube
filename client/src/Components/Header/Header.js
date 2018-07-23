@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import ProfileIcon from '../ProfileIcon/ProfileIcon';
 import { connect } from 'react-redux';
@@ -9,35 +9,49 @@ import logo from '../../resources/logo.png';
 import menuIcon from '../../resources/header/hamburger-menu.png';
 import cameraIcon from '../../resources/header/create-video.png';
 
-const Header = (props) => {
-    return (
-      <div className="Header">
-        <div className="Header__container">
-          <div className="Header__left-dock">
-            <button className="icon-button Header__menu-icon" onClick={props.toggleLeftDrawer}>
-              <img src={menuIcon} alt="" />
-            </button>
+class Header extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        hoveringUploadIcon: false
+      };
+    }
 
-            <Link to="/">
-              <img className="Header__logo" src={logo} alt="Reactube" />
-            </Link>
-          </div>
-
-          <SearchBar 
-            performSearch={props.performSearch}
-          />
-
-          <div className="Header__right-dock">
-            <button className="Header__create-video">
-              <img src={cameraIcon} alt="" />
-            </button>
-            <span onClick={props.toggleAccountMenu}>
-              <ProfileIcon width={32} />
-            </span>
+    render() {
+      return (
+        <div className="Header">
+          <div className="Header__container">
+            <div className="Header__left-dock">
+              <button className="icon-button Header__menu-icon" onClick={this.props.toggleLeftDrawer}>
+                <img src={menuIcon} alt="" />
+              </button>
+  
+              <Link to="/">
+                <img className="Header__logo" src={logo} alt="Reactube" />
+              </Link>
+            </div>
+  
+            <SearchBar 
+              performSearch={this.props.performSearch}
+            />
+  
+            <div className="Header__right-dock">
+              <Link to="/upload"
+                    onMouseOver={() => this.setState({hoveringUploadIcon: true})}
+                    onMouseOut={() => this.setState({hoveringUploadIcon: false})}>
+                <button className="Header__create-video">
+                  <img src={cameraIcon} alt="" />
+                </button>
+              </Link>
+              <span className={'info-tooltip' + (this.state.hoveringUploadIcon ? ' show' : '')}>Create a video</span>
+              <span onClick={this.props.toggleAccountMenu}>
+                <ProfileIcon width={32} />
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
 }
 
 const mapStateToProps = (state) => {

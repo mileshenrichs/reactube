@@ -15,6 +15,7 @@ import SearchResultsView from './Components/SearchResultsView/SearchResultsView'
 import ChannelView from './Components/ChannelView/ChannelView';
 import HomeView from './Components/HomeView/HomeView';
 import TrendingView from './Components/TrendingView/TrendingView';
+import UploadView from './Components/UploadView/UploadView';
 
 class App extends Component {
   constructor(props) {
@@ -82,11 +83,12 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route exact path="/feed/trending" component={TrendingView} />
+          <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
+          <Route path="/feed/history" component={HistoryView} />
           <Route exact path="/results" component={SearchResultsView} />
           <Route exact path="/watch" component={WatchView} />
           <Route path="/user/:username" component={ChannelView} />
-          <Route exact path="/feed/subscriptions" component={SubscriptionsView} />
-          <Route path="/feed/history" component={HistoryView} />
+          <Route exact path="/upload" component={UploadView} />
         </Switch>
 
         <Notification 

@@ -8,7 +8,8 @@ import search from './search';
 import playlists from './playlists';
 import channel from './channel';
 import subscriptions from './subscriptions';
+import upload from './upload';
 
-const rootReducer = combineReducers({app, search, watch, subscriptions, history, channel, playlists, notification, user});
+const rootReducer = combineReducers({app, search, watch, subscriptions, history, channel, upload, playlists, notification, user});
 
 export default rootReducer;

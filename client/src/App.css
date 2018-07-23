@@ -352,7 +352,6 @@ section.LeftDrawer__footer a {
   width: 100%;
   height: 56px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
   margin-bottom: 25px;
   position: fixed;
   top: 0;
@@ -454,6 +453,12 @@ button.SearchBar__search-button:hover img {
   bottom: 56px;
 }
 
+.Header__right-dock .info-tooltip {
+  width: 110px;
+  top: 62px;
+  right: 22px;
+}
+
 .Header__create-video {
   margin-right: 34px;
   position: relative;
@@ -546,6 +551,10 @@ a .AccountMenu__header {
 
 .AccountMenu .MenuLink__text {
   left: 72px;
+}
+
+.WatchView {
+  padding-top: 26px;
 }
 
 .WatchView__container {
@@ -1804,14 +1813,22 @@ section.AddToMenu__create-form {
   margin-top: 2px;
 }
 
-.AddToMenu__create-form img.dropdown-arrow {
+.PrivacyDropdown {
+  position: relative;
+}
+
+.PrivacyDropdown input {
+  width: 100%;
+}
+
+.PrivacyDropdown img.dropdown-arrow {
   width: 9px;
   position: absolute;
-  top: 23px;
+  top: 7px;
   right: 10px;
 }
 
-.PrivacyDropdown {
+.PrivacyDropdown__dropdown {
   width: 216px;
   background: #ffffff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
@@ -2769,4 +2786,73 @@ img.HistoryControls__search--clear-icon {
   font-weight: 500;
   font-size: 100%;
   margin-bottom: 24px;
+}
+
+.DragBox {
+  width: 750px;
+  height: 400px;
+  background: #ffffff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.DragBox__box {
+  margin-top: 56px;
+}
+
+.DragBox.showing-error-message .DragBox__box {
+  margin-top: 22px;
+}
+
+.DragBox__upload-button {
+  width: 120px;
+}
+
+.DragBox__text {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.DragBox__text h2, 
+.DragBox__text h3 {
+  font-weight: 400;
+}
+
+.DragBox__text h2 {
+  font-size: 125%;
+  color: #444444;
+  margin: 20px 0 4px 0;
+}
+
+.DragBox__text h3 {
+  font-size: 93.75%;
+  color: #666666;
+  padding: 8px 12px;
+  display: inline-block;
+  background: transparent;
+}
+
+.DragBox__box.valid-drag h3 {
+  background: linear-gradient(#72a245, #588436);
+  color: #ffffff;
+}
+
+.DragBox__box.invalid-drag h3 {
+  background: linear-gradient(#bf4040, #8d2a2a);
+  color: #ffffff;
+}
+
+.DragBox .PrivacyDropdown {
+  width: 90px;
+  margin: 0 auto;
+}
+
+.DragBox__error {
+  font-size: 87.5%;
+  width: 660px;
+  margin: 0 auto;
+  padding: 8px 12px;
+  background: linear-gradient(#bf4040, #8d2a2a);
+  color: #ffffff;
 }

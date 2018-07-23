@@ -4,8 +4,7 @@ import privateIcon from '../../resources/private.png';
 import unlistedIcon from '../../resources/unlisted.png';
 import publicIcon from '../../resources/public.png';
 import plus from '../../resources/create-new.png';
-import dropdownArrow from '../../resources/dropdown-arrow.png';
-import PrivacyDropdown from './PrivacyDropdown/PrivacyDropdown';
+import PrivacyDropdown from '../PrivacyDropdown/PrivacyDropdown';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/playlistActions';
@@ -16,7 +15,6 @@ class AddToMenu extends Component {
     super(props);
     this.state = {
       creatingPlaylist: false,
-      showPrivacyDropdown: false,
       newPlaylistName: '',
       newPlaylistSelectedPrivacy: {
         type: 'PUBLIC',
@@ -47,8 +45,7 @@ class AddToMenu extends Component {
 
   handlePrivacyOptionSelected(privacyObj) {
     this.setState({
-      newPlaylistSelectedPrivacy: privacyObj,
-      showPrivacyDropdown: false
+      newPlaylistSelectedPrivacy: privacyObj
     });
   }
 
@@ -94,15 +91,10 @@ class AddToMenu extends Component {
 
           <div className="AddMenu__create-form--input-group privacy">
             <label htmlFor="playlist-privacy">Privacy</label>
-            <input type="text" readOnly autoComplete="off" id="playlist-privacy" className="underlined-text-input" 
-                value={this.state.newPlaylistSelectedPrivacy.optionName} onClick={() => this.setState({showPrivacyDropdown: true})} />
-            <img className="dropdown-arrow" src={dropdownArrow} alt="" />
-
-            {this.state.showPrivacyDropdown && 
-              <PrivacyDropdown 
-                selectedOption={this.state.newPlaylistSelectedPrivacy}
-                onSelectOption={this.handlePrivacyOptionSelected.bind(this)}
-              />}
+            <PrivacyDropdown 
+              selectedOption={this.state.newPlaylistSelectedPrivacy}
+              onSelectOption={this.handlePrivacyOptionSelected.bind(this)}
+            />
           </div>
 
           <button className="AddToMenu__create-form--create-button" onClick={this.createPlaylistAndAddVideo.bind(this)}>

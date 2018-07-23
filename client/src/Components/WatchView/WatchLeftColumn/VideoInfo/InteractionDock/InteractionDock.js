@@ -87,7 +87,7 @@ class InteractionDock extends Component {
         </button>
   
         {this.state.showAddToMenu && 
-          <AddToMenu />}
+          <AddToMenu videoId={this.props.watchingVideoId} />}
       </div>
     );
   }
