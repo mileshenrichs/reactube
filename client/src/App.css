@@ -56,6 +56,15 @@ body.drawer-open {
   width: 100%;
 }
 
+a.legacy-link {
+  color: #167ac6;
+  text-decoration: none;
+}
+
+a.legacy-link:hover {
+  text-decoration: underline;
+}
+
 .Notification {
   z-index: 1000;
   background: #323232;
@@ -2788,12 +2797,15 @@ img.HistoryControls__search--clear-icon {
   margin-bottom: 24px;
 }
 
-.DragBox {
-  width: 750px;
-  height: 400px;
+.legacy-page-box {
   background: #ffffff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+}
+
+.DragBox {
+  width: 750px;
+  height: 400px;
   padding-top: 20px;
 }
 
@@ -2855,4 +2867,58 @@ img.HistoryControls__search--clear-icon {
   padding: 8px 12px;
   background: linear-gradient(#bf4040, #8d2a2a);
   color: #ffffff;
+}
+
+.UploadManager {
+  width: 1100px;
+  padding: 20px;
+  height: 400px;
+}
+
+.UploadManager__left-column,
+.UploadManager__right-column {
+  float: left;
+}
+
+.UploadManager__left-column {
+  width: 220px;
+}
+
+.VideoThumbPreview {
+  width: 195px;
+  height: 100px;
+}
+
+.VideoThumbPreview__loading {
+  width: 100%;
+  height: 100%;
+  background: #dddddd;
+  border: 2px solid #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.VideoThumbPreview__loading img {
+  width: 20px;
+}
+
+.UploadManager__upload-status {
+  margin-top: 26px;
+}
+
+.UploadManager__upload-status h3 {
+  font-weight: 500;
+  color: #444;
+  font-size: 93.75%;
+}
+
+.UploadManager__upload-status p {
+  color: #777;
+  font-size: 68.75%;
+  padding: 8px 0;
+}
+
+.UploadManager__upload-status p:last-child {
+  padding-top: 0;
 }

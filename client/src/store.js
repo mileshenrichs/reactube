@@ -168,7 +168,7 @@ const defaultState = {
   upload: {
     fileSelected: false,
     video: {
-      file: undefined,
+      file: 'file',
       privacy: {
         type: 'PUBLIC',
         optionName: 'Public',
