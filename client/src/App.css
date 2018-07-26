@@ -2872,7 +2872,7 @@ img.HistoryControls__search--clear-icon {
 .UploadManager {
   width: 1100px;
   padding: 20px;
-  height: 400px;
+  display: flex;
 }
 
 .UploadManager__left-column,
@@ -2882,6 +2882,15 @@ img.HistoryControls__search--clear-icon {
 
 .UploadManager__left-column {
   width: 220px;
+}
+
+.UploadManager__right-column {
+  flex-grow: 1;
+}
+
+.UploadManager__progress-bar-wrapper {
+  display: flex;
+  margin-bottom: 8px;
 }
 
 .VideoThumbPreview {
@@ -2897,6 +2906,7 @@ img.HistoryControls__search--clear-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .VideoThumbPreview__loading img {
@@ -2921,4 +2931,100 @@ img.HistoryControls__search--clear-icon {
 
 .UploadManager__upload-status p:last-child {
   padding-top: 0;
+}
+
+.UploadProgressBar {
+  height: 28px;
+  flex-grow: 1;
+  border: 1px solid #e7e7e7;
+  display: inline-block;
+  position: relative;
+}
+
+.UploadProgressBar__text {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 68.75%;
+  line-height: 26px;
+  padding-left: 10px;
+  cursor: default;
+  z-index: 1;
+  position: relative;
+}
+
+.UploadProgressBar__bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border: 1px solid #cce9ff;
+  background: #e8f5ff;
+}
+
+.UploadManager__publish-button {
+  background: #167ac6;
+  border-radius: 1px;
+  border: 0;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 500;
+  height: 28px;
+  width: 116px;
+  text-align: center;
+  float: right;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.UploadManager__uploading-message img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.UploadManager__uploading-message span {
+  font-size: 81.25%;
+  position: relative;
+  bottom: 5px;
+  color: #394146;
+}
+
+.BasicInfo {
+  margin-top: 38px;
+  border-top: 1px solid #cccccc;
+  padding-top: 16px;
+}
+
+.BasicInfo__top--left-column {
+  width: 425px;
+}
+
+.BasicInfo__top--right-column {
+  width: 295px;
+  float: right;
+}
+
+.BasicInfo__top--left-column input,
+.BasicInfo__top--left-column textarea {
+  border: 1px solid #d3d3d3;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.BasicInfo__top--left-column input:focus,
+.BasicInfo__top--left-column textarea:focus {
+  border-color: #949494;
+}
+
+.TagInput {
+  border: 1px solid #d3d3d3;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+input.TagInput__input {
+  border: none;
+  padding-left: 0;
 }

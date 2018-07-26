@@ -4,19 +4,25 @@ function uploadReducer(state = {}, action) {
     case 'CHANGE_UPLOAD_PRIVACY_OPTION':
       return {
         ...state,
-        video: {
-          ...state.video,
-          privacy: action.privacy
-        }
+        privacy: action.privacy
       }
 
     case 'UPLOAD_VIDEO_FILE':
       return {
         ...state,
-        video: {
-          ...state.video,
-          file: action.file
-        }
+        file: action.file
+      }
+
+    case 'UPLOAD_UPDATE_VIDEO_TITLE':
+      return {
+        ...state,
+        title: action.title
+      }
+
+    case 'UPLOAD_UPDATE_VIDEO_DESCRIPTION':
+      return {
+        ...state,
+        description: action.description
       }
       
     default:

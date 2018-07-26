@@ -11,3 +11,31 @@ export function uploadVideoFile(file) {
     file
   }
 }
+
+export function updateVideoTitle(title) {
+  return {
+    type: 'UPLOAD_UPDATE_VIDEO_TITLE',
+    title
+  }
+}
+
+export function updateVideoDescription(description) {
+  return {
+    type: 'UPLOAD_UPDATE_VIDEO_DESCRIPTION',
+    description
+  }
+}
+
+export function addTag(tag) {
+  return {
+    type: 'UPLOAD_ADD_TAG',
+    tag
+  }
+}
+
+export function removeTag(tag) {
+  return {
+    type: 'UPLOAD_REMOVE_TAG',
+    tag
+  }
+}

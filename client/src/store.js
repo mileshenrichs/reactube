@@ -167,14 +167,15 @@ const defaultState = {
   },
   upload: {
     fileSelected: false,
-    video: {
-      file: 'file',
-      privacy: {
-        type: 'PUBLIC',
-        optionName: 'Public',
-        optionDesc: 'Anyone can search for and view'
-      }
-    }
+    file: 'file',
+    privacy: {
+      type: 'PUBLIC',
+      optionName: 'Public',
+      optionDesc: 'Anyone can search for and view'
+    },
+    title: '',
+    description: '',
+    tags: []
   },
   playlists: {
     userPlaylists: [

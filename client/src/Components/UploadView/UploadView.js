@@ -14,14 +14,14 @@ class UploadView extends Component {
   render() {
     return (
       <div className="UploadView page-container">
-        {!this.props.video.file && 
+        {!this.props.file && 
           <DragBox 
-            selectedPrivacy={this.props.video.privacy} 
+            selectedPrivacy={this.props.privacy} 
             onPrivacyChanged={(privacy) => this.props.changePrivacyOption(privacy)}
             uploadFile={this.props.uploadVideoFile}
           />}
 
-        {this.props.video.file && 
+        {this.props.file && 
           <UploadManager />}
       </div>
     );
