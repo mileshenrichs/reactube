@@ -24,6 +24,29 @@ function uploadReducer(state = {}, action) {
         ...state,
         description: action.description
       }
+
+    case 'UPLOAD_ADD_TAG':
+      if(!state.tags.includes(action.tag)) {
+        return {
+          ...state,
+          tags: [
+            ...state.tags,
+            action.tag
+          ]
+        }
+      } else {
+        return state;
+      }
+
+    case 'UPLOAD_REMOVE_TAG':
+      const tagIndex = state.tags.indexOf(action.tag);
+      return {
+        ...state,
+        tags: [
+          ...state.tags.slice(0, tagIndex),
+          ...state.tags.slice(tagIndex + 1)
+        ]
+      }
       
     default:
       return state;

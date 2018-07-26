@@ -3027,4 +3027,25 @@ img.HistoryControls__search--clear-icon {
 input.TagInput__input {
   border: none;
   padding-left: 0;
+  margin-bottom: 0;
+}
+
+.Tag {
+  display: inline-block;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 4px 4px 4px 10px;
+  margin: 0 8px 6px 0;
+}
+
+button.Tag__remove {
+  width: 22px;
+  padding: 2px 4px 2px 8px;
+  position: relative;
+  top: 1px;
+}
+
+button.Tag__remove img {
+  opacity: 0.7;
 }
