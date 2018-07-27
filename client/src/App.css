@@ -368,6 +368,12 @@ section.LeftDrawer__footer a {
   background: #ffffff;
 }
 
+.Header.is-creator-studio {
+  background: #141414;
+  box-shadow: none;
+  height: 64px;
+}
+
 body.hide-header-shadow .Header {
   box-shadow: none;
 }
@@ -375,6 +381,11 @@ body.hide-header-shadow .Header {
 .Header__container {
   width: 97%;
   margin: 0 auto;
+}
+
+.Header.is-creator-studio .Header__container {
+  position: relative;
+  top: 3px;
 }
 
 .Header__left-dock {
@@ -399,6 +410,11 @@ body.hide-header-shadow .Header {
   position: relative;
   top: 3px;
   margin-left: 24px;
+}
+
+.Header.is-creator-studio .Header__logo {
+  top: -1px;
+  margin-left: 0;
 }
 
 .SearchBar {
@@ -463,6 +479,10 @@ button.SearchBar__search-button:hover img {
   float: right;
   position: relative;
   bottom: 56px;
+}
+
+.Header.is-creator-studio .Header__right-dock {
+  bottom: 0;
 }
 
 .Header__right-dock .info-tooltip {
@@ -3162,4 +3182,8 @@ img.ThumbnailSelect__spinner {
 .ThumbnailSelect__Dropzone:hover {
   background: #f0f0f0;
   border-color: #afafaf;
+}
+
+.CreatorStudioView {
+  padding-top: 7px;
 }

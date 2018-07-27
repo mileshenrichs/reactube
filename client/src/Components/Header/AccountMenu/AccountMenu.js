@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ProfileIcon from '../../ProfileIcon/ProfileIcon';
 import MenuLink from '../../MenuLink/MenuLink';
 import myChannelIcon from '../../../resources/header/account-menu/my-channel.png';
 import creatorStudioIcon from '../../../resources/header/account-menu/creator-studio.png';
+import grayReactubeLogo from '../../../resources/header/account-menu/gray-reactube-logo.png';
 import signOutIcon from '../../../resources/header/account-menu/sign-out.png';
 import settingsIcon from '../../../resources/left-drawer/settings.png';
 
-const AccountMenu = () => {
+const AccountMenu = ({ isCreatorStudio }) => {
   return (
     <div className="AccountMenu">
       <a href="#">
@@ -23,7 +25,10 @@ const AccountMenu = () => {
 
       <section className="menu-section">
         <MenuLink imgSrc={myChannelIcon} text="My Channel" />
-        <MenuLink imgSrc={creatorStudioIcon} text="Creator Studio" />
+        {!isCreatorStudio && 
+          <MenuLink url="/studio" imgSrc={creatorStudioIcon} text="Creator Studio" />}
+        {isCreatorStudio && 
+          <MenuLink url="/" imgSrc={grayReactubeLogo} text="Back to Reactube" />}
         <MenuLink imgSrc={signOutIcon} text="Sign Out" />
       </section>
 
@@ -32,6 +37,10 @@ const AccountMenu = () => {
       </section>
     </div>
   );
+}
+
+AccountMenu.propTypes = {
+  isCreatorStudio: PropTypes.bool.isRequired
 }
 
 export default AccountMenu;

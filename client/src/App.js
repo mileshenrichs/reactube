@@ -15,6 +15,7 @@ import ChannelView from './Components/ChannelView/ChannelView';
 import HomeView from './Components/HomeView/HomeView';
 import TrendingView from './Components/TrendingView/TrendingView';
 import UploadView from './Components/UploadView/UploadView';
+import CreatorStudioView from './Components/CreatorStudioView/CreatorStudioView';
 
 class App extends Component {
   render() {
@@ -32,18 +33,21 @@ class App extends Component {
       }, 4000);
     }
 
+    const isCreatorStudio = this.props.location.pathname.includes('/studio');
+
     return (
       <div className={'App' 
       + (this.props.app.showLeftDrawer ? ' left-drawer-open' : '')
       + (this.props.app.slideDrawerOut ? ' slide-drawer-out' : '')}>
-        <Header />
+        <Header isCreatorStudio={isCreatorStudio} />
 
         <div className="clearfix"></div>
 
-        <LeftDrawer 
-          closeDrawer={this.props.toggleLeftDrawer} 
-          displayAsModal={window.location.pathname.includes('watch')}
-        />
+        {!isCreatorStudio && 
+          <LeftDrawer 
+            closeDrawer={this.props.toggleLeftDrawer} 
+            displayAsModal={window.location.pathname.includes('watch')}
+          />}
 
         <Switch>
           <Route exact path="/" component={HomeView} />
@@ -54,6 +58,7 @@ class App extends Component {
           <Route exact path="/watch" component={WatchView} />
           <Route path="/user/:username" component={ChannelView} />
           <Route exact path="/upload" component={UploadView} />
+          <Route exact path="/studio" component={CreatorStudioView} />
         </Switch>
 
         <Notification 
