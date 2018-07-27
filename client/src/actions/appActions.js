@@ -174,3 +174,9 @@ export function performSearch(requiresRedirect) {
     })
   }
 }
+
+export function toggleAccountMenu() {
+  return {
+    type: 'TOGGLE_ACCOUNT_MENU'
+  }
+}

@@ -16,7 +16,8 @@ const defaultState = {
   app: {
     showLeftDrawer: false,
     slideDrawerOut: false,
-    searchQuery: ''
+    searchQuery: '',
+    showAccountMenu: false
   },
   search: {
     results: []

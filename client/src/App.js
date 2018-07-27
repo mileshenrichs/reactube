@@ -7,7 +7,6 @@ import LeftDrawer from './Components/LeftDrawer/LeftDrawer';
 import WatchView from './Components/WatchView/WatchView';
 import Header from './Components/Header/Header';
 import './App.css';
-import AccountMenu from './Components/Header/AccountMenu/AccountMenu';
 import Notification from './Components/Notification/Notification';
 import SubscriptionsView from './Components/SubscriptionsView/SubscriptionsView';
 import HistoryView from './Components/HistoryView/HistoryView';
@@ -18,38 +17,6 @@ import TrendingView from './Components/TrendingView/TrendingView';
 import UploadView from './Components/UploadView/UploadView';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showAccountMenu: false
-    };
-  }
-
-  toggleAccountMenu() {
-    const newMenuState = !this.state.showAccountMenu;
-    this.setState((prevState) => ({
-      showAccountMenu: !prevState.showAccountMenu
-    }));
-
-    if(newMenuState === true) {
-      document.addEventListener('mousedown', this.handleClickWhileAccountMenuOpen)
-    } else {
-      document.removeEventListener('mousedown', this.handleClickWhileAccountMenuOpen)
-    }
-  }
-
-  /**
-   * Click listener, closes account menu if clicked outside
-   * @param {MouseEvent} e mousedown event
-   */
-  handleClickWhileAccountMenuOpen = (e) => {
-    const accountMenu = document.querySelector('.AccountMenu');
-    const headerProfileIcon = document.querySelector('.Header .ProfileIcon');
-    if (accountMenu && !accountMenu.contains(e.target) && !headerProfileIcon.contains(e.target)) {
-      this.toggleAccountMenu();
-    }
-  }
-
   render() {
     // dispatch delayed hide drawer overlay action when slide drawer out set to true
     if(this.props.app.slideDrawerOut) {
@@ -69,9 +36,7 @@ class App extends Component {
       <div className={'App' 
       + (this.props.app.showLeftDrawer ? ' left-drawer-open' : '')
       + (this.props.app.slideDrawerOut ? ' slide-drawer-out' : '')}>
-        <Header toggleAccountMenu={this.toggleAccountMenu.bind(this)} />
-        {this.state.showAccountMenu && 
-          <AccountMenu />}
+        <Header />
 
         <div className="clearfix"></div>
 
@@ -95,13 +60,16 @@ class App extends Component {
           text={this.props.notification.notificationText}
           visible={this.props.notification.showNotification} 
         />
+
+        <div className="clearfix"></div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return state;
+  const { app, notification } = state;
+  return {app, notification};
 }
 
 const mapDispatchToProps = (dispatch) => {

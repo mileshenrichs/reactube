@@ -32,6 +32,12 @@ function appReducer(state = {}, action) {
         ...state,
         searchQuery: action.meta.searchQuery
       }
+
+    case 'TOGGLE_ACCOUNT_MENU':
+      return {
+        ...state,
+        showAccountMenu: !state.showAccountMenu
+      }
       
     default:
       return state;
