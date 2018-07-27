@@ -1756,12 +1756,17 @@ img.RelatedVideo__menu-open {
 
 .AddToMenu__playlist-row label {
   font-size: 87.5%;
+  max-width: 220px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .AddToMenu__playlist-row img {
   width: 15px;
   position: relative;
-  top: 2px;
+  top: 1px;
   float: right;
 }
 
@@ -2881,7 +2886,7 @@ img.HistoryControls__search--clear-icon {
 }
 
 .UploadManager__left-column {
-  width: 220px;
+  width: 240px;
 }
 
 .UploadManager__right-column {
@@ -2994,13 +2999,20 @@ img.HistoryControls__search--clear-icon {
   padding-top: 16px;
 }
 
+.BasicInfo__top {
+  min-height: 280px;
+}
+
 .BasicInfo__top--left-column {
   width: 425px;
+  float: left;
 }
 
 .BasicInfo__top--right-column {
   width: 295px;
   float: right;
+  padding-top: 2px;
+  position: relative;
 }
 
 .BasicInfo__top--left-column input,
@@ -3048,4 +3060,97 @@ button.Tag__remove {
 
 button.Tag__remove img {
   opacity: 0.7;
+}
+
+.BasicInfo__PrivacyDropdown .PrivacyDropdown input {
+  padding-bottom: 6px;
+}
+
+.BasicInfo .PrivacyDropdown__dropdown {
+  width: 290px;
+}
+
+.BasicInfo__add-to-playlist-button {
+  margin-top: 24px;
+  padding: 10px 0;
+}
+
+.BasicInfo__add-to-playlist-button img {
+  opacity: 0.6;
+  width: 22px;
+  margin-right: 14px;
+}
+
+.BasicInfo__add-to-playlist-button span {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(17, 17, 17, 0.7);
+  position: relative;
+  bottom: 5px;
+}
+
+.BasicInfo__add-to-playlist-button:hover span {
+  color: rgba(17, 17, 17, 0.9);
+}
+
+.BasicInfo__add-to-playlist-button:hover img {
+  opacity: 1;
+}
+
+.BasicInfo .AddToMenu {
+  bottom: initial;
+  top: 82px;
+  right: 0;
+  box-shadow: 0 6px 15px 3px rgba(0, 0, 0, 0.1)
+}
+
+.ThumbnailSelect h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 81.25%;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.ThumbnailSelect__options:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.ThumbnailSelect__option {
+  width: 120px;
+  height: 68px;
+  background: #f1f1f1;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  cursor: pointer;
+}
+
+img.ThumbnailSelect__spinner {
+  width: 16px;
+}
+
+.ThumbnailSelect__Dropzone {
+  font-size: 11px;
+  font-weight: 500;
+  color: #333333;
+  background: #f8f8f8;
+  border: 1px solid #d3d3d3;
+  border-radius: 3px;
+  width: 112px;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 0;
+  float: left;
+  top: 22px;
+  margin-left: 20px;
+}
+
+.ThumbnailSelect__Dropzone:hover {
+  background: #f0f0f0;
+  border-color: #afafaf;
 }

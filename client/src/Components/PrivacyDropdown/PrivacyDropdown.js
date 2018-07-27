@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import dropdownArrow from '../../resources/dropdown-arrow.png';
 
 class PrivacyDropdown extends Component {
@@ -54,6 +55,15 @@ class PrivacyDropdown extends Component {
       </div>
     );
   }
+}
+
+PrivacyDropdown.propTypes = {
+  selectedOption: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    optionName: PropTypes.string.isRequired,
+    optionDesc: PropTypes.string.isRequired
+  }).isRequired,
+  onSelectOption: PropTypes.func.isRequired
 }
 
 export default PrivacyDropdown;

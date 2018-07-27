@@ -166,6 +166,7 @@ const defaultState = {
     channelDescription: 'Tyler "Ninja" Blevins is a professional Battle Royale Player and Streamer on Twitch.tv/ninja. He currently is playing Fortnite and Realm Royale.<br><br>*Accomplishments*<br>- 1st Place Fortnite Celebrity Pro-Am Tournament E3 2018<br>- 1st Place PUBG Squads Gamescom Invitational 2017<br>- 2nd Place H1Z1 5s Dreamhack 2017<br>- 1st Place H1Z1 Invitational 2015<br>- 1st Place Halo 4 Dallas 2012<br>- 1st Place AGL 8 Knoxville<br><br>He is known for his goofy energetic personality, his incredible impressions, and can often be found streaming on Twitch.'
   },
   upload: {
+    videoId: 'e6-FR_354j',
     fileSelected: false,
     file: 'file',
     privacy: {
@@ -175,7 +176,8 @@ const defaultState = {
     },
     title: '',
     description: '',
-    tags: []
+    tags: [],
+    thumbnailOptionUrls: []
   },
   playlists: {
     userPlaylists: [

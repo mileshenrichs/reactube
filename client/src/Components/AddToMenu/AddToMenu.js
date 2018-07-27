@@ -56,6 +56,16 @@ class AddToMenu extends Component {
         privacy: this.state.newPlaylistSelectedPrivacy.type
       }
       this.props.createPlaylistAndAddVideo(newPlaylist, this.props.videoId);
+
+      // reset create form to default values after creation
+      this.setState({
+        newPlaylistName: '',
+        newPlaylistSelectedPrivacy: {
+          type: 'PUBLIC',
+          optionName: 'Public',
+          optionDesc: 'Anyone can search for and view'
+        }
+      });
     }
   }
 

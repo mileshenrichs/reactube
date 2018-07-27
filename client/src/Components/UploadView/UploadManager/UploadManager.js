@@ -17,7 +17,7 @@ class UploadManager extends Component {
           <div className="UploadManager__upload-status">
             <h3>Upload status:</h3>
             <p>Uploading your video.</p>
-            <p>Your video will be live at: <br /><Link to="/" className="legacy-link">https://reactu.be/e6-FR_354j</Link></p>
+            <p>Your video will be live at: <br /><Link to="/watch" className="legacy-link">https://reactu.be/{this.props.videoId}</Link></p>
           </div>
         </div>
 
@@ -37,6 +37,9 @@ class UploadManager extends Component {
             updateTitle={(title) => this.props.updateVideoTitle(title)}
             description={this.props.description}
             updateDescription={(description) => this.props.updateVideoDescription(description)}
+            selectedPrivacy={this.props.privacy}
+            onSelectPrivacyOption={(option) => this.props.changePrivacyOption(option)}
+            videoId={this.props.videoId}
           />
         </div>
       </div>

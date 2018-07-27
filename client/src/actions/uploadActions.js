@@ -39,3 +39,17 @@ export function removeTag(tag) {
     tag
   }
 }
+
+export function selectUploadThumbnail(thumbnail) {
+  return {
+    type: 'SELECT_UPLOAD_THUMBNAIL',
+    thumbnail
+  }
+}
+
+export function uploadCustomThumbnail(customThumbnail) {
+  return {
+    type: 'UPLOAD_CUSTOM_THUMBNAIL',
+    customThumbnail
+  }
+}
