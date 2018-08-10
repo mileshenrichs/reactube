@@ -58,7 +58,7 @@ class App extends Component {
           <Route exact path="/watch" component={WatchView} />
           <Route path="/user/:username" component={ChannelView} />
           <Route exact path="/upload" component={UploadView} />
-          <Route exact path="/studio" component={CreatorStudioView} />
+          <Route path="/studio/channel/:channelId" component={CreatorStudioView} />
         </Switch>
 
         <Notification 

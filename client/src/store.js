@@ -224,7 +224,8 @@ const defaultState = {
   },
   user: {
     id: 1,
-    name: 'Snooz.'
+    name: 'Snooz.',
+    channelId: 'UCm8_kAXx9YlPUpDFK9KBQAw'
   }
 }
 

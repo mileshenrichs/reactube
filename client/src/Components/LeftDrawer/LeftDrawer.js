@@ -33,11 +33,11 @@ const LeftDrawer = (props) => {
           </section>}
 
         <section className="menu-section LeftDrawer__big-three">
-          <MenuLink imgSrc={homeIcon} text="Home" url="/"
+          <MenuLink showTitle imgSrc={homeIcon} text="Home" url="/"
                   active={window.location.pathname === '/'} />
-          <MenuLink imgSrc={fireIcon} text="Trending" url="/feed/trending"
+          <MenuLink showTitle imgSrc={fireIcon} text="Trending" url="/feed/trending"
                   active={window.location.pathname === '/feed/trending'} />
-          <MenuLink imgSrc={subscriptionsIcon} text="Subscriptions" url="/feed/subscriptions" 
+          <MenuLink showTitle imgSrc={subscriptionsIcon} text="Subscriptions" url="/feed/subscriptions" 
                   active={window.location.href.includes('/feed/subscriptions')} />
         </section>
 
@@ -46,11 +46,11 @@ const LeftDrawer = (props) => {
             <a href="#">Library</a>
           </h3>
 
-          <MenuLink imgSrc={historyIcon} text="History" url="/feed/history"
+          <MenuLink showTitle imgSrc={historyIcon} text="History" url="/feed/history"
                   active={window.location.href.includes('/feed/history')} />
-          <MenuLink imgSrc={watchLaterIcon} text="Watch Later" />
-          <MenuLink imgSrc={likeIcon} text="Liked Videos" />
-          <MenuLink imgSrc={playlistIcon} text="Basketball shooting" />
+          <MenuLink showTitle imgSrc={watchLaterIcon} text="Watch Later" />
+          <MenuLink showTitle imgSrc={likeIcon} text="Liked Videos" />
+          <MenuLink showTitle imgSrc={playlistIcon} text="Basketball shooting" />
           
           <div className="LeftDrawer__show-more">
             <img src={showMoreIcon} alt="" />
@@ -63,25 +63,25 @@ const LeftDrawer = (props) => {
             <a href="#">Subscriptions</a>
           </h3>
 
-          <MenuLink text="Morgan Freeman">
+          <MenuLink showTitle text="Morgan Freeman">
             <ProfileIcon width={24} profilePicSrc={morganFreeman} />
           </MenuLink>
-          <MenuLink text="Sylvester Stallone">
+          <MenuLink showTitle text="Sylvester Stallone">
             <ProfileIcon width={24} />
           </MenuLink>
-          <MenuLink text="Rihanna">
+          <MenuLink showTitle text="Rihanna">
             <ProfileIcon width={24} />
           </MenuLink>
-          <MenuLink text="Jay-Z">
+          <MenuLink showTitle text="Jay-Z">
             <ProfileIcon width={24} />
           </MenuLink>
-          <MenuLink text="21 Savage">
+          <MenuLink showTitle text="21 Savage">
             <ProfileIcon width={24} />
           </MenuLink>
-          <MenuLink text="Bob Ross">
+          <MenuLink showTitle text="Bob Ross">
             <ProfileIcon width={24} />
           </MenuLink>
-          <MenuLink text="Will Ferrell">
+          <MenuLink showTitle text="Will Ferrell">
             <ProfileIcon width={24} />
           </MenuLink>
           
@@ -92,7 +92,7 @@ const LeftDrawer = (props) => {
         </section>
 
         <section className="menu-section LeftDrawer__settings">
-          <MenuLink imgSrc={settingsIcon} text="Settings" />
+          <MenuLink showTitle imgSrc={settingsIcon} text="Settings" />
         </section>
 
         <section className="menu-section LeftDrawer__footer">

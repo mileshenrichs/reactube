@@ -8,7 +8,7 @@ import grayReactubeLogo from '../../../resources/header/account-menu/gray-reactu
 import signOutIcon from '../../../resources/header/account-menu/sign-out.png';
 import settingsIcon from '../../../resources/left-drawer/settings.png';
 
-const AccountMenu = ({ isCreatorStudio }) => {
+const AccountMenu = ({ isCreatorStudio, userChannelId }) => {
   return (
     <div className="AccountMenu">
       <a href="#">
@@ -24,16 +24,16 @@ const AccountMenu = ({ isCreatorStudio }) => {
       </a>
 
       <section className="menu-section">
-        <MenuLink imgSrc={myChannelIcon} text="My Channel" />
+        <MenuLink showTitle imgSrc={myChannelIcon} text="My Channel" />
         {!isCreatorStudio && 
-          <MenuLink url="/studio" imgSrc={creatorStudioIcon} text="Creator Studio" />}
+          <MenuLink showTitle url={'/studio/channel/' + userChannelId + '/videos'} imgSrc={creatorStudioIcon} text="Creator Studio" />}
         {isCreatorStudio && 
-          <MenuLink url="/" imgSrc={grayReactubeLogo} text="Back to Reactube" />}
-        <MenuLink imgSrc={signOutIcon} text="Sign Out" />
+          <MenuLink showTitle url="/" imgSrc={grayReactubeLogo} text="Back to Reactube" />}
+        <MenuLink showTitle imgSrc={signOutIcon} text="Sign Out" />
       </section>
 
       <section className="menu-section settings-link">
-        <MenuLink imgSrc={settingsIcon} text="Settings" />
+        <MenuLink showTitle imgSrc={settingsIcon} text="Settings" />
       </section>
     </div>
   );

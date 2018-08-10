@@ -86,7 +86,7 @@ class Header extends Component {
         </div>
 
         {this.props.showAccountMenu && 
-          <AccountMenu isCreatorStudio={this.props.isCreatorStudio} />}
+          <AccountMenu isCreatorStudio={this.props.isCreatorStudio} userChannelId={this.props.userChannelId} />}
       </div>
     );
   }
@@ -97,7 +97,12 @@ Header.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  return state.app;
+  const userChannelId = state.user.channelId;
+
+  return {
+    ...state.app,
+    userChannelId
+  };
 }
 
 // todo: combine header and watch action creators, if necessary
