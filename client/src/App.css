@@ -3255,3 +3255,154 @@ img.ThumbnailSelect__spinner {
   margin-left: 255px;
   width: calc(100% - 255px);
 }
+
+.StudioVideosTable__table {
+  width: 100%;
+  border-collapse: collapse;
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 75%;
+}
+
+.StudioVideosTable__table thead tr {
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 10px;
+}
+
+.StudioVideosTable__table th {
+  text-align: left;
+  font-weight: 500;
+  padding: 16px 0;
+}
+
+.StudioVideosTable__table th:first-child,
+.StudioVideosTable__table td:first-child {
+  padding-left: 40px;
+}
+
+.StudioVideosTable__table th:last-child,
+.StudioVideosTable__table td:last-child {
+  padding-right: 30px;
+}
+
+.StudioVideosTable__table th:nth-child(4),
+.StudioVideosTable__table td:nth-child(4),
+.StudioVideosTable__table th:nth-child(5),
+.StudioVideosTable__table td:nth-child(5),
+.StudioVideosTable__table th:nth-child(6),
+.StudioVideosTable__table td:nth-child(6) {
+  text-align: right;
+}
+
+.StudioVideosTable__table tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.StudioVideosTable__table tr:not(.tr--header):hover {
+  background: #f4f4f4;
+}
+
+.StudioVideosTable__table td {
+  height: 84px;
+}
+
+.StudioVideosTable__table td a {
+  text-decoration: none;
+}
+
+.table-row__video {
+  overflow: hidden;
+}
+
+.table-row__video .VideoThumbnail {
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.table-row__video .VideoThumbnail__video-length {
+  font-size: 100%;
+  bottom: 3px;
+  right: 0;
+}
+
+.table-row__video--details {
+  float: left;
+  margin-top: 10px;
+  max-width: 450px;
+}
+
+.table-row__video--details h4 {
+  margin-bottom: 6px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 13px;
+}
+
+.table-row__video--details span {
+  line-height: 16px;
+}
+
+.StudioVideosTable__table tr:hover .table-row__video h4,
+.StudioVideosTable__table tr:hover .table-row__comments a {
+  color: #0070cc;
+}
+
+.table-row__visibility {
+  height: 56px;
+}
+
+.table-row__visibility img {
+  width: 22px;
+  margin-right: 8px;
+}
+
+.table-row__visibility span {
+  color: rgba(0, 0, 0, 0.9);
+  position: relative;
+  bottom: 6px;
+}
+
+.table-row__date,
+.table-row__views {
+  height: 46px;
+}
+
+.table-row__date span,
+.table-row__views span,
+.table-row__likes span {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.table-row__comments a {
+  display: block;
+  padding: 16px 0 48px 0;
+}
+
+.table-row__likes {
+  height: 46px;
+}
+
+.table-row__likes span {
+  display: block;
+}
+
+.table-row__likes--percentage {
+  margin-bottom: 12px;
+}
+
+.table-row__likes--bar-container {
+  width: 100px;
+  height: 4px;
+  background: #e0e0e0;
+  float: right;
+  position: relative;
+}
+
+.table-row__likes--bar-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 66%;
+  background: #686868;
+}
