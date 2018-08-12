@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ProfileIcon from '../../ProfileIcon/ProfileIcon';
 import MenuLink from '../../MenuLink/MenuLink';
-import videosIcon from '../../../resources/studio-menu/videos.png';
-import commentsIcon from '../../../resources/studio-menu/comments.png';
-import settingsIcon from '../../../resources/studio-menu/settings.png';
+import videosIcon from '../../../resources/studio/videos.png';
+import commentsIcon from '../../../resources/studio/comments.png';
+import settingsIcon from '../../../resources/studio/settings.png';
 
 class StudioSidebar extends Component {
   render() {

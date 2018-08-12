@@ -11,6 +11,8 @@ import profilePic2 from './resources/example-profpic-2.jpg';
 import profilePic3 from './resources/example-profpic-3.jpg';
 import profilePic4 from './resources/example-profpic-4.jpg';
 import channelCover from './resources/example-channel-cover.jpg';
+import thumbnail17 from './resources/example-thumb-17.jpg';
+import thumbnail18 from './resources/example-thumb-18.jpg';
 
 const defaultState = {
   app: {
@@ -217,6 +219,36 @@ const defaultState = {
       userPlaylistsContainingVideo: [],
       closeAddToMenu: false
     }
+  },
+  studio: {
+    userVideos: [
+      {
+        id: 'dGhlc2UcYm9',
+        thumbnailSrc: thumbnail17,
+        videoLength: '3:58',
+        title: 'Photoshop CS5 Signature Speedart #3',
+        description: 'Third signature speedart, fourth photoshop speedart. Signature designed for Pulse Guardian. Enjoy!',
+        visibility: 'PUBLIC',
+        datePublished: 'Nov 4, 2012',
+        views: '98',
+        comments: 0,
+        likes: 2,
+        dislikes: 1
+      },
+      {
+        id: 'dGhlc2UcYm8',
+        thumbnailSrc: thumbnail18,
+        videoLength: '5:10',
+        title: 'Photoshop CS5 Signature Speedart',
+        description: 'Signature Designed for Pulse Twisted.',
+        visibility: 'UNLISTED',
+        datePublished: 'Nov 1, 2012',
+        views: '47',
+        comments: 1,
+        likes: 4,
+        dislikes: 0
+      }
+    ]
   },
   notification: {
     showNotification: false,
