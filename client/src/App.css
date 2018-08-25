@@ -3560,3 +3560,71 @@ img.ThumbnailSelect__spinner {
 .text-button.blue {
   color: #0070cc;
 }
+
+.StudioPlaylists__heading {
+  background: #e1e1e1;
+  padding: 14px 0 14px 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.StudioPlaylists__heading h2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.PlaylistRow {
+  padding: 14px 80px 14px 40px;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+}
+
+.PlaylistRow:hover {
+  background: #f4f4f4;
+}
+
+.PlaylistRow:hover .PlaylistRow__playlist-title {
+  color: #0070cc;
+}
+
+.PlaylistRow__playlist-title {
+  display: block;
+}
+
+.PlaylistRow a.PlaylistRow__playlist-link {
+  text-decoration: none;
+  color: #111111;
+  display: block;
+  overflow: hidden;
+  width: 500px;
+  float: left;
+}
+
+.PlaylistRow .VideoThumbnail {
+  margin-right: 18px;
+}
+
+.PlaylistRow__playlist-info {
+  padding-top: 4px;
+}
+
+.PlaylistRow__additional {
+  font-size: 81.25%;
+  color: rgba(0, 0, 0, 0.55);
+  position: relative;
+  bottom: 10px;
+}
+
+.PlaylistRow a.PlaylistRow__edit-link {
+  display: block;
+  float: right;
+  background: #0080d9;
+  color: #ffffff;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 87.5%;
+  text-decoration: none;
+  position: relative;
+  top: 18px;
+}

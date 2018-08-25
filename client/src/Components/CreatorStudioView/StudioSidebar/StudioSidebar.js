@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ProfileIcon from '../../ProfileIcon/ProfileIcon';
 import MenuLink from '../../MenuLink/MenuLink';
 import videosIcon from '../../../resources/studio/videos.png';
-import commentsIcon from '../../../resources/studio/comments.png';
-import settingsIcon from '../../../resources/studio/settings.png';
+import playlistsIcon from '../../../resources/studio/playlists.png';
 
 class StudioSidebar extends Component {
   render() {
@@ -14,13 +14,18 @@ class StudioSidebar extends Component {
         </div>
 
         <div className="StudioSidebar__menu">
-          <MenuLink imgSrc={videosIcon} text="Videos" url="/" active={window.location.pathname.includes('/videos')} />
-          <MenuLink imgSrc={commentsIcon} text="Comments" url="/" active={window.location.pathname.includes('/comments')} />
-          <MenuLink imgSrc={settingsIcon} text="Settings" url="/" active={window.location.pathname.includes('/settings')} />
+          <MenuLink imgSrc={videosIcon} text="Videos" url={this.props.matchUrl + '/videos'}
+            active={window.location.pathname.includes('/videos')} />
+          <MenuLink imgSrc={playlistsIcon} text="Playlists" url={this.props.matchUrl + '/playlists'} 
+            active={window.location.pathname.includes('/playlists')} />
         </div>
       </div>
     );
   }
+}
+
+StudioSidebar.propTypes = {
+  matchUrl: PropTypes.string.isRequired
 }
 
 export default StudioSidebar;

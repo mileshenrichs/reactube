@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import VideoThumbnail from '../../../VideoThumbnail/VideoThumbnail';
 import RadioInput from '../../../RadioInput/RadioInput';
+import { toCapitalCase } from '../../../../util/stringUtil';
 import visibilityPublic from '../../../../resources/visibility-public.png';
 import visibilityHidden from '../../../../resources/visibility-hidden.png';
 import viewOnReactube from '../../../../resources/studio/view-on-reactube.png';
@@ -150,7 +151,7 @@ class StudioVideosTableRow extends Component {
         <td>
           <div className="table-row__visibility">
             <img src={this.props.visibility === 'PUBLIC' ? visibilityPublic : visibilityHidden} className="visibility-indicator" alt="" />
-            <span>{this.capitalCaseVisibilityType(this.props.visibility)}</span>
+            <span>{toCapitalCase(this.props.visibility)}</span>
             <button className="table-row__visibility--edit-button icon-button" onClick={() => this.setState({showPrivacyMenu: true})}>
               <img src={editIcon} alt="" />
             </button>
@@ -161,7 +162,7 @@ class StudioVideosTableRow extends Component {
                     {['PUBLIC', 'PRIVATE', 'UNLISTED'].map(option => (
                       <RadioInput 
                         key={option}
-                        text={this.capitalCaseVisibilityType(option)} 
+                        text={toCapitalCase(option)} 
                         checked={this.isVisibilityOptionChecked(option)} 
                         onRadioChecked={() => {
                           this.setState({
