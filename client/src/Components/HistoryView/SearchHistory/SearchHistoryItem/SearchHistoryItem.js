@@ -21,7 +21,7 @@ class SearchHistoryItem extends Component {
           <img className="list-item__remove" src={removeIcon} alt="" onClick={() => this.props.removeVideoFromHistory(this.props.video.id)}
               onMouseEnter={() => this.setState({hoveringRemoveIcon: true})}
               onMouseLeave={() => this.setState({hoveringRemoveIcon: false})} />
-          <span className={'list-item__remove-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>Remove from Search history</span>
+          <span className={'list-item__remove-tooltip info-tooltip' + (this.state.hoveringRemoveIcon ? ' show' : '')}>Remove from Search history</span>
         </div>
     );
   }

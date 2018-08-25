@@ -44,15 +44,15 @@ class HistoryControls extends Component {
           <section>History type</section>
 
           <section>
-            <RadioInput text="Watch history" checked={this.props.location.pathname === '/feed/history'} 
+            <RadioInput alignRight text="Watch history" checked={this.props.location.pathname === '/feed/history'} 
                 onRadioChecked={() => this.handleNavigationRadioChecked('')} />
           </section>
           <section>
-            <RadioInput text="Search history" checked={this.props.location.pathname.includes('search_history')} 
+            <RadioInput alignRight text="Search history" checked={this.props.location.pathname.includes('search_history')} 
                 onRadioChecked={() => this.handleNavigationRadioChecked('/search_history')} />
           </section>
           <section>
-            <RadioInput text="Comments" checked={this.props.location.pathname.includes('comment_history')} 
+            <RadioInput alignRight text="Comments" checked={this.props.location.pathname.includes('comment_history')} 
                 onRadioChecked={() => this.handleNavigationRadioChecked('/comment_history')} />
           </section>
         </div>

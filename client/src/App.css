@@ -2578,14 +2578,24 @@ img.HistoryControls__search--clear-icon {
 
 .RadioInput__text {
   font-size: 87.5%;
-  font-weight: 500;
 }
 
 .RadioInput__radio-button {
   width: 16px;
-  float: right;
   position: relative;
   top: 2px;
+}
+
+.RadioInput.align-right .RadioInput__radio-button {
+  float: right;
+}
+
+.HistoryControls .RadioInput__text {
+  font-weight: 500;
+}
+
+.HistoryControls .RadioInput__radio-button {
+  opacity: 0.7;
 }
 
 .SearchHistory {
@@ -3351,6 +3361,7 @@ img.ThumbnailSelect__spinner {
 
 .table-row__visibility {
   height: 56px;
+  position: relative;
 }
 
 .table-row__visibility img.visibility-indicator {
@@ -3507,4 +3518,45 @@ img.ThumbnailSelect__spinner {
 .table-row__video--options-menu li span {
   position: relative;
   bottom: 4px;
+}
+
+.table-row__visibility--privacy-menu {
+  font-size: 13px;
+  width: 380px;
+  position: absolute;
+  top: -14px;
+  left: 0;
+}
+
+.table-row__visibility--privacy-menu .menu__options {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 12px;
+}
+
+.table-row__visibility--privacy-menu .menu__buttons {
+  padding: 8px 8px 0 0;
+  text-align: right;
+}
+
+.table-row__visibility .RadioInput__text {
+  font-size: 100%;
+  position: relative;
+  bottom: 3px;
+}
+
+.table-row__visibility .RadioInput {
+  padding: 8px 0 8px 26px;
+}
+
+.table-row__visibility .RadioInput__radio-button {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.table-row__visibility .RadioInput:not(.checked) .RadioInput__radio-button {
+  opacity: 0.6;
+}
+
+.text-button.blue {
+  color: #0070cc;
 }

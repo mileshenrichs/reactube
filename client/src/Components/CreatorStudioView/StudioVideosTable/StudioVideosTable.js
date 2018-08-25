@@ -25,7 +25,8 @@ class StudioVideosTable extends Component {
           </thead>
           <tbody>
             {this.props.userVideos.map(video => (
-              <StudioVideosTableRow key={video.id} {...video} />
+              <StudioVideosTableRow key={video.id} {...video} 
+                changeVideoVisibility={this.props.changeVideoVisibility} />
             ))}
           </tbody>
         </table>
