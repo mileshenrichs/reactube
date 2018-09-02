@@ -2328,6 +2328,11 @@ section.AddToMenu__create-form {
   padding-top: 0 !important;
 }
 
+.VideoList .VideoListItem.show-border {
+  padding: 20px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
 .list-item__thumbnail-link {
   display: block;
   width: 246px; 
@@ -3752,4 +3757,35 @@ img.ThumbnailSelect__spinner {
   color: rgba(17, 17, 17, 0.6);
   font-weight: 500;
   font-size: 14px;
+}
+
+.PlaylistView__video-list .VideoList .VideoListItem {
+  padding: 14px 0 14px 30px;
+  cursor: pointer;
+}
+
+.PlaylistView__video-list .VideoList .VideoListItem:hover {
+  background: #f5f5f5;
+}
+
+.PlaylistView__video-list .VideoListItem:first-child {
+  padding-top: 14px !important;
+}
+
+.PlaylistView__video-list .VideoListItem__details--title {
+  font-size: 100%;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.PlaylistView__video-list .list-item__thumbnail-link {
+  width: 130px;
+}
+
+.PlaylistView__video-list .VideoListItem:hover .VideoThumbnail__watch-later {
+  display: none;
+}
+
+.PlaylistView__video-list .VideoListItem__details {
+  width: auto;
 }

@@ -44,6 +44,14 @@ class VideoListItem extends Component {
     this.setState({showOptionsMenu: false});
   }
 
+  determineThumbnailWidth() {
+    if(this.props.thumbnailWidth) {
+      return this.props.thumbnailWidth;
+    } else {
+      return this.props.displayAs === 'list' ? 246 : 210;
+    }
+  }
+
   /**
    * Click listener, closes account menu if clicked outside
    * @param {MouseEvent} e mousedown event
@@ -86,15 +94,6 @@ class VideoListItem extends Component {
       document.addEventListener('mousedown', this.handleClickWhileAddToMenuOpen);
     }
 
-    // set styles according to showBorder prop
-    let listItemStyle = {};
-    if(this.props.showBorder) {
-      listItemStyle = {
-        padding: '20px 0',
-        borderBottom: '1px solid #eeeeee'
-      }
-    }
-
     let itemInteractionButton; // either menu icon or remove icon
     if(this.props.includeRemoveButton) {
       itemInteractionButton = (
@@ -118,7 +117,7 @@ class VideoListItem extends Component {
     }
 
     return (
-      <div className="VideoListItem list-item" style={listItemStyle}>
+      <div className={'VideoListItem list-item' + (this.props.showBorder ? ' show-border' : '')}>
   
       {this.props.showTitle && 
         <ListItemTitle
@@ -129,7 +128,7 @@ class VideoListItem extends Component {
         <div className="list-item__cursor-pointer-container">
           <Link className="list-item__thumbnail-link" to="/watch">
             <VideoThumbnail
-              width={this.props.displayAs === 'list' ? 246 : 210}
+              width={this.determineThumbnailWidth()}
               thumbnailSrc={this.props.video.thumbnailSrc}
               videoLength={this.props.video.videoLength}
               watchedProgress={this.props.video.watchedProgress}
@@ -137,7 +136,7 @@ class VideoListItem extends Component {
           </Link>
     
           <div className="VideoListItem__details">
-            {itemInteractionButton}
+            {!window.location.href.includes('playlist') && itemInteractionButton}
 
               {this.state.showOptionsMenu && 
                 <ul className="list-item__menu inline-menu" ref={node => this.optionsMenu = node}>

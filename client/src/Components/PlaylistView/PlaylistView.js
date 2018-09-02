@@ -143,6 +143,7 @@ class PlaylistView extends Component {
           <VideoList
             videos={playlistVideos}
             displayAs="list"
+            thumbnailWidth={120}
             showBorders
             showCreatorOnly
           />
