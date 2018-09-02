@@ -160,10 +160,11 @@ class VideoListItem extends Component {
                     {this.props.video.creator.name}
                   </span>
                 </Link>}
-              <span className="subtitle-item view-count">{this.props.video.views} views</span>
-              {this.props.showTimeSince && <span className="subtitle-item time-since">{this.props.video.timeSince} ago</span>}
+              {!this.props.showCreatorOnly && <span className="subtitle-item view-count">{this.props.video.views} views</span>}
+              {this.props.showTimeSince && !this.props.showCreatorOnly && 
+                <span className="subtitle-item time-since">{this.props.video.timeSince} ago</span>}
             </div>
-            {this.props.displayAs === 'list' && 
+            {this.props.displayAs === 'list' && !this.props.showCreatorOnly && 
               <p className="VideoListItem__description">{this.props.video.description}</p>}
           </div>
           <div className="clearfix"></div>
@@ -181,7 +182,8 @@ VideoListItem.propTypes = {
   showTimeSince: PropTypes.bool.isRequired,
   includeRemoveButton: PropTypes.bool,
   removeVideoFromHistory: PropTypes.func,
-  showCreatorInGrid: PropTypes.bool
+  showCreatorInGrid: PropTypes.bool,
+  showCreatorOnly: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {

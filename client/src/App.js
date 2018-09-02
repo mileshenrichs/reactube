@@ -14,6 +14,7 @@ import SearchResultsView from './Components/SearchResultsView/SearchResultsView'
 import ChannelView from './Components/ChannelView/ChannelView';
 import HomeView from './Components/HomeView/HomeView';
 import TrendingView from './Components/TrendingView/TrendingView';
+import PlaylistView from './Components/PlaylistView/PlaylistView';
 import UploadView from './Components/UploadView/UploadView';
 import CreatorStudioView from './Components/CreatorStudioView/CreatorStudioView';
 
@@ -56,6 +57,7 @@ class App extends Component {
           <Route path="/feed/history" component={HistoryView} />
           <Route exact path="/results" component={SearchResultsView} />
           <Route exact path="/watch" component={WatchView} />
+          <Route exact path="/playlist" component={PlaylistView} />
           <Route path="/user/:username" component={ChannelView} />
           <Route exact path="/upload" component={UploadView} />
           <Route path="/studio/channel/:channelId" component={CreatorStudioView} />

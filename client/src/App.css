@@ -3628,3 +3628,128 @@ img.ThumbnailSelect__spinner {
   position: relative;
   top: 18px;
 }
+
+.PlaylistView {
+  padding-top: 0;
+  position: relative;
+}
+
+.PlaylistSidebar {
+  width: 420px;
+  height: calc(100% - 54px);
+  background: #fafafa;
+  position: fixed;
+  top: 54px;
+  left: 0;
+}
+
+.App.left-drawer-open .PlaylistSidebar {
+  left: 240px;
+}
+
+.App.slide-drawer-out .PlaylistSidebar {
+  left: 0;
+}
+
+.PlaylistView__video-list {
+  width: calc(100% - 420px);
+  height: 100%;
+  background: #ffffff;
+  float: right;
+}
+
+.PlaylistSidebar {
+  padding: 32px;
+}
+
+.PlaylistSidebar__top-section {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 26px;
+}
+
+.PlaylistSidebar__play-now-image {
+  width: 357px;
+  position: relative;
+}
+
+.PlaylistSidebar__play-now-image img {
+  width: 100%;
+}
+
+.PlaylistSidebar__play-now-image--overlay {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 87.5%;
+  color: #ffffff;
+}
+
+.PlaylistSidebar__play-now-image--overlay img {
+  width: 20px;
+  margin-right: 8px;
+}
+
+.PlaylistSidebar__playlist-name {
+  text-decoration: none;
+  color: #111;
+  display: inline-block;
+  font-size: 150%;
+  font-weight: 400;
+}
+
+.PlaylistSidebar__playlist-details {
+  font-size: 87.5%;
+}
+
+.PlaylistSidebar__private-badge {
+  font-size: 75%;
+  font-weight: 500;
+  background: #f3f3f3;
+  border-radius: 2px;
+  padding: 2px;
+}
+
+.PlaylistSidebar__bottom-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.PlaylistSidebar__playlist-creator {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #111;
+  padding-right: 10px;
+}
+
+.PlaylistSidebar__playlist-creator--name {
+  font-weight: 500;
+  font-size: 87.5%;
+  padding-left: 16px;
+}
+
+.PlaylistSidebar__edit-button {
+  padding: 12px;
+}
+
+.PlaylistSidebar__edit-button img {
+  width: 20px;
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+  opacity: 0.7;
+}
+
+.PlaylistSidebar__edit-button span {
+  color: rgba(17, 17, 17, 0.6);
+  font-weight: 500;
+  font-size: 14px;
+}

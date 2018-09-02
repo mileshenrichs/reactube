@@ -16,7 +16,7 @@ import thumbnail18 from './resources/example-thumb-18.jpg';
 
 const defaultState = {
   app: {
-    showLeftDrawer: false,
+    showLeftDrawer: true,
     slideDrawerOut: false,
     searchQuery: '',
     showAccountMenu: false
