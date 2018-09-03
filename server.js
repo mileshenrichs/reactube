@@ -1,17 +1,18 @@
 const express = require('express');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
-app.get('/api/customers', (req, res) => {
-  const customers = [
-    {id: 1, firstName: 'John', lastName: 'Doe'},
-    {id: 2, firstName: 'Brad', lastName: 'Traversy'},
-    {id: 3, firstName: 'Mary', lastName: 'Swanson'},
-  ];
+app.use('/api', apiRouter);
 
-  res.json(customers);
-});
+// app.get('/api/customers', (req, res) => {
+//   const customers = [
+//     {id: 1, firstName: 'John', lastName: 'Doe'},
+//     {id: 2, firstName: 'Brad', lastName: 'Traversy'},
+//     {id: 3, firstName: 'Mary', lastName: 'Swanson'},
+//   ];
 
-const port = 5000;
+//   res.json(customers);
+// });
 
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(5000);
