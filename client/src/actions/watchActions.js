@@ -15,6 +15,13 @@ export function hideDrawerOverlay() {
   }
 }
 
+export function setLeftDrawerWithoutAnimation(isShown) {
+  return {
+    type: 'SET_LEFT_DRAWER_WITHOUT_ANIMATION',
+    isShown
+  }
+}
+
 // like or dislike video
 export function rateVideo(liked) {
   return (dispatch) => {

@@ -171,7 +171,7 @@ const defaultState = {
   upload: {
     videoId: 'e6-FR_354j',
     fileSelected: false,
-    file: 'file',
+    file: undefined,
     privacy: {
       type: 'PUBLIC',
       optionName: 'Public',
@@ -240,21 +240,6 @@ const defaultState = {
           }
         ]
       },
-      // {
-      //   id: 'PLA632C0E49DA6710',
-      //   name: 'Favorites',
-      //   privacy: 'PRIVATE'
-      // },
-      // {
-      //   id: 'PLA432C0D49DA6710',
-      //   name: 'Yum',
-      //   privacy: 'PUBLIC'
-      // },
-      // {
-      //   id: 'PLA432C0E49DA8710',
-      //   name: 'Reason Tutorials',
-      //   privacy: 'PUBLIC'
-      // },
       {
         id: 'PLAECCC0E491A6710',
         name: 'MW3 Singles',

@@ -8,8 +8,6 @@ import profilePic2 from '../resources/example-profpic-2.jpg';
 import profilePic3 from '../resources/example-profpic-3.jpg';
 import profilePic4 from '../resources/example-profpic-4.jpg';
 
-// action definitions for the watch page
-
 // toggle left drawer
 export function toggleLeftDrawer() {
   return {

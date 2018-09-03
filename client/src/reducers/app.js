@@ -21,6 +21,12 @@ function appReducer(state = {}, action) {
         slideDrawerOut: false
       });
 
+    case 'SET_LEFT_DRAWER_WITHOUT_ANIMATION':
+      return {
+        ...state,
+        showLeftDrawer: action.isShown
+      }
+
     case 'UPDATE_SEARCH_QUERY':
       return {
         ...state,
