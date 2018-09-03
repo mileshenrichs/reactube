@@ -8,6 +8,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "enzyme": "^3.3.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

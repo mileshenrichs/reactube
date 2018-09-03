@@ -7,8 +7,13 @@ import VideoThumbPreview from './VideoThumbPreview/VideoThumbPreview';
 import UploadProgressBar from './UploadProgressBar/UploadProgressBar';
 import notifyIcon from '../../../resources/upload/notify.png';
 import BasicInfo from './BasicInfo/BasicInfo';
+import Api from '../../../util/Api';
 
 class UploadManager extends Component {
+  componentDidMount() {
+    Api.uploadVideo(this.props.file);
+  }
+
   render() {
     return (
       <div className="UploadManager legacy-page-box">
