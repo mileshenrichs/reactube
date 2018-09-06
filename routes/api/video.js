@@ -3,8 +3,8 @@ const multer  = require('multer');
 const AWS = require('aws-sdk');
 const Config = require('../../config');
 const fs = require('fs');
-const path = require('path');
 const { generateVideoId } = require('../../util/identifiers');
+const db = require('../../database');
 
 // Set multer config (storage & upload)
 const storage = multer.diskStorage({
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const fileExtension = file.mimetype.substring(file.mimetype.indexOf('/') + 1);
-    cb(null, file.fieldname + '-' + Date.now() + '.' + fileExtension);
+    cb(null, generateVideoId() + '.' + fileExtension);
   }
 });
 
@@ -31,8 +31,14 @@ router.put('/upload', upload.single('video'), (req, res) => {
   if(uploadedFile) {
     const uploadedFileStream = fs.createReadStream('./tmp/' + uploadedFile.filename);
 
-    // generate id for new video
-    const videoId = generateVideoId();
+    // get id for new video from file name, create entry in UPLOAD_IN_PROGRESS table
+    const videoId = uploadedFile.filename.substring(0, uploadedFile.filename.length - 4);
+    db('UPLOAD_IN_PROGRESS').insert({VIDEO_ID: videoId, PERCENTAGE_UPLOADED: 0})
+      .then(() => null)
+      .catch(err => {
+        console.log('An error occurred while trying to create a new entry in UPLOAD_IN_PROGRESS for video id ' + videoId);
+        console.log(err);
+      });
 
     const s3bucket = new AWS.S3({
       accessKeyId: Config.aws.ACCESS_KEY_ID,
@@ -40,25 +46,37 @@ router.put('/upload', upload.single('video'), (req, res) => {
       Bucket: Config.aws.BUCKET_NAME
     });
 
-    console.log(uploadedFile);
-    console.log('------------------------');
-
     const params = {Bucket: Config.aws.BUCKET_NAME, Key: uploadedFile.filename, Body: uploadedFileStream};
     const upload = new AWS.S3.ManagedUpload({params, service: s3bucket});
-    upload.on('httpUploadProgress', progress => {
-      console.log(progress);
+    upload.on('httpUploadProgress', ({ loaded, total }) => {
+      const percentageUploaded = Math.round((loaded / total) * 100);
+      db('UPLOAD_IN_PROGRESS').where('VIDEO_ID', '=', videoId)
+        .update({PERCENTAGE_UPLOADED: percentageUploaded})
+          .then(() => null)
+          .catch(err => {
+            console.log('Error updating progress percentage to value: ' + percentageUploaded + ' for video id ' + videoId);
+            console.log(err);
+          });
     });
 
-    upload.send(function(err, data) {
+    upload.send((err, data) => {
       if(err) {
-        console.log('error in callback');
+        console.log('Error while uploading video with id: ' + videoId + ' to S3 bucket');
         console.log(err);
+        res.status(404);
       } else {
-        console.log('success');
-        console.log(data);
-      }
+        // remove video from UPLOAD_IN_PROGRESS table after 5 seconds
+        setTimeout(() => {
+          db('UPLOAD_IN_PROGRESS').where('VIDEO_ID', '=', videoId).del()
+            .then(() => null)
+            .catch(err => {
+              console.log('Error deleting video from UPLOAD_IN_PROGRESS with video id: ' + videoId);
+              console.log(err);
+            })
+        }, 5000);
 
-      res.status(204).send('');
+        res.json({videoId});
+      }
     });
   }
 });
