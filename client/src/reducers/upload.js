@@ -47,6 +47,18 @@ function uploadReducer(state = {}, action) {
           ...state.tags.slice(tagIndex + 1)
         ]
       }
+
+    case 'SET_PERCENTAGE_UPLOADED':
+      return {
+        ...state,
+        progressPercentage: action.percentageUploaded
+      }
+
+    case 'UPLOAD_IS_COMPLETE':
+      return {
+        ...state,
+        uploadComplete: true
+      }
       
     default:
       return state;

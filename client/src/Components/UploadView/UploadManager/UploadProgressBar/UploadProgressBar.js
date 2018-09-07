@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UploadProgressBar = ({ progressPercentage }) => {
+const UploadProgressBar = ({ progressPercentage, uploadComplete }) => {
+  let progressBarText = 'Uploading ' + progressPercentage + '%';
+  if(progressPercentage == 100) {
+    progressBarText = 'Processing...';
+  }
+  if(uploadComplete) {
+    progressBarText = 'Processing Done';
+  }
+
   return (
     <div className="UploadProgressBar">
-      <div className="UploadProgressBar__bar" style={{width: (progressPercentage * 100) + '%'}}></div>
+      <div className="UploadProgressBar__bar" style={{width: progressPercentage + '%'}}></div>
       <span className="UploadProgressBar__text">
-        Uploading {(progressPercentage * 100)}%
+        {progressBarText}
       </span>
     </div>
   );

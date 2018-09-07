@@ -11,30 +11,73 @@ import Api from '../../../util/Api';
 
 class UploadManager extends Component {
   componentDidMount() {
-    Api.uploadVideo(this.props.file);
+    // generate id for new video
+    Api.getNewGeneratedVideoId().then(({ data }) => {
+      const videoId = data.generatedId;
+
+      Api.uploadVideo(videoId, this.props.file).then(() => {
+        // once this request finishes, video is fully uploaded to S3
+        this.props.uploadIsComplete();
+      }).catch(err => {
+        console.log(err);
+      });
+  
+      // set interval to check on upload progress
+      this.progressCheckInterval = setInterval(() => {
+        Api.checkUploadProgress(videoId).then(({ data }) => {
+          if(data.percentageUploaded !== this.props.progressPercentage) {
+            this.props.setPercentageUploaded(data.percentageUploaded);
+          }
+        });
+      }, 2000);
+    });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.progressCheckInterval);
   }
 
   render() {
+    if(this.props.uploadComplete) {
+      clearInterval(this.progressCheckInterval);
+    }
+
+    let uploadingMessageText = 'Your video is still uploading.  Please keep this page open until it\'s done.';
+    if(this.props.progressPercentage === 100) {
+      uploadingMessageText = 'Your video is now processing.  Click "Publish" to make it live!';
+    }
+    if(this.props.uploadComplete) {
+      uploadingMessageText = 'Click "Publish" to make your video live.';
+    }
+
+    let uploadStatusText = 'Uploading your video.';
+    if(this.props.uploadComplete) {
+      uploadStatusText = 'Upload complete!';
+    }
+
     return (
       <div className="UploadManager legacy-page-box">
         <div className="UploadManager__left-column">
           <VideoThumbPreview />
           <div className="UploadManager__upload-status">
             <h3>Upload status:</h3>
-            <p>Uploading your video.</p>
+            <p>{uploadStatusText}</p>
             <p>Your video will be live at: <br /><Link to="/watch" className="legacy-link">https://reactu.be/{this.props.videoId}</Link></p>
           </div>
         </div>
 
         <div className="UploadManager__right-column">
           <div className="UploadManager__progress-bar-wrapper">
-            <UploadProgressBar progressPercentage={0.73} />
+            <UploadProgressBar 
+              progressPercentage={this.props.progressPercentage} 
+              uploadComplete={this.props.uploadComplete}
+            />
             <button className="UploadManager__publish-button">Publish</button>
           </div>
 
           <div className="UploadManager__uploading-message">
             <img src={notifyIcon} alt="" />
-            <span>Your video is still uploading.  Please keep this page open until it's done.</span>
+            <span>{uploadingMessageText}</span>
           </div>
 
           <BasicInfo 

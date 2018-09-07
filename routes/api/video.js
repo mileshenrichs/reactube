@@ -3,7 +3,6 @@ const multer  = require('multer');
 const AWS = require('aws-sdk');
 const Config = require('../../config');
 const fs = require('fs');
-const { generateVideoId } = require('../../util/identifiers');
 const db = require('../../database');
 
 // Set multer config (storage & upload)
@@ -13,7 +12,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const fileExtension = file.mimetype.substring(file.mimetype.indexOf('/') + 1);
-    cb(null, generateVideoId() + '.' + fileExtension);
+    cb(null, req.body.videoId + '.' + fileExtension);
   }
 });
 
@@ -79,6 +78,20 @@ router.put('/upload', upload.single('video'), (req, res) => {
       }
     });
   }
+});
+
+router.get('/upload-progress', (req, res) => {
+  const { videoId } = req.query;
+
+  db('UPLOAD_IN_PROGRESS').where('VIDEO_ID', videoId).select('PERCENTAGE_UPLOADED')
+    .then(results => {
+      const { PERCENTAGE_UPLOADED } = results[0];
+      res.json({percentageUploaded: PERCENTAGE_UPLOADED});
+    }).catch(err => {
+      console.log('Error querying for percentage uploaded for video id ' + videoId);
+      console.log(err);
+      res.status(404).send();
+    });
 });
 
 module.exports = router;

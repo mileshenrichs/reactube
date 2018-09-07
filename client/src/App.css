@@ -3011,6 +3011,7 @@ img.HistoryControls__search--clear-icon {
   height: 100%;
   border: 1px solid #cce9ff;
   background: #e8f5ff;
+  transition: width 1s ease-in-out;
 }
 
 .UploadManager__publish-button {

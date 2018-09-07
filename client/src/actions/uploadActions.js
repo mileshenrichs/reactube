@@ -53,3 +53,16 @@ export function uploadCustomThumbnail(customThumbnail) {
     customThumbnail
   }
 }
+
+export function setPercentageUploaded(percentageUploaded) {
+  return {
+    type: 'SET_PERCENTAGE_UPLOADED',
+    percentageUploaded
+  }
+}
+
+export function uploadIsComplete() {
+  return {
+    type: 'UPLOAD_IS_COMPLETE'
+  }
+}

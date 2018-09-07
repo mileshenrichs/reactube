@@ -172,6 +172,8 @@ const defaultState = {
     videoId: 'e6-FR_354j',
     fileSelected: false,
     file: undefined,
+    progressPercentage: 0,
+    uploadComplete: false,
     privacy: {
       type: 'PUBLIC',
       optionName: 'Public',
