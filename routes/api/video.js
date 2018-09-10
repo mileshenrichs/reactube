@@ -2,8 +2,11 @@ const express = require('express');
 const multer  = require('multer');
 const AWS = require('aws-sdk');
 const Config = require('../../config');
+const { S3Bucket } = require('../../util/aws');
 const fs = require('fs');
 const db = require('../../database');
+const { getTimemarksFromVideo, extractThumbnails,
+        waitForThumbnailsReady } = require('../../helpers/videoHelpers');
 
 // Set multer config (storage & upload)
 const storage = multer.diskStorage({
@@ -39,12 +42,10 @@ router.put('/upload', upload.single('video'), (req, res) => {
         console.log(err);
       });
 
-    const s3bucket = new AWS.S3({
-      accessKeyId: Config.aws.ACCESS_KEY_ID,
-      secretAccessKey: Config.aws.SECRET_ACCESS_KEY,
-      Bucket: Config.aws.BUCKET_NAME
-    });
+    // establish S3 bucket
+    const s3bucket = S3Bucket();
 
+    // create ManagedUpload object with progress listener callback
     const params = {Bucket: Config.aws.BUCKET_NAME, Key: uploadedFile.filename, Body: uploadedFileStream};
     const upload = new AWS.S3.ManagedUpload({params, service: s3bucket});
     upload.on('httpUploadProgress', ({ loaded, total }) => {
@@ -58,6 +59,21 @@ router.put('/upload', upload.single('video'), (req, res) => {
           });
     });
 
+    // extract thumbnails from video
+    let screenshotTimemarks;
+    getTimemarksFromVideo('tmp/' + uploadedFile.filename, timemarks => {
+      screenshotTimemarks = timemarks;
+      extractThumbnails(timemarks, 'tmp/' + uploadedFile.filename, videoId);
+    });
+
+    waitForThumbnailsReady(videoId).then(() => {
+      // once thumbnails are ready, upload them to S3
+      console.log('thumbnails are ready');
+
+      const s3bucket = S3Bucket();
+    });
+
+    // begin video file upload to S3
     upload.send((err, data) => {
       if(err) {
         console.log('Error while uploading video with id: ' + videoId + ' to S3 bucket');
@@ -74,7 +90,7 @@ router.put('/upload', upload.single('video'), (req, res) => {
             })
         }, 5000);
 
-        res.json({videoId});
+        res.json({videoId, screenshotTimemarks});
       }
     });
   }
@@ -92,6 +108,12 @@ router.get('/upload-progress', (req, res) => {
       console.log(err);
       res.status(404).send();
     });
+});
+
+router.post('/store-default-thumbnails', (req, res) => {
+  const { videoId } = req.query;
+
+  res.send();
 });
 
 module.exports = router;
