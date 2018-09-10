@@ -60,6 +60,7 @@ router.put('/upload', upload.single('video'), (req, res) => {
     });
 
     // extract thumbnails from video
+    let thumbnailsUploadedToS3 = 0;
     let screenshotTimemarks;
     getTimemarksFromVideo('tmp/' + uploadedFile.filename, timemarks => {
       screenshotTimemarks = timemarks;
@@ -68,9 +69,18 @@ router.put('/upload', upload.single('video'), (req, res) => {
 
     waitForThumbnailsReady(videoId).then(() => {
       // once thumbnails are ready, upload them to S3
-      console.log('thumbnails are ready');
-
       const s3bucket = S3Bucket();
+      screenshotTimemarks.forEach(timemark => {
+        const thumbFileName = videoId + '-' + timemark;
+        const thumbFilePath = './tmp/' + thumbFileName + '.png';
+        const thumbnailStream = fs.createReadStream(thumbFilePath);
+        var params = {Bucket: Config.aws.BUCKET_NAME, Key: thumbFileName + '.png', Body: thumbnailStream};
+        s3bucket.upload(params, (err, data) => {
+          if(!err) {
+            thumbnailsUploadedToS3++;
+          }
+        });
+      });
     });
 
     // begin video file upload to S3
@@ -90,7 +100,11 @@ router.put('/upload', upload.single('video'), (req, res) => {
             })
         }, 5000);
 
-        res.json({videoId, screenshotTimemarks});
+        res.json({
+          videoId, 
+          screenshotTimemarks, 
+          thumbnailsUploaded: thumbnailsUploadedToS3 === 3
+        });
       }
     });
   }

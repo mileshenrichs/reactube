@@ -66,3 +66,12 @@ export function uploadIsComplete() {
     type: 'UPLOAD_IS_COMPLETE'
   }
 }
+
+export function receivedGeneratedThumbnailOption(optionNumber, thumbnailAsBase64) {
+  console.log('receivedGeneratedThumbnailOption()');
+  return {
+    type: 'RECEIVED_GENERATED_THUMBNAIL_OPTION',
+    optionNumber,
+    thumbnailAsBase64
+  }
+}

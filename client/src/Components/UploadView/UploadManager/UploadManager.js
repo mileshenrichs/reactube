@@ -15,9 +15,21 @@ class UploadManager extends Component {
     Api.getNewGeneratedVideoId().then(({ data }) => {
       const videoId = data.generatedId;
 
-      Api.uploadVideo(videoId, this.props.file).then(() => {
+      Api.uploadVideo(videoId, this.props.file).then(({ data }) => {
         // once this request finishes, video is fully uploaded to S3
         this.props.uploadIsComplete();
+
+        // load thumbnails from S3
+        if(data.thumbnailsUploaded) {
+          data.screenshotTimemarks.forEach((timemark, i) => {
+            const thumbnailFileName = videoId + '-' + timemark + '.png';
+            Api.getThumbnailImage(thumbnailFileName).then(({ data }) => {
+              // convert each thumbnail into a base64 src string and add to redux state
+              const thumbnailSrc = "data:image/png;base64," + data.thumbBase64;
+              this.props.receivedGeneratedThumbnailOption(i, thumbnailSrc);
+            });
+          });
+        }
       }).catch(err => {
         console.log(err);
       });

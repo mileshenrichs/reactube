@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const UploadProgressBar = ({ progressPercentage, uploadComplete }) => {
   let progressBarText = 'Uploading ' + progressPercentage + '%';
-  if(progressPercentage == 100) {
+  if(progressPercentage === 100) {
     progressBarText = 'Processing...';
   }
   if(uploadComplete) {

@@ -15,6 +15,10 @@ export default {
 
   checkUploadProgress: videoId => {
     return axios.get('/api/video/upload-progress?videoId=' + videoId);
+  },
+
+  getThumbnailImage: fileName => {
+    return axios.get('/api/thumbnail?fileName=' + encodeURIComponent(fileName));
   }
 
 }

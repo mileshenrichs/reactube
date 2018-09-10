@@ -59,6 +59,16 @@ function uploadReducer(state = {}, action) {
         ...state,
         uploadComplete: true
       }
+
+    case 'RECEIVED_GENERATED_THUMBNAIL_OPTION':
+      return {
+        ...state,
+        thumbnailOptions: [
+          ...state.thumbnailOptions.slice(0, action.optionNumber),
+          action.thumbnailAsBase64,
+          ...state.thumbnailOptions.slice(action.optionNumber)
+        ]
+      }
       
     default:
       return state;

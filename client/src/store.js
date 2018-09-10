@@ -182,7 +182,7 @@ const defaultState = {
     title: '',
     description: '',
     tags: [],
-    thumbnailOptionUrls: []
+    thumbnailOptions: []
   },
   playlists: {
     userPlaylists: [

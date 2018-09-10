@@ -15,7 +15,7 @@ class ThumbnailSelect extends Component {
 
   render() {
     let thumbnailOptions;
-    if(!this.props.thumbnailOptionUrls.length) {
+    if(!this.props.thumbnailOptions.length) {
       thumbnailOptions = [];
       for(let i = 0; i < 3; i++) {
         thumbnailOptions.push(
@@ -42,8 +42,8 @@ class ThumbnailSelect extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { thumbnailOptionUrls } = state.upload;
-  return {thumbnailOptionUrls};
+  const { thumbnailOptions } = state.upload;
+  return {thumbnailOptions};
 }
 
 const { selectUploadThumbnail, uploadCustomThumbnail } = actions;
